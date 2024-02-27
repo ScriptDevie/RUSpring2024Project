@@ -1,0 +1,83 @@
+\documentclass[a4paper, 12pt]{amsbook}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17} % Adjust the version to match your installation
+
+
+% Ensuring proper language and encoding
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+% Setting margin
+\usepackage[margin=1.0in]{geometry}
+
+% Setting AMS-TeX Packages
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+
+% Change QED symbol
+\renewcommand\qedsymbol{$\blacksquare$\\}
+
+\usepackage{enumitem}
+\setlist[enumerate,2]{label=\arabic}  % level 1 only
+\setlist[enumerate,2]{label=}  % level 2 only
+
+\title{Algebra II}
+\author{Fernando Arreola}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\rhead{\today}
+\lhead{\bfseries Fernando Arreola}
+\rfoot{}
+\usepackage{xcolor}
+\usepackage{soul}
+
+\begin{document}
+\section{Proposed thermal blooming term $ \Delta n_{thermal} $}
+$$\frac{\partial A_\ell(r)}{\partial z} = \frac{i}{2k^\ell} \Delta_\perp A_\ell(r) + ik_0^\ell \delta n_{\text{turb}}(r)A_\ell(r)-\frac{\alpha^\ell_\text{loss}}{2} A_\ell(r)$$
+\begin{center}
+    $\downarrow$
+\end{center}
+$$\frac{\partial A_\ell(r)}{\partial z} = \frac{i}{2k^\ell} \Delta_\perp A_\ell(r) + ik_0^\ell( \delta n_{\text{turb}}(r) + \Delta n_{\text{thermal}})A_\ell(r)-\frac{\alpha^\ell_\text{loss}}{2} A_\ell(r)$$
+
+$$\Delta n_{thermal} = \text{index}(T)$$
+
+\begin{equation*}
+    \begin{aligned}
+       \text{index}(T) &= \sum_{k=0}^\infty \frac{1}{k!}  \left( \frac{\partial^k n}{\partial T^k} \right)_{T_0} (T-T_0)^k \\
+        \frac{\partial T}{\partial t} &= \kappa \nabla^2 T + S(r,t) \\
+        S(r,t) &= \frac{\alpha I(r,t)}{\rho c_\rho} \\
+        I(r,t) &= I_0 \exp \left( -\frac{2r^2}{w^2}- \frac{(t-t_0)^2}{\tau^2} \right)
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        t &: \text{time} \\
+        t_0 &: \text{starting time} \\
+        r &: \text{radial distance from the beam's center} \\
+        n&: \text{refractivity} \\
+        T&: \text{temperature} \\
+        T_0 &: \text{Reference temperature of the atmosphere at the ground level} \\
+        \frac{\partial^k n}{\partial T^k} &: \text{$k$th derivative of the refractive index with respect to temperature} \\
+        \frac{\partial T}{\partial t} &: \text{Temperature change per unit time} \\
+        \alpha&: \text{absorptivity (absorption per unit length)} \\
+        \kappa &: \text{thermal Diffusivity of the medium}\\
+        I&: \text{laser irradiance}  \\
+        \alpha I(r,t) &: \text{power absorbed by the medium per unit volume} \\
+        S(r,t) &: \text{heat source term, rate at which the laser's energy is absorbed and converted into heat}\\
+        \rho &: \text{mass density of the medium} \\
+        c_\rho &: \text{specific heat at constant pressure} \\
+        w &: \text{laser beam waist radius} \\
+        \tau &: \text{pulse duration} \\
+        I_0 &: \text{peak intensity at the beam's center}
+    \end{aligned}
+\end{equation*}
+This proposed model incorporates a thermal blooming effect, and a "Feedback" mechanism the models how changes in temperature overtime worsens the index of refraction.
+
+
+\end{document}
