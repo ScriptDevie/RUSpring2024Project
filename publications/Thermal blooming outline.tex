@@ -36,6 +36,14 @@
 \usepackage{xcolor}
 \usepackage{soul}
 
+
+\newcommand\der[2]{\frac{d{#1}}{d{#2}}}
+\newcommand\dder[2]{\frac{d^2{#1}}{d{#2}^2}}
+\newcommand\ddder[2]{\frac{d^3{#1}}{d{#2}^3}}
+\newcommand\pder[2]{\frac{\partial #1}{\partial #2}}
+\newcommand\ppder[2]{\frac{\partial^2 #1}{\partial #2^2}}
+
+
 \begin{document}
 \section{Proposed thermal blooming term $ \Delta n_{thermal} $}
 $$\frac{\partial A_\ell(r)}{\partial z} = \frac{i}{2k^\ell} \Delta_\perp A_\ell(r) + ik_0^\ell \delta n_{\text{turb}}(r)A_\ell(r)-\frac{\alpha^\ell_\text{loss}}{2} A_\ell(r)$$
@@ -78,6 +86,103 @@ $$\Delta n_{thermal} = \text{index}(T)$$
     \end{aligned}
 \end{equation*}
 This proposed model incorporates a thermal blooming effect, and a "Feedback" mechanism the models how changes in temperature overtime worsens the index of refraction.
+
+
+\newpage
+
+\section{Simplified SOE}
+
+$$\frac{\partial A_\ell(r)}{\partial z} = \frac{i}{2k^\ell} \Delta_\perp A_\ell(r) + ik_0^\ell \left( \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} \Delta T \right)A_\ell(r)-\frac{\alpha^\ell_\text{loss}}{2} A_\ell(r)$$
+
+Let $ A_\ell(r) = a(r) \exp{(-\frac{\alpha^\ell_\text{loss}}{2} z)}$, then $\frac{\partial A_\ell(r)}{\partial z} = \frac{\partial a(r) }{\partial z} \exp{(-\frac{\alpha^\ell_\text{loss}}{2} z)} - \frac{\alpha^\ell_\text{loss}}{2}  a(r) \exp{(-\frac{\alpha^\ell_\text{loss}}{2} z)} $
+
+
+$$\frac{\partial a(r)}{\partial z} = \frac{i}{2k^\ell} \Delta_\perp a(r) + ik_0^\ell \left( \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} \Delta T \right)a(r) $$
+
+
+
+\begin{equation*}\label{equ:thermal_equation}
+    \begin{aligned}
+        \frac{\partial T}{\partial t} = \kappa \nabla^2 T + \frac{\alpha }{\rho c_\rho} I(r,t) 
+    \end{aligned}
+\end{equation*}
+
+*** Arguments to justify that  $ \nabla^2 T = T_{xx} + T_{yy} + T_{zz} \approx  \nabla_{\perp}^2 T = T_{xx} + T_{yy}$
+
+*** $S + T_0 = T$  into equation \ref{equ:thermal_equation} we get
+
+
+\begin{equation*}
+    \begin{aligned}
+    \frac{\partial a(r)}{\partial z} &= \frac{i}{2k^\ell} \Delta_\perp a(r) + ik_0^\ell \left( \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S \right)a(r) \\
+        \frac{\partial S}{\partial t} &= \kappa \nabla_{\perp}^2 S + \frac{\alpha }{\rho c_\rho} |a(r)|^2 \exp{(- \alpha^\ell_\text{loss} z)}
+    \end{aligned}
+\end{equation*}
+The equation for $S$ is only parametrically dependent on $z$.  Taking the represenation for $a(r) = a(r_\perp,z)$ as
+
+\begin{equation*}
+    \begin{aligned}
+ a\big( {\bf r}_{\perp}, {\bf p}(z) \big) = I\big( {\bf p}(z) \big) e^{-\Big( \Theta\big( {\bf r}_{\perp},{\bf p}(z) \big) + i \Phi\big( {\bf r}_{\perp}, {\bf p}(z) \big) \Big)},
+   \end{aligned}
+\end{equation*}
+with 
+\begin{align*}
+ I\big( {\bf p}(z) \big) & = \frac{C(z) \sqrt{W_{x}(z) W_{y}(z)}}{\sqrt{\pi}}, \\
+ \Theta\big( {\bf r}_{\perp}, {\bf p}(z) \big) & = \frac{1}{2} \left( W_{x}^{2}(z) \big( x - X(z) \big)^{2} + W_{y}^{2}(z) \big( y - Y(z) \big)^{2} \right), \\
+ \Phi\big( {\bf r}_{\perp}, {\bf p}(z) \big) & = P(z) + T_{x}(z) \big( x - X(z) \big) + T_{y}(z) \big( y - Y(z) \big) \ + \\
+ & \hspace{13pt} F_{x}(z) \big( x - X(z) \big)^{2} + F_{y}(z) \big( y - Y(z) \big)^{2}, \text{ and} \\
+ {\bf p}(z) & = \big[ C(z) \ W_{x}(z) \ W_{y}(z) \ T_{x}(z) \ T_{y}(z) \ X(z) \ Y(z) \\
+ & \hspace{18pt} F_{x}(z) \ F_{y}(z) \ P(z) \big]^{\text{T}} \ \ .
+\end{align*}
+
+
+We can use the Lagrangian approach sub the ODES for the PDE in $a$.
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial S}{\partial t} &= \kappa \nabla_{\perp}^2 S + \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} e^{-\left( W_{x}^{2}(z) \big( x - X(z) \big)^{2} + W_{y}^{2}(z) \big( y - Y(z) \big)^{2} \right)} \exp{(- \alpha^\ell_\text{loss} z)}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}     
+  C(z) & = C(0) \\
+  \der{W_{x}}{z}(z) & = \frac{2}{n \xi} F_{x}(z) W_{x}(z) \\
+  \der{W_{y}}{z}(z) & = \frac{2}{n \xi} F_{y}(z) W_{y}(z)  \\ 
+  \der{T_{x}}{z}(z) & = -n \gamma^{2} \left< \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S , M_{T_{x}}({\bf r}) \right>\\ 
+  \der{T_{y}}{z}(z) & = -n \gamma^{2} \left< \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S , M_{T_{y}}({\bf r}) \right>  \\
+  \der{X}{z}(z) & = -2T_{x}(z) \\
+  \der{Y}{z}(z) & = -2T_{y}(z) \\
+  \der{F_{x}}{z}(z) & = -\frac{W_{x}^{4}(z)}{2 n \xi} + \frac{2 F_{x}^{2}(z)}{n \xi} + \frac{\gamma^{2}}{\xi} \left< \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S , M_{F_{x}}({\bf r}) \right> \\
+  \der{F_{y}}{z}(z) & = -\frac{W_{y}^{4}(z)}{2 n \xi} + \frac{2 F_{y}^{2}(z)}{n \xi} + \frac{\gamma^{2}}{\xi} \left< \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S , M_{F_{y}}({\bf r}) \right> \\
+  \der{P}{z}(z) & = \frac{\left( W_{x}^{2}(z) + W_{y}^{2}(z) \right)}{2n \xi} - \frac{\gamma^{2}}{\xi} \left< \delta n_{\text{turb}}(r) + \left( \frac{\partial n}{\partial T} \right)_{T_0} S , M_{P}({\bf r}) \right>    \end{aligned}
+\end{equation*}
+
+
+
+
+Generlizing the equation for $S$:
+
+\begin{equation*}
+    \begin{aligned}
+        S_{t} &= \kappa \nabla_{\perp}^2 S + F(r_{\perp}; z) \\
+        S(r_{\perp},t) &= 0 \quad \mbox{for} \quad |r_\perp| >> l_0 \\
+        F(r_{\perp}; z) &= \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} e^{-\left( W_{x}^{2}(z) \big( x - X(z) \big)^{2} + W_{y}^{2}(z) \big( y - Y(z) \big)^{2} \right)} \exp{(- \alpha^\ell_\text{loss} z)}
+    \end{aligned} 
+\end{equation*}
+
+Assume that $S$ has reached a steady state, i.e. $S_{t} = 0 $ than
+\begin{equation*}
+    \begin{aligned}
+        \kappa \nabla_{\perp}^2 S &= -F(r_{\perp}; z) \\
+        S(r_{\perp},t) &= 0 \quad \mbox{for} \quad |r_\perp| >> l_0
+    \end{aligned} 
+\end{equation*}
+
+The solution to this Poission Equation is given by the 2 D Green's function
+\begin{equation*}
+S(r_{\perp};z) = \frac{1}{\kappa} \iint \frac{1}{2\pi}\, \ln{(|r_{\perp} - r'_{\perp}|)}  F(r_{\perp}'; z)  d r_{\perp}'
+\end{equation*}
+
 
 
 \end{document}
