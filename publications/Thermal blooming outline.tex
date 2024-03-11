@@ -218,6 +218,40 @@ S(r_{\perp};z) = \frac{1}{\kappa} \iint \frac{1}{2\pi}\, \ln{(|r_{\perp} - r'_{\
         \end{aligned}
     \end{equation*}
 
+    \newpage
+    The solution to the Poisson equation using Green's function in two dimensions is given by:
+$$S(r_{\perp};z) = \frac{1}{\kappa} \iint \frac{1}{2\pi}\, G(r_\perp, r_\perp ')  F(r_{\perp}'; z)  d r_{\perp}' $$
+Where 
+$$G(r_\perp, r_\perp ') = \frac{1}{2\pi}\, \ln{(|r_{\perp} - r'_{\perp}|)} $$
+And $$F(r_{\perp}'; z) = \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} \exp{\left(-W_{x}^{2}(z) \big( x - X(z) \big)^{2} - W_{y}^{2}(z) \big( y - Y(z) \big)^{2} - \alpha^\ell_\text{loss} z \right)}$$
+Let us factor out constant into $$\Upsilon = \frac{1}{2\pi} \frac{1}{\kappa} \left( \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} \exp{(- \alpha^\ell_\text{loss} z)} \right)$$
+Then, our integral becomes 
+\begin{equation*}
+\begin{aligned}
+    S(r_{\perp};z) &= \Upsilon \iint \ln{(|r_{\perp} - r'_{\perp}|)}  F(r_{\perp}'; z)  d r_{\perp}' \\
+    &= \Upsilon \iint \frac{\ln{\left(\sqrt{(x-x')^2 + (y-y')^2}\right)}}{\exp{(W_{x}^{2}(z) \big( x' - X(z) \big)^{2})} \cdot \exp({W_{y}^{2}(z) \big( y' - Y(z) \big)^{2}}) } dx'dy' 
+\end{aligned}
+\end{equation*}
+To solve this integral, we evaluate over the domain $(-\infty, \infty)$. We will do this carefully. First, we make the substitution $\alpha = \frac{x' - X(z)}{W_x(z)}$, with $d\alpha = \frac{dx'}{W_x(z)}$. Similarly, we make the substitution $\beta = \frac{y' - Y(z)}{W_y(z)}$, with $d\beta = \frac{dy'}{W_y(z)}$ This changes our integral to 
+\begin{equation*}
+    \begin{aligned}
+        \Upsilon \iint_\infty ^\infty \frac{\ln{\left(\sqrt{(x-\alpha W_x(z) - X(z))^2 + (y-\beta W_y(z) - Y(z))^2}\right)}}{\exp{ \alpha^{2}} \cdot \exp \beta^{2}} \frac{1}{W_x(z)} \frac{1}{W_y(z)} d\alpha d\beta 
+    \end{aligned}
+\end{equation*}
+Then, we evaluate the inner integral
+\begin{equation*}
+    \begin{aligned}
+        \frac{1}{W_x(z)} \frac{1}{W_y(z)} \frac{1}{\exp \beta^{2}} \int_\infty ^\infty \frac{\ln{\left(\sqrt{(x-\alpha W_x(z) - X(z))^2 + (y-\beta W_y(z) - Y(z))^2}\right)}}{\exp{ \alpha^{2}}} d\alpha 
+    \end{aligned}
+\end{equation*}
+Notice that we have many terms not dependent on $\alpha$. This means we can treat them as constants. To simplify this, let $C_1 = (y-\beta W_y(z) - Y(z))^2$. Then,
+\begin{equation*}
+    \begin{aligned}
+        &\frac{1}{W_x(z)} \frac{1}{W_y(z)} \frac{1}{\exp \beta^{2}} \int_\infty ^\infty \frac{\ln{\left(\sqrt{(x-\alpha W_x(z) - X(z))^2 + C_1}\right)}}{\exp{ \alpha^{2}}} d\alpha \\
+        &=\frac{1}{W_x(z)} \frac{1}{W_y(z)} \frac{1}{\exp \beta^{2}} \frac{1}{2}\int_\infty ^\infty \frac{\ln{\left((x-\alpha W_x(z) - X(z))^2 + C_1\right)}}{\exp{ \alpha^{2}}} d\alpha 
+    \end{aligned}
+\end{equation*}
+
 
 
 \end{document}
