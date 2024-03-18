@@ -1,0 +1,76 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+% Setting margin
+\usepackage[margin=1.5in]{geometry}
+
+% Ensuring proper language and encoding
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+% Setting AMS-TeX Packages
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+
+% Change QED symbol
+\renewcommand\qedsymbol{$\blacksquare$\\}
+
+\usepackage{enumitem}
+\setlist[enumerate,2]{label=\arabic}  % level 1 only
+\setlist[enumerate,2]{label=}  % level 2 only
+
+\usepackage{graphicx} % Required for inserting images
+
+\title{Small Improvement On A Variational Approach to Modeling Gaussian Beam Propagation in Atmospheric Turbulence}
+\author{farreola}
+\date{March 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Thermal blooming is the physical phenomena where a high-power beam causes the medium it passes through to heat up. This heating causes a change in the refractive index of the medium which in turn causes the beam to dissipate and deviate from its intended path. In the paper "Variational Scaling Law for Atmospheric Propagation", the authors modeled, analyzed, and simulated a model for optical wave propagation through the Earth's atmosphere. This model, though a great improvement as a fast, reliable method for calculating a first-order approximation to laser light atmospheric
+propagation, did not take into account the effects of the aforementioned thermal blooming. Introducing a term that accounts for the turbulence induced by this effect further increases the accuracy of the model
+
+\section{Thermal Blooming Model}
+The proposed model for thermal blooming measures the change in refractive index $n$ per change in temperature $T$. The model includes a ``feedback" mechanism that models how changes in temperature overtime worsens the index of refraction.
+
+\begin{equation*}
+    \begin{aligned}
+       \frac{\partial n}{\partial T} = \sum_{k=0}^\infty \frac{1}{k!}  \left( \frac{\partial^k n}{\partial T^k} \right)_{T_0} (T-T_0)^k \quad \text{where} \quad
+        \frac{\partial T}{\partial t} = \kappa \nabla^2 T + \frac{\alpha}{\rho c_\rho}|A_\ell| ^2.
+    \end{aligned}
+\end{equation*}
+Generalizing the change in temperature with respect to time, as $$S_{t} = \kappa \nabla_{\perp}^2 S + F(r_{\perp}; z)$$
+Where
+\begin{equation*}
+    \begin{aligned}
+        F(r_{\perp}; z) &= \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} e^{-\left( W_{x}^{2}(z) \big( x - X(z) \big)^{2} + W_{y}^{2}(z) \big( y - Y(z) \big)^{2} \right)} \exp{(- \alpha^\ell_\text{loss} z)}.
+    \end{aligned} 
+\end{equation*}
+Assume that $S$ has reached a steady state, i.e. $S_{t} = 0 $. Then
+\begin{equation*}
+    \begin{aligned}
+        \kappa \nabla_{\perp}^2 S &= -F(r_{\perp}; z) \\
+        S(r_{\perp},t) &= 0 \quad \mbox{for} \quad |r_\perp| \gg l_0
+    \end{aligned} 
+\end{equation*}
+The solution to the Poisson equation using Green's function in two dimensions is given by:
+$$S(r_{\perp};z) = \frac{1}{\kappa} \iint \frac{1}{2\pi}\, G(r_\perp, r_\perp ')  F(r_{\perp}'; z)  d r_{\perp}' $$
+Where 
+$$G(r_\perp, r_\perp ') = \frac{1}{2\pi}\, \ln{(|r_{\perp} - r'_{\perp}|)} $$
+$$F(r_{\perp}'; z) = \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} \exp{\left(-W_{x}^{2}(z) \big( x - X(z) \big)^{2} - W_{y}^{2}(z) \big( y - Y(z) \big)^{2} - \alpha^\ell_\text{loss} z \right)}$$
+Let us factor out constants into $$\Upsilon = \frac{1}{2\pi} \frac{1}{\kappa} \left( \frac{\alpha }{\rho c_\rho} C_0^2 \frac{ W_{x}(z) W_{y}(z)}{\pi} \exp{(- \alpha^\ell_\text{loss} z)} \right)$$
+Then, changing variables to $x$ and $y$,our integral becomes 
+\begin{equation*}
+\begin{aligned}
+    S(r_{\perp};z) &= \Upsilon \iint \frac{\ln{\left(\sqrt{(x-x')^2 + (y-y')^2}\right)}}{\exp{(W_{x}^{2}(z) \big( x' - X(z) \big)^{2})} \cdot \exp({W_{y}^{2}(z) \big( y' - Y(z) \big)^{2}}) } dx'dy' 
+\end{aligned}
+\end{equation*}
+Solving this convolution analytically has proven elusive. Given that an exact solution is not readily available (or might not exists), we solve heat equation numerically.
+
+\section{Numerical Model Results}
+
+\section{Conclusion}
+
+\end{document}
