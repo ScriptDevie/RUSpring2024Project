@@ -1,0 +1,31 @@
+
+\section{Pseudo-spectral Method}
+\begin{equation}\label{EQ:helmholtz_equation_numerical}
+\begin{split}
+  & \pder{U}{z} =  i \frac{1}{2 n_0 \alpha}  \nabla_{\perp}^2 U + i \frac{\gamma^2}{ \alpha}  n(x,y,z) U  \\
+  &\quad  \mbox{for}   
+  \quad -\infty < x,y < \infty, \quad 0 < z < \frac{L}{L_0} = l_{pr} \quad  \mbox{where} \quad U(x,y,0) = U_{i}(x,y)\exp{i \Phi(x,y)}
+\end{split}
+\end{equation}
+and $U_{i}(x,y)$ is of finite support, \ie $U_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{i}}{l_0} = \tilde{D_{i}}$.
+
+
+
+Take the FT of \ref{EQ:helmholtz_equation_numerical} in $x,y$:
+\begin{equation}
+\begin{split}
+  & \pder{\hat{U}}{z} =  -i \frac{1}{2 n_0 \alpha}  (k_x^2 + k_y^2) \hat{U} + i \frac{\gamma^2}{ \alpha}  \For{n(x,y,z) \iFor{\hat{U}} } \\
+  &\quad  \mbox{for}  \quad 0 < z < \frac{L}{L_0} = l_{pr}
+  \quad  \mbox{where} \quad \hat{U}(k_x,k_y,0) = \For{U_{i}(x,y)\exp{i \Phi(x,y)}}
+\end{split}
+\end{equation}
+then let $\hat{U} = \exp{-i\frac{1}{2 n_0 \alpha}  (k_x^2 + k_y^2) z} \hat{V}$ giving
+\begin{equation}
+\begin{split}
+  & \pder{\hat{V}}{z} =  i \frac{\gamma^2}{ \alpha}  \exp{i\frac{1}{2 n_0 \alpha}  (k_x^2 + k_y^2) z} 
+  \For{n(x,y,z) \iFor{\exp{-i\frac{1}{2 n_0 \alpha}  (k_x^2 + k_y^2) z} \hat{V}} } \\
+  &\quad  \mbox{for}  \quad 0 < z < \frac{L}{L_0} = l_{pr}
+  \quad  \mbox{where} \quad \hat{U}(k_x,k_y,0) = \For{U_{i}(x,y)\exp{i \Phi(x,y)}}
+\end{split}
+\end{equation}
+

@@ -1,0 +1,38 @@
+ \subsection{Rytov Expansion}
+ Look for solutions of the form
+ \begin{equation}
+   A = \exp{B} \quad \mbox{which gives} \quad \nabla A = \left(\nabla B\right) \exp{B} \quad
+ \mbox{and} \quad \nabla^2 A = \left(\left|\nabla B \right|^2 + \nabla^2 B\right)\exp{B}
+ \end{equation}
+ and
+ \begin{equation}\label{EQ:helmholtz_equation_3}
+ \begin{split}
+   &\left|\nabla B \right|^2 + \nabla^2 B + k^2  (n_0 + \epsilon n_1(x,y)) = 0 \quad  \mbox{where} \quad B(x,y,0) = B_{i}(x,y) + i \epsilon_{1} \Phi(x,y).
+ \end{split}
+ \end{equation}
+ Now expand $B$ in an expansion of the form
+ \begin{equation}
+ \begin{split}
+ B = B_{0} + \epsilon B_{1} + \dots
+ \end{split}
+ \end{equation}
+
+ % At $\bigOh{1}$:
+ \begin{equation}\label{EQ:Order_1}
+ \begin{split}
+   &\left|\nabla B_{0} \right|^2 + \nabla^2 B_{0} + k^2 n_0 = 0 \quad  \mbox{where} \quad B(x,y,0) = B_{i}(x,y).
+ \end{split}
+ \end{equation}
+ and letting $B_{0} = \ln{A_{0}}$ gives
+ \begin{equation}
+ \begin{split}
+   \nabla^2 A_{0} + k^2n_0 A_{0} = 0  \quad  \mbox{where} \quad A_{0}(x,y,0) = A_{i}(x,y),
+ \end{split}
+ \end{equation}
+ the solution of which is given by the Green's function for the Helmholtz Equation,
+ \begin{equation}
+ \begin{split}
+ A(x,y,z;\epsilon_1,\epsilon_2) = - i  \frac{\epsilon_2}{\epsilon_1} \exp{i  \frac{2\pi}{\epsilon_1}}
+ \iint A_{i}(x,y) \exp{i \pi  \frac{\epsilon_2}{\epsilon_1} \left[ \left(x-x^*\right)^2 + \left(y-y^*\right)^2  \right]} \, dx \, dy
+ \end{split}
+ \end{equation}

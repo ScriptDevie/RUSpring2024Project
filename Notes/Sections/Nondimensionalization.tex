@@ -1,0 +1,81 @@
+\section{Nondimensionalization}
+\begin{center}
+\begin{tabular}{ |p{3cm}|p{2cm}|p{6cm}| }
+\hline
+\textbf{Quantity} & \textbf{Scale} & \textbf{New Variable}\\
+\hline
+\hline
+$\dim{z}$                            & $l_{z}$    & $\dim{z} = l_{z} z$\\
+\hline
+$\dim{x}$                            & $l_{x,y}$  & $\dim{x} = l_{x,y} x$\\
+\hline
+$\dim{y}$                            & $l_{x,y}$  & $\dim{y} = l_{x,y} y$\\
+\hline
+$n(\dim{x}, \dim{y}, \dim{z})$       & $\sigma_n$ & $n(\dim{x}, \dim{y}, \dim{z}) = \sigma_n n(x,y,z)$\\
+\hline
+$\dim{A}(\dim{x}, \dim{y}, \dim{z})$ & $A_0$      & $\dim{A}(l_{x,y} \dim{x}, l_{x,y} \dim{y}, l_{z} \dim{z}) = A_0 A(x,y,z)$  \\
+\hline
+\end{tabular}
+\end{center}
+
+ \begin{equation}\label{EQ:helmholtz_equation_2}
+ \begin{split}
+   & \frac{1}{l_{z}^{2}} \ppder{A}{z} + \frac{1}{l_{x,y}^{2}} \nabla_{\perp}^2 A + k^2 n_0^2 A +  2 k^2 n_0 \sigma_n n(x,y,z) A + k^2 \sigma_n^2 n^2(x,y,z) A = 0 \\
+   &\quad  \mbox{for}
+   \quad -\infty < x,y < \infty, \quad 0 < z < \frac{L}{L_0} \quad  \mbox{where} \quad A(x,y,0) = A_{i}(x,y)\exp{i \Phi(x,y)}
+ \end{split}
+ \end{equation}
+ and $A_{i}(x,y)$ is of finite support, \ie $A_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{ap}}{l_{x,y}}$.
+
+
+
+\begin{equation}\label{EQ:helmholtz_equation_3}
+\begin{split}
+  & \frac{l_{x,y}^{2}}{l_{z}^{2}} \ppder{A}{z} + \nabla_{\perp}^2 A + l_{x,y}^{2} k^2 n_0^2 A 
+  +  2 l_{x,y}^{2} k^2 n_0 \sigma_n n(x,y,z) A + l_{x,y}^{2} k^2 \sigma_n^2 n^2(x,y,z) A = 0 \\
+  &\quad  \mbox{for}   
+  \quad -\infty < x,y < \infty, \quad 0 \leq z \leq \frac{L}{L_0} \quad  
+  \mbox{where} \quad A(x,y,0) = A_{i}(x,y)\exp{i \Phi(x,y)}
+\end{split}
+\end{equation}
+and $A_{i}(x,y)$ is of finite support, \ie $A_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{ap}}{l_{x,y}}$.
+
+\subsection{Case 1}
+Letting $l_{z} = L_0$ and $l_{x,y} = l_0$ gives the following non-dimensional quantities 
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Symbols} & \textbf{Range}  \\
+\hline
+\hline
+$\epsilon = \frac{l_{0}}{L_{0}}$        & $10^{-6}-10^{-3}$ \\
+\hline
+$\alpha = \frac{l_0^2 k }{L_0}$         & $10^{-3} - 10$ \\
+\hline
+$\beta = l_0 k$                         & $10^{3} - 10^{4}$ \\
+\hline
+$\gamma = l_0 k \sqrt{\sigma_n}$        & $10^{-1.5} - 10^{1.5}$ \\  
+\hline
+$\nu = l_0 k \sigma_n$                  & $10^{-6} - 10^{-1}$ \\ 
+\hline
+$l_{pr} = \frac{L}{L_0}$                & $10^{0} - 10^{2}$ \\ 
+\hline
+$d_{ap} = \frac{D_{ap}}{l_0}$           & $10^{1} - 10^{4}$ \\ 
+\hline
+\end{tabular}
+\end{center}
+% \frac{l_0}{\lambda} \sqrt{\sigma_n} = 10 3 (10 - 4.5 - 10 - 2.5)
+% l_0 = 10-3
+% \sqrt{\lambda L_0} = 10^-3/2
+
+\begin{equation}\label{EQ:helmholtz_equation_4}
+\begin{split}
+  & \epsilon^2 \ppder{A}{z} + \nabla_{\perp}^2 A + \beta^2 n_0^2 A +  2 \gamma^2 n_0 n(x,y,z) A + \nu^2 n^2(x,y,z) A = 0 \\
+  &\quad  \mbox{for}  \quad -\infty < x,y < \infty, \quad 0 \leq z \leq l_{pr} \quad  
+  \mbox{where} \quad A(x,y,0) = A_{i}(x,y)\exp{i \Phi(x,y)}
+\end{split}
+\end{equation}
+and $A_{i}(x,y)$ is of finite support, \ie $A_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{ap}}{l_{x,y}}$.
+
+
+

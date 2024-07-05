@@ -1,0 +1,249 @@
+\documentclass[11pt]{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------- Predefined Stuff (not needed)
+% \usepackage[final,nousetoc,nouselof,nouselot,hylinks,notitlepage,full]{}
+
+%----------------------------------------------------------------------- Pulls the page out a bit - makes it look better (in my opinion)
+% \usepackage{a4wide}
+
+%----------------------------------------------------------------------- Removes paragraph indentation (not needed most of the time now)
+% \usepackage{parskip}
+
+%-----------------------------------------------------------------------For logo
+\usepackage{wrapfig}
+
+
+
+%----------------------------------------------------------------------- Allows inclusion of graphics easily and configurably
+\usepackage{graphics} 
+\usepackage{graphicx} 
+
+%----------------------------------------------------------------------- Provides ways to make nice looking tables
+\usepackage{booktabs}
+
+%----------------------------------------------------------------------- Allows you to rotate tables and figures
+\usepackage{rotating}
+
+%----------------------------------------------------------------------- Allows shading of table cells
+\usepackage{colortbl}
+% Define a simple command to use at the start of a table row to make it have a shaded background
+\newcommand{\gray}{\rowcolor[gray]{.9}}
+
+
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+
+%----------------------------------------------------------------------- ???
+% \usepackage{textcomp}
+
+%----------------------------------------------------------------------- Provides commands to make subfigures (figures with (a), (b) and (c))
+\usepackage{subfigure}
+
+\newcommand{\documentTitle}{Atmospheric Propagation}
+%----------------------------------------------------------------------- Makes references hyperlinks in PDF output
+\usepackage[bookmarks=false,                      % show bookmarks bar?
+            unicode=false,                        % non-Latin characters in Acrobat’s bookmarks
+            pdftoolbar=false,                     % show Acrobat’s toolbar?
+            pdfmenubar=false,                     % show Acrobat’s menu?
+            pdffitwindow=false,                   % window fit to page when opened
+            pdfstartview={FitH},                  % fits the width of the page to the window
+            pdftitle={\documentTitle},                     % title
+            pdfauthor={D.S. Cargill},             % author
+            pdfsubject={\documentTitle},             % subject of the document
+            pdfcreator={D.S. Cargill},            % creator of the document
+            pdfproducer={D.S. Cargill},           % producer of the document
+            pdfkeywords={key1} {key2} {key3}, % list of keywords
+            pdfnewwindow=true,                    % links in new window
+            colorlinks=false,                     % false: boxed links; true: colored links
+            linkcolor=green,                      % color of internal links
+            citecolor=blue,                       % color of links to bibliography
+            filecolor=red,                        % color of file links
+            urlcolor=cyan                         % color of external links
+]{hyperref}
+
+%----------------------------------------------------------------------- Provides ways to include syntax-highlighted source code
+\usepackage{listings}
+\lstset{frame=single, basicstyle=\ttfamily}
+
+%----------------------------------------------------------------------- Provides Harvard-style referencing
+% \usepackage{natbib}
+% \bibpunct{(}{)}{;}{a}{,}{,}
+
+%----------------------------------------------------------------------- for label replacement
+%\usepackage{psfrag}   
+
+%----------------------------------------------------------------------- Pretty much all of the ams maths packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts,esint}
+
+%----------------------------------------------------------------------- si units
+% \usepackage{siunitx}
+
+%----------------------------------------------------------------------- Provides good access to colours
+\usepackage{xcolor}
+% \usepackage{color} (uneeded)
+\definecolor{darkblue}{RGB}{47,68,117}
+\definecolor{lightgray}{gray}{0.95}
+
+
+%----------------------------------------------------------------------- Provides the count of last page
+\usepackage{lastpage}
+%----------------------------------------------------------------------- Geometry: easy margins
+% \usepackage[a4paper]{geometry}
+% \usepackage[margin=1in]{geometry}
+% the usual page size settings:
+\headheight      = 0.25in    % we normally don't have running heads
+\headsep         = 0.25in    % we normally don't have running heads
+\topmargin       =-0.5in    % 1 inch from top edge of paper
+\oddsidemargin   = 0.0in    % 1 inch from left edge of paper
+\evensidemargin  = 0.0in    % same, for even-numbered pages
+\textheight      = 9.0in
+\textwidth       = 6.5in
+\footskip        = 0.5in
+
+
+%------------------------------------------------------------------------------ Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% \renewcommand{\headrulewidth}{0pt} %% Removes the line under header
+
+%------------------------------------------------------------------------------ Allows printout of the page layout
+\usepackage{layout}
+
+%------------------------------------------------------------------------------ Vastly improves the standard formatting of captions
+%\usepackage[small]{caption2}
+% \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}                                    %
+\usepackage[margin=10pt,font=small,labelfont=bf, labelsep=endash]{caption}
+
+%------------------------------------------------------------------------------ Allows access to title information,e.g. \thetitle
+\usepackage{titling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEWCOMMANDS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------- Simple command I defined to allow me to mark TODO items in red
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+
+
+%----------------------------------------------------------------------- Simple command I defined to allow me to mark notes in blue
+\newcommand{\anote}[1]{\textbf{\textcolor{blue}{#1}}}
+
+% \newcommand{\lno}{%
+  % \noindent % University Logo
+%   \begin{wrapfigure}{r}{0.5\textwidth}
+% \begin{figure*}
+    %  \begin{center}
+    %   \includegraphics[width=0.2\textwidth]{/home/dcargill/AFRL/AFRL_logos/AirForce_logo_1.png}
+    %   \hspace{1in}
+    %   \includegraphics[width=0.2\textwidth]{/home/dcargill/AFRL/AFRL_logos/AFRL_Logo.png}
+    % \end{center}
+% \end{figure*}
+%   \end{wrapfigure}
+% }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------Title, Header and Footer
+% Standard title, author etc.
+\title{\documentTitle}
+\author{Daniel S. Cargill}
+\date{\today}
+% Put text on the left-hand and right-hand side of the header
+ \fancyhf{}
+\fancyhead[L]{\textbf{\thedate}}
+\fancyhead[C]{\textbf{\thetitle}}
+\fancyhead[R]{\textbf{\thepage\ of \pageref{lastpage}}}
+\fancyfoot[L]{\textbf{\copyright\theauthor}}
+\fancyfoot[C]{\textbf{\href{mailto:daniel.cargill@us.af.mil}{daniel.cargill@us.af.mil}}}
+\fancyfoot[R]{\textbf{\thepage\ of \pageref{lastpage}}}
+
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+
+% \lhead{\thedate}
+% \chead{\thetitle}
+% \rhead{\thepage\ of \pageref{lastpage}}
+% 
+% \lfoot{\theauthor}
+% \cfoot{}
+% \rfoot{}
+
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INCLUSIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------ Macros
+% \include{Macros/Macros}
+\input{/Users/dcargill/AFRL/AFRL_macros/AFRL_Macros}
+\def\vect#1{\bm{#1}}
+\def\dim#1{\tilde{#1}}
+
+\begin{document}
+\maketitle
+% \lno
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{./Sections/Introduction}
+
+\input{./Sections/Helmhotlz_Equation}
+
+\input{./Sections/Nondimensionalization}
+
+\input{./Sections/Paraxial_Approximation}
+
+
+% Pseudo-Spectral Method
+\input{./Sections/Pseudo-Spectral_Method}
+
+
+% Split-Step Method
+%\newcommand{\SplitStepPath}[1]{../Fully_Correlated_Propagation/Propagation_Methods/Split_Step_Propagation/Notes/Sections/#1}
+%\input{\SplitStepPath{Split_Step_Method}}
+
+% Full Helmholtz
+%\newcommand{\FullHelmholtzPath}[1]{../Full_Helmholtz_Equation/Notes/Sections/#1}
+%\input{\FullHelmholtzPath{Derivation}}
+% Circulant Embedding
+%\newcommand{\CirculantEmbeddingPath}[1]{../Fully_Correlated_Propagation/Sampling_Methods/Circulant_Embedding/Notes/Sections/#1}
+%\input{\CirculantEmbeddingPath{Cholesky_Factorization}}
+%\input{\CirculantEmbeddingPath{Circulant_Embedding}}
+%\input{\CirculantEmbeddingPath{Circular_Matrix_Decomposition}}
+%\input{\CirculantEmbeddingPath{2D_Relizations}}
+
+% Conditioning
+%\newcommand{\CirculantEmbeddingPath}[1]{../Fully_Correlated_Propagation/Sampling_Methods/Conditioning/Notes/Sections/#1}
+%\input{\CirculantEmbeddingPath{Conditioning}}
+
+
+
+%\newcommand{\LagrangianPath}[1]{../Lagrangian_for_Atmospheric_Propagation/Notes/Sections/#1}
+
+%\input{\LagrangianPath{Lagrangian_Approach}}
+%\input{\LagrangianPath{Gaussian_Anzats_1}}
+%\input{\LagrangianPath{Gaussian_Anzats_2}}
+%\input{\LagrangianPath{General_Anzats}}
+%\input{\LagrangianPath{Calculating_Statistics_For_Noise_Terms}}
+%\input{\LagrangianPath{General_Anzats-Hermite_Expansion}}
+
+
+
+\label{lastpage}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\bibliographystyle{unsrt}
+\bibliography{Bibliography/Bibliography}
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \pagebreak
+% \input{/home/dcargill/AFRL/Notes/}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 

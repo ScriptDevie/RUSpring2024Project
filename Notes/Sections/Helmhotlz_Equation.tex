@@ -1,0 +1,122 @@
+
+\section{Helmholtz Equation for Atmospheric Propagation}
+
+A monochromatic EM source $E(\dim{x},\dim{y},\dim{z}) = A(\dim{x},\dim{y},\dim{z})\exp{-i\omega \dim{t}} + c.c.$, 
+propagating in a nondispersive static atmosphere follows a stochastic Helmholtz equation  [Anderson Phillips, "Laser Beam Propagation through random media"]
+
+\begin{equation}\label{EQ:helmholtz_equation_1}
+\begin{split}
+  &\nabla^2 \dim{A} + k^2  (n_0 +  n(\dim{x},\dim{y},\dim{z}))^2 \dim{A} = 0 \quad  \mbox{for}   
+  \quad -\infty < \dim{x},\dim{y} < \infty, \quad 0 < \dim{z} < L, \\
+  &\quad  \mbox{where} \quad \dim{A}(\dim{x},\dim{y},0) = \dim{A}_{i}(\dim{x},\dim{y})\exp{i \Phi(\dim{x},\dim{y})},
+\end{split}
+\end{equation}
+and $\dim{A}_{i}(\dim{x},\dim{y})$ is of finite support, \ie $\dim{A}_{i}(\dim{x},\dim{y}) = 0$ 
+when $\sqrt{\dim{x}^2 + \dim{y}^2} > D_{i}$. Note, $k = \frac{\omega}{c} = \frac{2\pi}{\lambda}$.  
+
+
+\subsection{Atmospheric Statistics}
+This section contains the most important part of these notes.  Normally, the stochastic part 
+of the atmosphere is described by the \textbf{structure function},
+\begin{equation}\label{EQ:structure_function_0}
+\begin{split}
+  \Expect{(n(\vect{\dim{r}}_1) - n(\vect{\dim{r}}_2))^2} &= 
+  C_n^2  \begin{cases}
+        l_{0}^{-4/3} \|\vect{\dim{r}}_1-\vect{\dim{r}}_2\|^{2} & 0 < \|\vect{\dim{r}}_1-\vect{\dim{r}}_2\| \leq l_{0} \\
+       \|\vect{\dim{r}}_1 - \vect{\dim{r}}_2 \|^{2/3} &  l_{0}  \leq \|\vect{\dim{r}}_1 - \vect{\dim{r}}_2\| \leq  L_{0}  \\
+   \end{cases}\\
+   &= \Expect{n^2(\vect{\dim{r}}_1)} +  \Expect{n^2(\vect{\dim{r}}_2)} - 2\Expect{n(\vect{\dim{r}}_1)n(\vect{\dim{r}}_2)} \\
+\end{split}
+\end{equation}
+Note, this is the only statistic provided to us and this is the only theoretical information we have to act on.
+It is common to make the assumption that the index of refraction variations $n(\vect{\dim{r}})$ follow a 
+\textbf{stationary} or \textbf{homogeneous} process \href{https://en.wikipedia.org/wiki/Stationary_process}{[Wiki]}, 
+at least in the wide-sense~\cite{Wiley_Goodman_1985}, which imposes 
+that the $n(\vect{\dim{r}})$ has constant mean and an auto-covariance that only depends on the difference in locations:
+ \begin{equation}\label{EQ:structure_function_0}
+\begin{split}
+  \Expect{n(\vect{\dim{r}}_1)} = \mu_{n}, \quad \Expect{n(\vect{\dim{r}}_1)n(\vect{\dim{r}}_2)} = C_{cos}(\vect{\dim{r}}_1-\vect{\dim{r}}_2):\mathbb{R}^3 \to \mathbb{R}
+\end{split}
+\end{equation}
+In addition, it is commonly assumed that $n(\vect{\dim{r}})$ is mean zero and \textbf{isotropic}, 
+implying that $F(\vect{\dim{r}}_1-\vect{\dim{r}}_2) = F(\|\vect{\dim{r}}_1-\vect{\dim{r}}_2\|)$.
+This implies that $\Expect{n^2(\vect{\dim{r}}_1)} = \Expect{n^2(\vect{\dim{r}}_2)} = C_{cov}(\| \vect{0} \|) = \sigma_{n}^{2}$ 
+and gives  
+\begin{equation}\label{EQ:structure_function}
+\begin{split}
+  \Expect{(n(\vect{\dim{r}}_1) - n(\vect{\dim{r}}_2))^2} &= 
+  C_n^2  \begin{cases}
+        l_{0}^{-4/3} \|\vect{\dim{r}}_1-\vect{\dim{r}}_2\|^{2} & 0 < \|\vect{\dim{r}}_1-\vect{\dim{r}}_2\| \leq l_{0} \\
+       \|\vect{\dim{r}}_1 - \vect{\dim{r}}_2 \|^{2/3} &  l_{0}  \leq \|\vect{\dim{r}}_1 - \vect{\dim{r}}_2\| \leq  L_{0}  \\
+   \end{cases}\\
+   &= \Expect{n^2(\vect{\dim{r}}_1)} +  \Expect{n^2(\vect{\dim{r}}_2)} - 2\Expect{n(\vect{\dim{r}}_1)n(\vect{\dim{r}}_2)} \\
+   &= 2\sigma_{n}^{2}( 1-C_{cor}(\| \vect{\dim{r}}_1 - \vect{\dim{r}}_2\|) )
+\end{split}
+\end{equation}
+where we let $C_{cor}(\cdot) = C_{cov}(\cdot)/\sigma_{n}^{2}$.
+
+so
+\begin{equation}\label{EQ:correlation}
+  C_{cor}(\|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|) = 1 - \frac{C_n^2}{2\sigma_n^2}
+    \begin{cases}
+        l_{0}^{-4/3} \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|^{2} & 0 < \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| \leq l_{0} \\
+        \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|^{2/3} &  l_{0}  \leq \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| \leq  L_{0}  \\
+   \end{cases}
+\end{equation}
+
+If we assume that $|C_{cor}(\|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|)| \ll 1$ for $ \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| \gg L_0$, 
+then letting $\|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| = C_0 L_0$ for $C_0 > 1$ ($C_0$ is just an adjustment factor) we can write
+\begin{equation}
+\begin{split}
+  0 \approx 1 - C_0^{2/3} \frac{C_n^2 L_0^{2/3}}{2\sigma_n^2},
+\end{split}
+\end{equation}
+or 
+\begin{equation}
+\begin{split}
+  \sigma_n^2 \approx  C_0^{2/3} \frac{C_n^2 L_0^{2/3}}{2} \implies \frac{C_n^2}{2\sigma_n^2} 
+  =  \frac{2 C_n^2}{2 C_0^{2/3} C_n^{2} L_0^{2/3}} = \frac{1}{ C_0^{2/3} L_0^{2/3}} 
+\end{split}
+\end{equation}
+and
+\begin{equation}
+  C_{cor}(\|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|) = 1 - \frac{1}{C_0^{2/3}}
+    \begin{cases}
+        \frac{1}{(L_0l_{0}^2)^{2/3}}\|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|^{2} & 0 < \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| \leq l_{0} \\
+        \frac{1}{L_0^{2/3}} \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\|^{2/3} &  l_{0}  \leq \|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\| \leq  L_{0}  \\
+   \end{cases}
+\end{equation}
+
+\subsubsection{Atmospheric Scales}
+\begin{tabular}{ |p{5cm}|p{3cm}|p{4.5cm}|p{3cm}| }
+\hline
+\textbf{Quantity} & \textbf{Symbol} & \textbf{Characteristic Value(s)} & \textbf{Ref.} \\
+\hline
+\hline
+Wavelength               & $\lambda $    & $10^{-6} $ (meters)                    
+& \cite{} \\
+\hline
+Wavelength               & $k= \frac{2\pi}{\lambda}$      & $10^{6} $ (meters$^{-1}$)    & \\               
+\hline
+Kolmogorov Inner-scale   & $l_0$         & $10^{-3}-10^{-2}$ (meters)             &  Wheelon, 2005 ,page 32 \\
+\hline 
+Kolmogorov Outer-scale   & $L_0$         & $10-10^{3}$ (meters)                   &  Wheelon, 2005 ,page 32 \\
+\hline
+Index Structure Constant & $C_n^2$       & $10^{-20}-10^{-12}$ (meters$^{-2/3}$)  &  Wheelon, 2005 ,page 32\\
+\hline
+Index Variance           & $\sigma_n^2$  & $C_0^{2/3} (10^{-18}-10^{-10})$        & --\\
+\hline
+Aperture Diameter        & $D_{ap}$      & $10^{-2}-10^{0}$ (meters)              & \\
+\hline
+Propagation Distance     & $L$           & $10^{3}-10^{4}$ (meters)               & \\
+\hline
+\end{tabular}
+
+
+
+
+
+
+
+
+
