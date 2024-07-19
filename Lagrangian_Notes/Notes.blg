@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Notes.aux
+A level-1 auxiliary file: ./Sections/Introduction.aux
+A level-1 auxiliary file: ./Sections/Lagrangian_Approach.aux
+A level-1 auxiliary file: ./Sections/General_Anzats.aux
+A level-1 auxiliary file: ./Sections/Calculating_Statistics_For_Noise_Terms.aux
+The style file: plain.bst
+Database file #1: ./Bibliography/Bibliography.bib
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            507 strings with 4274 characters,
+and the built_in function-call counts, 283 in all, are:
+= -- 26
+> -- 13
+< -- 0
++ -- 5
+- -- 4
+* -- 15
+:= -- 56
+add.period$ -- 4
+call.type$ -- 1
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 12
+empty$ -- 23
+format.name$ -- 4
+if$ -- 58
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 2
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 7
+preamble$ -- 1
+purify$ -- 4
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 5
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 2
+warning$ -- 0
+while$ -- 2
+width$ -- 2
+write$ -- 13

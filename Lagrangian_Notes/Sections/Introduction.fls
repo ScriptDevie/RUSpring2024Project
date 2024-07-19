@@ -1,0 +1,8 @@
+PWD /Users/dcargill/Desktop/Lagrangian_for_Atmospheric_Propagation/Sections
+INPUT /usr/local/texlive/2016/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT Introduction.tex
+OUTPUT Introduction.log
+OUTPUT Introduction.pdf
+INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map

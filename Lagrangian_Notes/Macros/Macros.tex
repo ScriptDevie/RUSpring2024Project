@@ -1,0 +1,346 @@
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern3pt
+      \vbox{\kern3pt#1\kern3pt}\kern3pt\vrule}\hrule}}
+\def\boxitd#1{\vspace{0.1in} \vbox{\hrule\hbox{\vrule\kern3pt
+      \vbox{\abovedisplayskip=10pt \belowdisplayskip=10pt #1}
+       \vrule}\hrule}}
+\def\ind{\hspace{0.25in}}
+\def\adb{\allowdisplaybreak}
+\def\spb{\smallskip\par}
+\def\mpb{\medskip\par}
+\def\bpb{\bigskip\par}
+\def\qed{{\ \vbox{\hrule\hbox{%
+   \vrule height1.3ex\hskip0.8ex\vrule}\hrule
+  }}\par}
+
+\def\bm#1{\mbox{\boldmath{$#1$}}}
+\def\tns#1{\bm{#1}}
+\def\IN{\quad\mbox{in }}
+\def\ON{\quad\mbox{on }}
+\def\lb{\lambda}
+\def\lbi{\lambda^{-1}}
+\def\ep{\varepsilon}
+\def\sg{\sigma}
+\def\til#1{\tilde{#1}}
+\def\tep{\bm{\ep}}
+\def\tsg{\bm{\sg}}
+\def\ttau{\bm{\tau}}
+\def\tb{\bm{\beta}}
+\def\tg{\bm{\gamma}}
+\def\td{\bm{\delta}}
+\def\enn{\frac{E}{1-\nu^2}}
+\def\enon{\frac{E}{(1+\nu)(1-\ol{\nu})}}
+\def\en{\frac{E}{1+\nu}}
+\def\ol{\overline}
+\def\ul{\underline}
+\def\Ga{\Gamma}
+\def\vs{\vspace{1\jot}}
+\def\veta{\bm{\eta}}
+\def\oveta{\ol{\bm{\eta}}}
+\def\oth{\ol{\theta}}
+\def\vphi{\bm{\phi}}
+\def\vPhi{\bm{\Phi}}
+\def\ovPhi{\ol{\bm{\Phi}}}
+\def\vpsi{\bm{\psi}}
+\def\ovphi{\ol{\bm{\phi}}}
+\def\ovpsi{\ol{\bm{\psi}}}
+\def\oovphi{\ol{\ol{\bm{\phi}}}}
+\def\oovpsi{\ol{\ol{\bm{\psi}}}}
+\def\olb{\ol{\lambda}}
+\def\oolb{\ol{\olb}}
+\def\vga{\bm{\gamma}}
+\def\tz{\tilde z}
+\def\Om{\Omega}
+\def\oll{\ol{l}}
+\def\om{\omega}
+\def\tom{\tilde\om}
+\def\oom{\ol{\omega}}
+\def\oW{\ol{W}}
+\def\oV{\ol{V}}
+\def\ooV{\ol{\oV}}
+\def\oQ{\ol{Q}}
+\def\oP{\ol{P}}
+\def\ov{\ol{v}}
+\def\tu{\tilde{u}}
+\def\hu{\hat{u}}
+\def\hbeta{\hat{\beta}}
+\def\toW{\widetilde{\oW}}
+\def\hoW{\widehat{\oW}}
+\def\tW{\widetilde{W}}
+\def\ooom{\ol{\oom}}
+\def\omu{\ol{\mu}}
+\def\oomu{\ol{\omu}}
+\def\ophi{\ol{\phi}}
+\def\oPhi{\ol{\Phi}}
+\def\opsi{\ol{\psi}}
+\def\oophi{\ol{\ol{\phi}}}
+\def\oopsi{\ol{\ol{\psi}}}
+\def\oW{\ol{W}}
+\def\ooW{\ol{\oW}}
+\def\oR{\ol{r}}
+\def\op{\ol{p}}
+\def\os{\ol{s}}
+\def\oq{\ol{q}}
+\def\nn{\nonumber}
+%\def\implies{\Rightarrow}
+\def\nohyphens{\pretolerance 10000}
+\def\bv{\bm{v}}
+\def\bw{\bm{w}}
+\def\bx{\bm{x}}
+\def\dbx{\dot{\bx}}
+\def\ddbx{\ddot{\bx}}
+\def\dx{\dot{x}}
+\def\ddx{\ddot{x}}
+\def\dy{\dot{y}}
+\def\ddy{\ddot{y}}
+\def\df{\dot{f}}
+\def\ddf{\ddot{f}}
+\def\by{\bm{y}}
+\def\bz{\bm{z}}
+\def\bb{\bm{b}}
+\def\bp{\bm{p}}
+\def\bq{\bm{q}}
+\def\be{\bm{e}}
+\def\br{\bm{r}}
+\def\bd{\bm{d}}
+\def\bk{\bm{k}}
+\def\bff{\bm{f}}
+\def\bg{\bm{g}}
+\def\bh{\bm{h}}
+\def\bn{\bm{n}}
+\def\bC{\bm{C}}
+\def\bN{\bm{N}}
+\def\bL{\bm{L}}
+\def\bK{\bm{K}}
+\def\bF{\bm{F}}
+\def\bG{\bm{G}}
+\def\bv{\bm{v}}
+\def\bZ{\bm{Z}}
+\def\bX{\bm{X}}
+\def\bY{\bm{Y}}
+\def\bS{\bm{S}}
+\def\actf{\mathaccent{f}}
+\def\Diamond{\diamond}
+\def\b0{\mbox{\bf 0}}
+\def\oh{\overline h}
+\def\hbx{\hat{\bx}}
+\def\Axb{$A \bx = \bb$}
+\def\sAxb#1{$A^{(#1)} \bx = {\bb}^{(#1)}$}
+\def\tAxb{$\tilde A \bx = \tilde {\bb}$}
+
+%% Operator names
+\def\tr{\mbox{tr}\,}
+\def\vcurl{\mbox{\bf curl}\,}
+\def\sdiv{\mbox{\rm div}\,}
+\def\srot{\mbox{\rm rot}\,}
+\def\vdiv{\mbox{\bf div}\,}
+\def\vgrad{\mbox{\bf grad}\,}
+\def\vgradh{\mbox{\bf grad}_h\,}
+\def\intl{\int\limits}
+\def\RWEOp#1{\nabla^2 #1 + k^2 #1 }
+\def\WEOp#1{\nabla^2 #1 - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} #1} 
+\newcommand\conv[2]{\left[#1 \ast #2\right]}
+
+
+\def\dim#1{\tilde{#1}}
+
+%% Functions
+\def\sinc#1{\frac{\mbox{\bf{sin}}{\left( #1 \right)}}{\left( #1 \right)}}
+\def\sin#1{\mbox{\bf{sin}}{\left( #1 \right)}}
+\def\cos#1{\mbox{\bf{cos}}{\left( #1 \right)}}
+\def\tan#1{\mbox{\bf{tan}}{\left( #1 \right)}}
+\def\cot#1{\mbox{\bf{cot}}{\left( #1 \right)}}
+\def\sec#1{\mbox{\bf{sec}}{\left( #1 \right)}}
+\def\csc#1{\mbox{\bf{csc}}{\left( #1 \right)}}
+\def\erfc#1{\mbox{\bf{erfc}}\left( #1 \right)}
+\def\erf#1{\mbox{\bf{erf}}\left( #1 \right)}
+\def\ln#1{\mbox{\bf{ln}}\left( #1 \right)}
+\def\sech#1{\mbox{\bf{sech}}{\left( #1 \right)}}
+\def\cosh#1{\mbox{\bf{cosh}}{\left( #1 \right)}}
+\def\tanh#1{\mbox{\bf{tanh}}{\left( #1 \right)}}
+
+
+
+% theorems
+
+% \newtheorem{theorem}{Theorem}[chapter]
+% \newtheorem{corollary}{Corollary}[chapter]
+% \newtheorem{lemma}{Lemma}
+% \newenvironment{proof}{\noindent {\sc Proof}:}{\par \spb}
+ %\newenvironment{example}{\noindent {\sc Example}:}{\par \spb}
+ \newenvironment{define}{\noindent {\bf Definition}:}{\par \spb}
+
+%Copyrights
+
+% \newcommand\copyrightp{%
+%         \null\vfil
+%         \typeout{Copyright}
+%         {\centering\bfseries
+%                 \large\copyright\ \@year\\
+%                 \@author\\
+%                 \large ALL RIGHTS RESERVED\par}
+%         \vfil\newpage}
+
+% 
+
+%%%%%%%%%%%%%%%%% Math Text %%%%%%%%%%%%%%%%%%%%%%%
+\def\Des#1#2{#1_{\mathrm{#2}}}
+% \newcommand{\Lnls}{L_{\mathrm{nls}}}
+% \newcommand{\usol}{u_{\mathrm{sol}}}
+% \newcommand{\Nnls}{N_{\mathrm{nls}}}
+
+%%%%%%%%%%%%%%%%% Text %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\eg{e.\/g.\/, }
+\def\ie{i.\/e.\/, }
+\def\et{et al.\/, }
+% \def\eg{e.\/g.\@\xspace }
+% \def\ie{i.\/e.\@\xspace }
+% \def\et{et al.\@\xspace }
+
+%%%%%%%%%%%%%%%%% Statistics %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\Expect#1{\mathbb{E}\hspace{-0.03in}\left[ #1 \right]}
+\def\Prob#1{\mathbb{P}\hspace{-0.03in}\left[ #1 \right]}
+\def\Var#1{\mathbb{V}\hspace{-0.03in}\left[ #1 \right]}
+\def\CV#1{\mathbb{C}_{\mathrm{var}}\hspace{-0.03in}\left[ #1 \right]}
+\def\cor#1{\mathrm{cor}\hspace{-0.03in}\left(#1 \right)}
+\def\cov#1{\mathrm{cov}\hspace{-0.03in}\left(#1 \right)}
+
+%%%%%%%%%%%%%%%%% Functions %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\cosh#1{\,\mathrm{cosh}\hspace{-0.03in}\left( #1 \right)}
+\def\sinh#1{\,\mathrm{sinh}\hspace{-0.03in}\left( #1 \right)}
+\def\tanh#1{\,\mathrm{tanh}\hspace{-0.03in}\left( #1 \right)}
+\def\sech#1{\,\mathrm{sech}\hspace{-0.03in}\left( #1 \right)}
+\def\csch#1{\,\mathrm{csch}\hspace{-0.03in}\left( #1 \right)}
+
+\def\atanh#1{\,\mathrm{arctanh}\hspace{-0.03in}\left( #1 \right)}
+
+\def\cos#1{\,\mathrm{cos}\hspace{-0.03in}\left( #1 \right)}
+\def\sin#1{\,\mathrm{sin}\hspace{-0.03in}\left( #1 \right)}
+\def\tan#1{\,\mathrm{tan}\hspace{-0.03in}\left( #1 \right)}
+\def\sec#1{\,\mathrm{sec}\hspace{-0.03in}\left( #1 \right)}
+\def\csc#1{\,\mathrm{csc}\hspace{-0.03in}\left( #1 \right)}
+
+\def\atan#1{\,\mathrm{arctan}\hspace{-0.03in}\left( #1 \right)}
+\def\acos#1{\mbox{\bf{arccos}}{\left( #1 \right)}}
+
+\def\sgn#1{\,\mathrm{sgn}\hspace{-0.03in}\left( #1 \right)}
+
+
+\def\heav#1{\,\mathrm{H}\hspace{-0.03in}\left( #1 \right)}
+
+\def\ln#1{\,\mathrm{ln}\hspace{-0.03in}\left( #1 \right)}
+% \def\exp#1{\,\mathrm{e}^{#1 }}
+\def\exp#1{\,\mathrm{exp}\hspace{-0.03in}\left(#1 \right)}
+
+\def\sinc#1{\,\mathrm{sinc}\hspace{-0.03in}\left( #1 \right)}
+
+\def\erfc#1{\mbox{Erfc}\hspace{-0.03in}\left( #1 \right)}
+\def\erf#1{\mbox{Erf}\hspace{-0.03in}\left( #1 \right)}
+
+\def\For#1{\mathcal{F}\hspace{-0.03in}\left[ #1 \right]}
+\def\iFor#1{\mathcal{F}^{-1}\hspace{-0.03in}\left[ #1 \right]}
+
+\def\del#1{\,\delta\hspace{-0.03in}\left( #1 \right)}
+
+\def\pdfNorm#1#2{\,\mathcal{N}\hspace{-0.03in}\left( #1,#2 \right)}
+\def\Chi2#1{\,\Chi\hspace{-0.03in}\left( #1 \right)}
+
+\def\circ#1{\,\mathrm{circ}\hspace{-0.03in}\left( #1 \right)}
+
+
+%%%%%%%%%%%%%%%%% Derivatives %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\der[2]{\frac{d{#1}}{d{#2}}}
+\newcommand\dder[2]{\frac{d^2{#1}}{d{#2}^2}}
+\newcommand\ddder[2]{\frac{d^3{#1}}{d{#2}^3}}
+\newcommand\pder[2]{\frac{\partial #1}{\partial #2}}
+\newcommand\ppder[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand\pderpder[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}}
+
+
+\let\grad=\nabla
+
+\let\truesum=\sum
+\def\sum{\mathop{\textstyle\truesum}\limits}
+
+\def\Re#1{\mathcal{\rm{Re}}\left[#1\right]}
+\def\Im#1{\mathcal{\rm{Im}}\left[#1\right]}
+
+\def\bigOh#1{O\hspace{-0.03in}\left(#1\right)}
+\def\littelOh#1{o\hspace{-0.03in}\left(#1\right)}
+
+% \let\<=\left<
+% \let\>=\right>
+\def\_#1{{\underline{#1}}}
+\def\'#1{{\mathbf{#1}}}
+\let\truehat=\^
+\let\^=\hat
+
+%\def\in{\mathrm{in}}
+%\def\out{\mathrm{out}}
+\def\tot{\mathrm{tot}}
+\def\O#1{{\mbox{O}(#1)}}
+\def\ufilt{u_{\mathrm{filt}}}
+\def\utfilt{\tilde{u}_{\mathrm{filt}}}
+
+\def\conj#1{\bar{#1}}
+% \def\iint{\int \int}
+\newcommand{\work}[2]{\ifnum\full=1{#1}\else{#2}\fi}
+
+
+%%%%%%%%%%%%%%%%% Linear Algebra %%%%%%%%%%%%%%%%%%%%
+\def\det#1{\,\mathrm{det}\hspace{-0.03in}\left( #1 \right)}
+
+
+
+%%%%%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\thefootnote}{\arabic{footnote}}   % Arabic numerals, e.g., 1, 2, 3...
+% \renewcommand{\thefootnote}{\roman{footnote}}    % Roman numerals (lowercase), e.g., i, ii, iii...
+% \renewcommand{\thefootnote}{\Roman{footnote}}    % Roman numerals (uppercase), e.g., I, II, III...
+% \renewcommand{\thefootnote}{\alph{footnote}}     % Alphabetic (lowercase), e.g., a, b, c...
+% \renewcommand{\thefootnote}{\Alph{footnote}}     % Alphabetic (uppercase), e.g., A, B, C...
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}} % A sequence of nine symbols (try it and see!)
+
+
+
+% \newcommand{\intl}[4]{\int_{#3}^{#4} #1 \, d #2}
+% \def\Del#1{\Delta(#1)}
+\def\Int#1#2{\left[\int #1 \, d#2\right]}
+
+\def\dmin#1#2{\displaystyle{\min_{#1}}\hspace{-0.03in}\left(#2 \right)}
+\def\dmax#1#2{\displaystyle{\max_{#1}}\hspace{-0.03in}\left(#2 \right)}
+\def\dargmin#1#2{\displaystyle{{\mathrm{argmin}}_{#1}}\hspace{-0.03in}\left(#2 \right)}
+\def\dargmax#1#2{\displaystyle{{\mathrm{argmax}}_{#1}}\hspace{-0.03in}\left(#2 \right)}
+
+\def\vect#1{\bm{#1}}
+% \def\vect#1{\overrightarrow{#1}}
+\def\hatvect#1{\vect{\hat{#1}}}
+\def\gvect#1{\boldsymbol{#1}}
+\def\matx#1{\bm{#1}}
+
+% \def\red#1{\textcolor{red}{#1}}
+% \def\blue#1{\textcolor{blue}{#1}}
+% \def\green#1{\textcolor{green}{#1}}
+% \def\cyan#1{\textcolor{cyan}{#1}}
+% \def\magenta#1{\textcolor{magenta}{#1}}
+
+\def\red#1{\color{red} #1 \color{black}}
+\def\blue#1{\color{blue} #1 \color{black}}
+\def\green#1{\color{green} #1 \color{black}}
+
+\def\ip#1#2{\left \langle #1,#2 \right \rangle}
+\def\Ip#1#2{\Re{\int \conj{#1}\, #2 \,dt}}
+% \def\avg#1{\breve{#1}}
+\def\avg#1{{#1}_{avg}}
+\def\loc#1{{#1}_{loc}}
+\def\var#1{{#1}_{var}}
+
+\def\adjoint#1{#1^{\dagger}}
+\def\Ep#1{\mathrm{E}\left[#1\right]}
+
+\newenvironment{note}{\nopagebreak \begin{quote}
+\noindent{\textcolor{red}{\textbf{DSC Note:}}}}{
+\end{quote} \medskip} 

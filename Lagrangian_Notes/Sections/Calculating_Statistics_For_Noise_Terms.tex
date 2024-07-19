@@ -1,0 +1,159 @@
+
+\section{Calculating Statistics for Noise Terms: General}
+
+\begin{equation}
+\begin{split}
+  A(z) &= A(0)\\
+\dot{P}  &= \frac{1}{2 n_0 \alpha} \left(W_{x}^2 + W_{y}^2\right)  
+- \frac{\gamma^2 }{\alpha } \left<n(\vect{r}_{\perp},z), V_{P}\right> \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{X} &= - 2T_x \\
+\dot{Y} &= - 2T_y 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{T_x} &= - n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),V_{T_{x}}\right> \\
+\dot{T_y} &= - n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),V_{T_{y}}\right>
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\dot{W_{x}} &= 4 F_{x}W_{x} \\
+\dot{W_{y}} &= 4 F_{y}W_{y}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{F}_{x}  &=   - \frac{1}{2 n_0 \alpha} W_{x}^4+ \frac{2}{n_0 \alpha} F_{x}^2  + \frac{\gamma^2}{\alpha}  \left<n(\vect{r}_{\perp},z), V_{F_{x}}\right> \\    
+\dot{F}_{y}  &=   - \frac{1}{2 n_0 \alpha} W_{y}^4 + \frac{2}{n_0 \alpha} F_{y}^2  + \frac{\gamma^2}{\alpha}  \left<n(\vect{r}_{\perp},z), V_{F_{y}}\right>
+\end{split}
+\end{equation}
+
+
+\subsection{Modes}
+
+
+\begin{equation}
+\begin{split}
+V = \frac{1}{2A}\pder{|u|^2}{A}  &= \frac{W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V_{P} &= \frac{W_{x}}{2A^2} \pder{|u|^2}{W_{x}} + \frac{ W_{y}}{2A^2}\pder{|u|^2}{W_{y}} + \frac{1}{2A}\pder{|u|^2}{A} \\
+& =  \frac{1}{2}\left(\left(1  - 2 W_{x}^2 (x-X)^2  \right)  +  \frac{1}{2} \left(1  - 2 W_{y}^2 (y-Y)^2  \right)  + 1\right) V \\
+& =  \left(2  - W_{x}^2 (x-X)^2  - W_{y}^2 (y-Y)^2  \right) V 
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+V_{T_{x}} =  4 W_x^2 (x-X) V
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V_{T_{y}} =  4 W_y^2 (y-Y) V
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V_{F_{x}} = W_{x}^2 \left(1  - 2 W_{x}^2 (x-X)^2  \right) V \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V_{F_{y}} = W_{y}^2 \left(1  - 2 W_{y}^2 (y-Y)^2  \right) V \\
+\end{split}
+\end{equation}
+
+
+
+
+
+It is natural to define the innerproduct as
+\begin{equation}
+\begin{split}
+\ip{f}{g} = \Ip{f}{g} 
+\end{split}
+\end{equation}
+and then terms of the form 
+\begin{equation}
+\begin{split}
+\ip{n(\vect{r},z)}{V(\vect{r},\vect{p}(z))} = \Ip{n(\vect{r},z)}{V(\vect{r},\vect{p}(z))}
+\end{split}
+\end{equation}
+will have statistics 
+\begin{equation}
+\begin{split}
+\Expect{\ip{n(\vect{r},z)}{V(\vect{r},\vect{p}(z))}} = \Ip{\Expect{n(\vect{r},z)}}{V(\vect{r},\vect{p}(z))}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Expect{\ip{n(\vect{r},z_1)}{V(\vect{r},\vect{p}(z_1))}\ip{n(\vect{r},z_2)}{V(\vect{r},\vect{p}(z_2))}} 
+= \iint \iint   \Expect{n(\vect{r}_1,z_1)n(\vect{r}_2,z_2)} V(\vect{r}_1,\vect{p}(z_1))V(\vect{r}_2,\vect{p}(z_2)) \,d\vect{r}_1\,d\vect{r}_2
+\end{split}
+\end{equation}
+
+
+
+\subsection{Markov Approximation}
+If we assume the index is delta correlated in the propagation direction, than the correlations are easier to work with.
+\begin{equation}
+\begin{split}
+ \Expect{n(\vect{r}_1,z_1)n(\vect{r}_2,z_2)} = C(|\vect{r}_1-\vect{r}_2|)\delta(z_1-z_2) = C(x_1-x_2,y_1-y_2)\delta(z_1-z_2)
+\end{split}
+\end{equation}
+
+\subsubsection{P}
+\begin{equation}
+\begin{split}
+&\Expect{\ip{n(\vect{r}_1,z_1)}{V_{P}(\vect{r}_1;W_x(z_1),W_y(z_1))}\ip{n(\vect{r},z_2)}{V(\vect{r}_2;W_x(z_2),W_y(z_2))}} \\
+&= \iint \iint   C(x_1-x_2,y_1-y_2) V_{P}(x_1,y_1;W_x(z_1),W_y(z_1)) V_{P}(x_2,y_2;W_x(z_1),W_y(z_1)) \,d\vect{r}_1\,d\vect{r}_2 \delta(z_1-z_2)
+\end{split}
+\end{equation}
+
+
+
+%\begin{align}&\left< \left[\begin{array}{c}
+%F_{E}(z) \\ 
+%F_{W}(z) \\
+%F_{T}(z) \\
+%F_{C}(z) \\ 
+%F_{\Omega}(z)\\ 
+%F_{\phi}(z) \\
+%\end{array}\right] \left[\begin{array}{c}
+%F_{E}(z') \\ 
+%F_{W}(z') \\
+%F_{T}(z') \\
+%F_{C}(z') \\
+%F_{\Omega}(z')\\ 
+%F_{\phi}(z') \\
+%\end{array}\right]^{T} \right>=\\
+%& \frac{\sigma^2}{\sqrt{\pi}} \left[\begin{array}{c|cccccc}
+%           & F_{E} & F_{W}           & F_{T}                &  F_{C}              & F_{\Omega}                                         & F_{\phi}                                               \\
+%\hline                                                                                                                                                                                          \\
+%F_{E}      & 2E    & 0               & 0                    &  0                  & 0                                                  & 0                                                      \\
+%F_{W}      & 0     & \frac{W^2}{ E } & 0                    &  0                  & 0                                                  & 0                                                      \\
+%F_{T}      & 0     & 0               & \frac{W^2}{E}        &  0                  & \frac{ CW^2 }{ E}                                  & \frac{\Omega W^2 }{ E}                                 \\ 
+%F_{C}      & 0     & 0               & 0                    &  \frac{4}{ E W^4 }  & 0                                                  & -\frac{1}{2 E W^2}                                      \\
+%F_{\Omega} & 0     & 0               & \frac{CW^2}{E}       &  0                  & \frac{1}{E} \left( \frac{1}{W^2} + C^2W^2 \right)  & \frac{C\Omega  W^2 }{ E }                              \\
+%F_{\phi}   & 0     & 0               & \frac{\Omega W^2}{E} &  -\frac{1}{2 E W^2}    & \frac{C\Omega W^2 }{E }                            & \frac{1}{E} \left(\frac{3}{4}   + \Omega^2 W^2 \right) \\ 
+%\end{array}\right] \delta(z-z')
+% \end{align}

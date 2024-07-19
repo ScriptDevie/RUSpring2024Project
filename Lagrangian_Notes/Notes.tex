@@ -1,0 +1,239 @@
+\documentclass[12pt,a4paper]{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------biblatex Stuff
+%% \usepackage[style=reading,
+%             abstract=true,
+%             sorting=ynt]{biblatex}
+% \bibliography{../../../Bibliographies/Library.bib}
+% \addbibresource{../../../Bibliographies/Library.bib}
+% \usepackage[american]{babel}
+% \usepackage{csquotes}
+%---------------------------Predefined Stuff (not needed)
+% \usepackage[final,nousetoc,nouselof,nouselot,hylinks,notitlepage,full]{}
+
+%---------------------------Pulls the page out a bit makes it look better (in my opinion)
+% \usepackage{a4wide}
+
+%---------------------------Removes paragraph indentation (not needed most of the time now)
+% \usepackage{parskip}
+
+%---------------------------Allows inclusion of graphics easily and configurably
+\usepackage{graphics} 
+\usepackage{graphicx} 
+
+%---------------------------Provides ways to make nice looking tables
+\usepackage{booktabs}
+
+%---------------------------Allows you to rotate tables and figures
+\usepackage{rotating}
+\usepackage{rotfloat}
+
+%---------------------------Allows shading of table cells
+\usepackage{colortbl}
+% Define a simple command to use at the start of a table row to make it have a shaded background
+\newcommand{\gray}{\rowcolor[gray]{.9}}
+
+%---------------------------???
+% \usepackage{textcomp}
+
+\usepackage{marvosym}
+% \usepackage{ wasysym }
+
+%---------------------------Provides commands to make subfigures (figures with (a), (b) and (c))
+\usepackage{subfigure}
+
+%---------------------------Makes references hyperlinks in PDF output
+\usepackage[bookmarks=false,                      % show bookmarks bar?
+            unicode=false,                        % non-Latin characters in Acrobat’s bookmarks
+            pdftoolbar=true,                      % show Acrobat’s toolbar?
+            pdfmenubar=true,                      % show Acrobat’s menu?
+            pdffitwindow=true,                    % window fit to page when opened
+            pdfstartview={FitH},                  % fits the width of the page to the window
+            pdftitle={Notes on Lagrangian for Atmospheric Propagation},      % title
+            pdfauthor={D.S. Cargill},             % author
+            pdfsubject={Notes on Lagrangian for Atmospheric Propagation},   % subject of the document
+            pdfcreator={D.S. Cargill},            % creator of the document
+            pdfproducer={D.S. Cargill},           % producer of the document
+            pdfkeywords={key1} {key2} {key3},     % list of keywords
+            pdfnewwindow=true,                    % links in new window
+            colorlinks=true,                      % false: boxed links; true: colored links
+            linkcolor=green,                      % color of internal links
+            citecolor=blue,                       % color of links to bibliography
+            filecolor=red,                        % color of file links
+            urlcolor=cyan                         % color of external links
+]{hyperref}
+
+% \usepackage{url} (uneeded)
+
+%---------------------------Provides ways to include syntax-highlighted source code
+% \usepackage{listings}
+% \lstset{frame=single, basicstyle=\ttfamily}
+
+%---------------------------Provides Harvard-style referencing
+% \usepackage{natbib}
+% \bibpunct{(}{)}{;}{a}{,}{,}
+
+%---------------------------for label replacement
+%\usepackage{psfrag}   
+
+%---------------------------Pretty much all of the ams maths packages
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+%---------------------------Fonts
+    % \renewcommand{\sfdefault}{phv}
+%    \renewcommand{\familydefault}{\sfdefault}
+%    \usepackage{arev}
+%    \usepackage[T1]{fontenc}
+
+%---------------------------Titles
+\usepackage{titling}
+
+%---------------------------si units
+%\usepackage{siunitx}
+
+%---------------------------Provides good access to colours
+\usepackage{xcolor}
+% \usepackage{color} (uneeded)
+
+%---------------------------Provides the count of last page
+\usepackage{lastpage}
+
+%---------------------------Spacing
+\usepackage{setspace}
+\singlespacing
+% \onehalfspacing
+% \doublespacing
+
+%---------------------------Geometry: easy margins
+% \usepackage[a4paper]{geometry}
+% \usepackage[margin=1in]{geometry}
+% the usual page size settings:
+\headheight      =  0.25in   % we normally don't have running heads
+\headsep         =  0.25in   % we normally don't have running heads
+\topmargin       = -0.5in    % 1 inch from top edge of paper
+\oddsidemargin   = -0.25in   % 0.0 = 1 inch from left edge of paper
+\evensidemargin  = -0.25in   % 0.0 = 1 inch from left edge of paper
+\textheight      =  9.0in
+\textwidth       =  7.0in
+\footskip        =  0.4in
+
+
+%---------------------------Allows fancy stuff in the page header
+\usepackage{fancyhdr}
+% \setlength{\headheight}{25.3pt}
+\pagestyle{fancy}
+% \renewcommand{\headrulewidth}{0pt} %% Removes the line under header
+  \renewcommand{\headrulewidth}{1pt}
+  \renewcommand{\footrulewidth}{1pt}
+%---------------------------Allows printout of the page layout
+\usepackage{layout}
+
+%---------------------------Vastly improves the standard formatting of captions
+%\usepackage[small]{caption2}
+% \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}                                    
+\usepackage[margin=10pt,font=small,labelfont=bf, labelsep=endash]{caption}
+
+
+%---------------------------Easy access to the Lorem Iip�sum dummy text
+%\usepackage{lipsum}
+
+
+%---------------------------Draft Watermark
+%\usepackage[printwatermark]{xwatermark}
+%\newwatermark[allpages,color=red!10,angle=0,scale=6,xpos=0,ypos=00]{DRAFT}
+% \newwatermark[allpages,color=red!20,angle=0,scale=5,xpos=0,ypos=50]{DRAFT}
+% \newwatermark[allpages,color=red!20,angle=0,scale=5,xpos=0,ypos=0]{DRAFT}
+% \newwatermark[allpages,color=red!20,angle=0,scale=5,xpos=0,ypos=-50]{DRAFT}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NEWCOMMANDS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------Simple command I defined to allow me to mark TODO items in red
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{#1}}}
+
+
+%---------------------------Simple command I defined to allow me to mark notes in blue
+\newcommand{\anote}[1]{\textbf{\textcolor{blue}{#1}}}
+
+
+% \DeclareCiteCommand{\wcite}
+%     [\mkbibfootnote]
+%     {}
+%     {\printfield{title}--\printfield{url}}
+%     {\addcomma\addspace}
+%     {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INCLUSIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------Macros
+\include{./Macros/Macros}
+
+
+
+
+\def\iF#1{\mathcal{F}^{-1}\left[ #1 \right]}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------Title, Header and Footer
+% Standard title, author etc.
+\title{}
+\author{Daniel S. Cargill, Ph.D.}
+\date{\today}
+% \affil{}
+
+% Put text on the left-hand and right-hand side of the header
+% \fancyhf{}
+\lhead{Notes on Lagrangian for Atmospheric Propagation}
+\chead{}
+\rhead{\thedate}
+\lfoot{\theauthor}
+\cfoot{}
+\rfoot{\thepage\ of \pageref{LastPage}}
+
+\begin{document}
+
+% \title{\LaTeX\ Template for Writing Papers}
+% \author{Daniel S. Cargill}
+\title{Notes: Derivation of ODEs for Atmospheric Propagation Using Lagrangian Approach}
+\author{Daniel S. Cargill}
+% \address{}
+% \email{$^*$}{dc26@njit.edu}
+% \emailandwebpage{}{dc26@njit.edu}{http://web.njit.edu/~dc26/}
+
+\maketitle
+
+\begin{abstract}
+
+
+\end{abstract}
+
+\include{./Sections/Introduction}
+\include{./Sections/Lagrangian_Approach}
+%\include{./Sections/Gaussian_Anzats_1}
+%\include{./Sections/Gaussian_Anzats_2}
+\include{./Sections/General_Anzats}
+\include{./Sections/Calculating_Statistics_For_Noise_Terms}
+\include{./Sections/Extracting_Parameters}
+
+
+%---------------------------------------------------
+%--------------biblatex stuff --------------------
+%---------------------------------------------------
+%  
+
+%\bibliographystyle{abstract}
+ \bibliographystyle{plain}
+ \bibliography{./Bibliography/Bibliography}
+
+% \thispagestyle{empty}
+% \printbibliography
+
+%---------------------------------------------------
+%----------------------LAYOUT --------------------
+%---------------------------------------------------
+\label{lastpage}
+\pagebreak
+\end{document}

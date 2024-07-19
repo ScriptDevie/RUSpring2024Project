@@ -1,0 +1,389 @@
+
+\section{Calculating Statistics for Noise Terms: General}
+Calculating the derivative
+\begin{equation}
+\begin{split}
+\pder{F}{\phi} &= iF = V_\phi\\
+\pder{F}{T} &= \frac{(t-T)}{W^2}F - i \Omega F - i C (t-T) F =  \frac{1}{W}\Sigma F - i \Omega F - i CW \Sigma F =  V_T - \Omega V_{\phi} - C V_{\Omega}\\
+\pder{F}{\Omega} &= i(t-T) F = iW\Sigma F = V_{\Omega}\\
+\pder{F}{C} &= i\frac{1}{2} (t-T)^2 F = i\frac{W^2}{4}2\Sigma^2 F = i\frac{W^2}{4}2\Sigma^2 F - i\frac{W^2}{4}F + i\frac{W^2}{4}F =  V_{C} + \frac{W^2}{4}V_{\phi} \\
+\pder{F}{W} &= -\frac{1}{2W}F + \frac{(t-T)^2}{W^3}F = \frac{1}{2W}(2\Sigma^2-1)F = V_W\\
+\pder{F}{E} &= \frac{1}{2E} F =  V_E
+\end{split}
+\end{equation}
+it is natural to define the innerproduct as
+\begin{equation}
+\begin{split}
+\ip{f}{g} = \Ip{f}{g} 
+\end{split}
+\end{equation}
+and the set of left ``eigenvectors'' as:
+\begin{equation}
+\begin{split}
+V_E &= \frac{1}{2E} F\\
+V_{\phi} &= iF\\
+V_{T} &= \frac{1}{W} \Sigma F\\
+V_{\Omega} &= iW\Sigma F\\
+V_W &= \frac{1}{2W}(2\Sigma^2-1)F\\
+V_C &= i \frac{W^2}{4}(2\Sigma^2-1)F.
+\end{split}
+\end{equation}
+Note a few calculations:
+\begin{equation}
+\begin{split}
+\int |F|^2 dt &= \sqrt{\pi} E\\
+\int \Sigma^2 |F|^2 dt &= \frac{\sqrt{\pi}}{2} E\\
+\int (2\Sigma^2-1)^2 |F|^2dt &=  \int \left(4\Sigma^4 - 4\Sigma^2  +1\right) |F|^2dt =  E \left(4 \left(\frac{3\sqrt{\pi}}{4}\right) - 4\left(\frac{\sqrt{\pi}}{2}\right) + \sqrt{\pi}\right) = 2\sqrt{\pi}E\\
+\end{split}
+\end{equation}
+
+We can now rewrite the noise projections in terms of the left ``eigenvectors''
+\begin{equation}
+\begin{split}
+E: \frac{2}{\sqrt{\pi}}\Re{\pder{\bar{F}}{\phi} (i n(t,z))} &= \frac{2}{\sqrt{\pi}}\ip{\pder{F}{\phi}}{i n(t,z)} \\
+&= \frac{2}{\sqrt{\pi}}\ip{-i\pder{F}{\phi}}{n(t,z)} \\
+&= \ip{- i \frac{2}{\sqrt{\pi}} V_\phi}{n(t,z)} \\
+&= \ip{U_E}{n(t,z)} \\
+U_E &= - i \frac{2}{\sqrt{\pi}} V_\phi
+\end{split}
+\end{equation}
+
+
+
+
+\begin{equation}
+\begin{split}
+\Omega: -\frac{2}{\sqrt{\pi}E }\left[\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}  + \Omega\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] &= -\frac{2}{\sqrt{\pi}E }\ip{\pder{F}{T} + \Omega\pder{F}{\phi}}{i n(t,z)} \\
+&= -\frac{2}{\sqrt{\pi}E }\ip{-i\pder{F}{T} - i\Omega\pder{F}{\phi}}{n(t,z)}\\
+&= \frac{2}{\sqrt{\pi}E }\ip{iV_T - i\Omega V_\phi - iC V_\Omega + i\Omega V_\phi}{n(t,z)}\\
+&= \ip{U_\Omega}{n(t,z)}\\
+U_\Omega &=  i\left(\frac{2}{\sqrt{\pi}E }V_T  - \frac{2C}{\sqrt{\pi}E }V_\Omega\right) 
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+ T : \frac{2}{\sqrt{\pi} E}\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} &= \frac{2}{\sqrt{\pi} E}\ip{\pder{F}{\Omega}}{ in(t,z)} \\
+&=  \frac{2}{\sqrt{\pi} E}\ip{-i\pder{F}{\Omega}}{ n(t,z)}\\
+&=  \ip{-i\frac{2}{\sqrt{\pi} E} V_{\Omega} }{ n(t,z)}\\
+&=  \ip{ U_T }{ n(t,z)}\\
+U_T &=  -i\frac{2}{\sqrt{\pi} E} V_{\Omega}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ W : &\frac{4}{  \sqrt{\pi}E W }\left[\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt} - \frac{W^2}{4}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] \\
+&= \frac{4}{  \sqrt{\pi}E W }\ip{\pder{F}{C} - \frac{W^2}{4} \pder{F}{\phi}}{ in(t,z)} \\
+&= \frac{4}{  \sqrt{\pi}E W }\ip{-i\pder{F}{C} + i\frac{W^2}{4} \pder{F}{\phi}}{ n(t,z)} \\
+&= \frac{4}{  \sqrt{\pi}E W }\ip{-iV_{C} - i \frac{W^2}{4}V_{\phi} + i\frac{W^2}{4}V_\phi}{ n(t,z)} \\
+&= \frac{4}{  \sqrt{\pi}E W }\ip{-iV_{C}}{ n(t,z)} \\
+&= \ip{U_{W}}{ n(t,z)} \\ 
+U_{W} &= -i \frac{4}{ \sqrt{\pi}E W }V_{C}
+\end{split}
+\end{equation}
+
+
+
+\begin{equation}
+\begin{split}
+C: - \frac{4}{\sqrt{\pi}EW}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} &=- \frac{4}{\sqrt{\pi}EW}\ip{\pder{F}{W}}{ (in(t,z))} \\
+&=\frac{4}{\sqrt{\pi}EW}\ip{i\pder{F}{W}}{ n(t,z)} \\
+&= \frac{4}{\sqrt{\pi}EW}\ip{i V_W}{ n(t,z)} \\
+&= \ip{U_C}{ n(t,z)} \\
+U_C &= i\frac{4}{\sqrt{\pi}EW} V_W
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\phi :&=  \frac{2 }{\sqrt{\pi} E}\left[\Omega\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}  + \frac{W}{2}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}- E\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt{}}\right] \\
+& = \frac{2}{\sqrt{\pi} E}\ip{\Omega\pder{F}{\Omega}+ \frac{W}{2} \pder{F}{W}- E\pder{F}{E}}{in(t,z)}\\
+& = \frac{2}{\sqrt{\pi} E}\ip{-i\Omega \pder{F}{\Omega} - i \frac{W}{2} \pder{F}{W}+ i E \pder{F}{E}}{n(t,z)}\\
+& = \frac{2}{\sqrt{\pi} E}\ip{-i\Omega V_{\Omega} - i \frac{W}{2} V_W + i E  V_E}{n(t,z)}\\
+& = \ip{ U_{\phi}}{n(t,z)}\\
+U_{\phi} & =  i \left(\frac{2}{\sqrt{\pi}} V_E - \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} -  \frac{W}{\sqrt{\pi} E} V_W \right)\\
+\end{split}
+\end{equation}
+
+Then, the right ``eigenvectors'' are :
+\begin{equation}
+\begin{split}
+U_E &= - i \frac{2}{\sqrt{\pi}} V_\phi\\
+U_{\phi} & =  i \left(\frac{2}{\sqrt{\pi}} V_E - \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} -  \frac{W}{\sqrt{\pi} E} V_W \right)=  i\frac{2}{\sqrt{\pi}} V_E - i\left( \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} +  \frac{W}{\sqrt{\pi} E} V_W \right)\\
+U_T &=  -i\frac{2}{\sqrt{\pi} E} V_{\Omega}\\
+U_\Omega &=  i\left(\frac{2}{\sqrt{\pi}E }V_T  - \frac{2C}{\sqrt{\pi}E }V_\Omega\right) = i \frac{2}{\sqrt{\pi}E } V_T  - i\frac{2C}{\sqrt{\pi}E }V_\Omega  \\
+U_{W} &= -i \frac{4}{ \sqrt{\pi}E W }V_{C}\\
+U_C &= i\frac{4}{\sqrt{\pi}EW} V_W\\
+\end{split}
+\end{equation}
+
+The ODEs become:
+
+\begin{equation}
+\begin{split}
+\dot{E} &=  \ip{U_E}{n(t,z)} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{\Omega} & =   \ip{U_\Omega}{n(t,z)} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{T} =  2\avg{d} \Omega + \ip{ U_T }{ n(t,z)} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{W} &=  2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \ip{U_W}{ n(t,z)}\\ 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 + \ip{U_{\phi}}{n(t,z)} \\
+\end{split}
+\end{equation}
+Representing the expectation or ensemble average as $\Ep{}$, we can write the noise projections as random processes.
+Let $Z_1$ and $Z_2$ represent two complex valued stochastic process with real and imaginary parts $Z_j^{(r)}$, $Z_j^{(i)}$ repectively, with the same statistics, 
+than $\Ep{Z_1\conj{Z_2}} = \Ep{Z_1^{(r)}Z_2^{(r)} + Z_1^{(i)}Z_2^{(i)}} + i\Ep{Z_2^{(r)}Z_1^{(i)} - Z_1^{(r)}Z_2^{(i)}} = 2 \Ep{Z_1^{(r)}Z_2^{(r)}} $.
+Let 
+\begin{equation}
+\begin{split}
+F_K &= \ip{U_K}{n} 
+\end{split}
+\end{equation}
+be the stochastic process resulting from the projection of $U_K$ on to the noise, than 
+\begin{equation}
+\begin{split}
+\Ep{F_K(z)} &= \ip{U_K(z,t)}{\Ep{n(z,t))}} = 0 \\
+\Ep{F_K(z,t) F_J(z',t')} &= \Ep{\ip{U_K(z,t)}{n(z,t)} \ip{U_J(z',t')}{n(z',t')} } \\
+ & = \Ep{\Re{\int \conj{U}_K(z,t) \,n(z,t) \,dt}\Re{\conj{U}_J(z',t')\, n(z',t')\,dt'} }\\
+ & =  \frac{1}{2} \Ep{\iint \conj{U}_K(z,t)\, n(z,t)\, U_J(z',t')\, \conj{n}(z',t') \,dt\,dt'}\\
+ & =  \frac{1}{2} \iint \conj{U}_K(z,t)\, U_J(z',t')\,\Ep{n(z,t)\, \conj{n}(z',t')} \,dt\,dt'\\
+\end{split}
+\end{equation}
+ Suppose that we take the noise, $n$, to be mean zero, Gaussian distributed, infinite bandwidth white noise:
+\begin{equation}
+\begin{split}
+\Ep{n(z,t)} &= 0\\
+\Ep{n(z,t)\bar{n}(z',t')} &= \sigma^2 \delta(t-t')\delta(z-z')
+\end{split}
+\end{equation}
+then we have
+\begin{equation}
+\begin{split}
+\Ep{F_K(z)} &=  0 \\
+\Ep{F_K(z,t) F_J(z',t')} &=  \frac{\sigma^2}{2} \int \conj{U}_K(z,t)\, U_J(z',t) \,dt \delta(z-z')\\
+&=  \frac{\sigma^2}{2} \int \conj{U}_K(z,t)\, U_J(z,t) \,dt \delta(z-z')\\
+\end{split}
+\end{equation}
+This generates a covariance matrix which is easily calculated using the othgonality of the left/right ``eigenfunctions''.  This matrix is normally diagonal, but 
+in the case, the right ``eigenfunctions'' do not form an orthogonal basis because some $(U_{\phi},U_\Omega)$
+are a linear combination of more than one left ''eigenvector'', so there will exist off 
+diagonal enteries.
+
+
+Diagonal Terms:
+
+\begin{equation}
+\begin{split}
+\Ep{F_E(z,t) F_E(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_E(z,t)\, U_E(z,t) \,dt \delta(z-z')\\
+&= \frac{\sigma^2}{2} \int \frac{4}{\pi} |V_\phi|^2 \,dt \delta(z-z')\\
+&= \frac{2\sigma^2}{\pi} \int |F|^2 \,dt \delta(z-z')\\
+&= \frac{2\sigma^2}{\sqrt{\pi} } E\delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_W(z,t) F_W(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_W(z,t)\, U_W(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 } \int |V_{C}|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 } \frac{W^4}{16} \int(2\Sigma^2-1)^2 |F|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 } \frac{W^4}{16} 2\sqrt{\pi}E \, \delta(z-z')\\
+&= \sigma^2\frac{W^2}{\sqrt{\pi} E } \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_T(z,t) F_T(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_T(z,t)\, U_T(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \frac{4}{\pi E^2} |V_{\Omega}|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{4}{\pi E^2}  \int  W^2 \Sigma^2 |F|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{4}{\pi E^2} W^2  \int  \Sigma^2 |F|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{4}{\pi E^2} W^2  \frac{\sqrt{\pi}}{2}E \, \delta(z-z')\\
+&= \sigma^2 \frac{W^2}{\sqrt{\pi} E}   \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_C(z,t) F_C(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_C(z,t)\, U_C(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \frac{16}{\pi E^2 W^2} |V_W|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 }  \int \frac{1}{4 W^2}(2\Sigma^2-1)^2 |F|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 } \frac{1}{4 W^2} \int (2\Sigma^2-1)^2 |F|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}\frac{16}{ \pi E^2 W^2 } \frac{1}{4 W^2} 2\sqrt{\pi} E \, \delta(z-z')\\
+&= \sigma^2 \frac{4}{ \sqrt{\pi} E W^4 }   \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_\Omega(z,t) F_\Omega(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_\Omega(z,t)\,U_\Omega(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left|\left(\frac{2}{\sqrt{\pi}E }V_T  - \frac{2C}{\sqrt{\pi}E }V_\Omega\right)\right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \int \left( \frac{4}{\pi E^2 }|V_T|^2  + \frac{4C^2}{\pi E^2 }|V_\Omega|^2\right) \,dt \, \delta(z-z')\\ &= \frac{\sigma^2}{2} \left( \frac{4}{\pi E^2 } \int \frac{1}{W^2} \Sigma^2 |F|^2 \,dt + \frac{4C^2}{\pi E^2 } \int W^2 \Sigma^2 |F|^2 \,dt\right)   \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \left( \frac{4}{\pi E^2 } \frac{1}{W^2} \int  \Sigma^2 |F|^2 \,dt + \frac{4C^2}{\pi E^2 } W^2 \int \Sigma^2 |F|^2 \,dt\right)  \, \delta(z-z')\\
+ &= \frac{\sigma^2}{2} \left( \frac{4}{\pi E^2 } \frac{1}{W^2}   + \frac{4C^2}{\pi E^2 } W^2 \right)  \int \Sigma^2 |F|^2  \,dt \, \delta(z-z')\\
+ &= \frac{\sigma^2}{2} \left( \frac{4}{\pi E^2 } \frac{1}{W^2}   + \frac{4C^2}{\pi E^2 } W^2 \right)  \frac{\sqrt{\pi}}{2}E \, \delta(z-z')\\
+ &=  \sigma^2 \frac{1}{\sqrt{\pi}E} \left( \frac{1}{W^2}   + C^2W^2 \right)   \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_\phi(z,t) F_\phi(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_\phi(z,t)\, U_\phi(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left| i\frac{2}{\sqrt{\pi}} V_E - i\frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} - i \frac{W}{\sqrt{\pi} E} V_W \right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \int  \left( \frac{4}{\pi} |V_E|^2 + \frac{4\Omega^2}{\pi E^2} |V_{\Omega}|^2 +  \frac{W^2}{\pi E^2} |V_W|^2\right) \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \left( \frac{4}{\pi} \int  |V_E|^2\,dt + \frac{4\Omega^2}{\pi E^2} \int  |V_{\Omega}|^2\,dt  +  \frac{W^2}{\pi E^2} \int  |V_W|^2 \,dt\right)  \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \left( \frac{4}{\pi} \int  \frac{1}{4E^2} |F|^2\,dt + \frac{4\Omega^2}{\pi E^2} \int  W^2 \Sigma^2 |F|^2\,dt  +  \frac{W^2}{\pi E^2} \int \frac{1}{4W^2}(2\Sigma^2-1)^2|F|^2 \,dt\right)  \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \left( \frac{4}{\pi}\frac{1}{4E^2} \int   |F|^2\,dt + \frac{4\Omega^2}{\pi E^2} W^2 \int   \Sigma^2 |F|^2\,dt  +  \frac{W^2}{\pi E^2} \frac{1}{4W^2} \int (2\Sigma^2-1)^2|F|^2 \,dt\right)  \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \left( \frac{4}{\pi}\frac{1}{4E^2} \sqrt{\pi} E  + \frac{4\Omega^2}{\pi E^2} W^2 \frac{\sqrt{\pi}}{2}E  +  \frac{W^2}{\pi E^2} \frac{1}{4W^2} 2\sqrt{\pi} E \right)  \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \left( \frac{1}{\sqrt{\pi}E}   + \frac{2\Omega^2}{\sqrt{\pi} E} W^2   +  \frac{1}{2\sqrt{\pi} E}  \right)  \, \delta(z-z')\\
+&= \sigma^2\frac{1}{\sqrt{\pi}E}  \left( \frac{3}{4}   + \Omega^2 W^2   \right)  \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+
+Cross Terms:
+
+
+\begin{equation}
+\begin{split}
+\Ep{F_T(z,t) F_\phi(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_T(z,t)\, U_\phi(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left( i \frac{2}{\sqrt{\pi} E} \conj{V}_{\Omega}\right) \left( i \frac{2}{\sqrt{\pi}} V_E - i\frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} -  i\frac{W}{\sqrt{\pi} E} V_W \right) \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \int \frac{2}{\sqrt{\pi} E} \frac{2\Omega}{\sqrt{\pi} E} \conj{V}_{\Omega}  V_{\Omega} \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E} \frac{2\Omega}{\sqrt{\pi} E} \int  \left|V_{\Omega}\right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E} \frac{2\Omega}{\sqrt{\pi} E} \int  W^2 \Sigma^2 \left| F\right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E} \frac{2\Omega}{\sqrt{\pi} E}   W^2 \int\Sigma^2 \left| F\right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E} \frac{2\Omega}{\sqrt{\pi} E}   W^2 \frac{\sqrt{\pi}}{2}E \, \delta(z-z')\\
+&= \sigma^2 \frac{\Omega   W^2 }{\sqrt{\pi} E}  \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_T(z,t) F_\Omega(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_T(z,t)\, U_\Omega(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left( i \frac{2}{\sqrt{\pi} E} \conj{V}_{\Omega}\right) \, \left(  i \frac{2}{\sqrt{\pi}E } V_T  - i\frac{2C}{\sqrt{\pi}E }V_\Omega \right) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \frac{2}{\sqrt{\pi} E}\frac{2C}{\sqrt{\pi}E } \conj{V}_{\Omega} \, V_{\Omega}\,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \frac{2}{\sqrt{\pi} E}\frac{2C}{\sqrt{\pi}E } \left| V_{\Omega}\right|^2\,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E}\frac{2C}{\sqrt{\pi}E } \int  \left| V_{\Omega}\right|^2\,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E}\frac{2C}{\sqrt{\pi}E } \int W^2 \Sigma^2 \left| F\right|^2 \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \frac{2}{\sqrt{\pi} E}\frac{2C}{\sqrt{\pi}E }W^2 \frac{\sqrt{\pi}}{2}E   \delta(z-z') \\
+&= \sigma^2 \frac{ CW^2 }{\sqrt{\pi} E}   \delta(z-z') \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_C(z,t) F_\phi(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_C(z,t)\, U_\phi(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left(-i \frac{4}{\sqrt{\pi} E W} \conj{V}_W\right)\left(i\frac{2}{\sqrt{\pi}} V_E - i \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega} -i  \frac{W}{\sqrt{\pi} E} V_W \right)  \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2} \int \frac{4}{\sqrt{\pi} E W} \conj{V}_W  \frac{W}{\sqrt{\pi} E} V_W \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2} \int \frac{4}{\sqrt{\pi} E W}  \frac{W}{\sqrt{\pi} E} \left|V_W\right|^2 \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2} \int \frac{4}{\sqrt{\pi} E W} \frac{W}{\sqrt{\pi} E} |V_W|^2 \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2} \int \frac{4}{\sqrt{\pi} E W} \frac{W}{\sqrt{\pi} E} \frac{1}{4W^2} |F|^2 \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2}  \frac{4}{\sqrt{\pi} E W} \frac{W}{\sqrt{\pi} E} \frac{1}{4W^2} \int |F|^2 \,dt \, \delta(z-z')\\
+&= -\frac{\sigma^2}{2}  \frac{4}{\sqrt{\pi} E W} \frac{W}{\sqrt{\pi} E} \frac{1}{4W^2} \sqrt{\pi}E \, \delta(z-z')\\
+&= -\sigma^2  \frac{1}{2\sqrt{\pi} E W^2}\, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Ep{F_\Omega(z,t) F_\phi(z',t')} &= \frac{\sigma^2}{2} \int \conj{U}_\Omega(z,t)\,U_\phi(z,t) \,dt \delta(z-z') \\
+&= \frac{\sigma^2}{2} \int \left( -i \frac{2}{\sqrt{\pi}E } \conj{V}_T + i\frac{2C}{\sqrt{\pi}E } \conj{V}_\Omega\right) \left( i\frac{2}{\sqrt{\pi}} V_E - i \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega}  - i  \frac{W}{\sqrt{\pi} E} V_W   \right) \,dt \, \delta(z-z')\\
+ &= \frac{\sigma^2}{2} \int \frac{2C}{\sqrt{\pi}E } \conj{V}_\Omega \frac{2\Omega}{\sqrt{\pi} E} V_{\Omega}  \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2} \int \frac{2C}{\sqrt{\pi}E } \frac{2\Omega}{\sqrt{\pi} E} \left| V_{\Omega}\right|^2  \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \frac{2C}{\sqrt{\pi}E } \frac{2\Omega}{\sqrt{\pi} E} \int W^2 \Sigma^2 \left| F\right|^2 \,dt \, \delta(z-z')\\
+&= \frac{\sigma^2}{2}  \frac{2C}{\sqrt{\pi}E } \frac{2\Omega}{\sqrt{\pi} E}  W^2 \frac{\sqrt{\pi}}{2}E   \, \delta(z-z')\\
+&= \sigma^2  \frac{C\Omega  W^2 }{\sqrt{\pi}E }    \, \delta(z-z')\\
+\end{split}
+\end{equation}
+
+
+The ODEs become:
+
+\begin{equation}
+\begin{split}
+\dot{E} &=  \green{+ F_E} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{\Omega} & =    \green{+ F_\Omega }\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{T} =  \blue{2\avg{d} \Omega}  \green{+ F_T } \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{W} &= \blue{2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C}} \green{ + F_W }\\ 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{C} &= \blue{2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W}} \green{+ F_C } \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &= \blue{\avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2} \green{+F_{\phi}} \\
+\end{split}
+\end{equation}
+
+
+\begin{align}&\left< \left[\begin{array}{c}
+F_{E}(z) \\ 
+F_{W}(z) \\
+F_{T}(z) \\
+F_{C}(z) \\ 
+F_{\Omega}(z)\\ 
+F_{\phi}(z) \\
+\end{array}\right] \left[\begin{array}{c}
+F_{E}(z') \\ 
+F_{W}(z') \\
+F_{T}(z') \\
+F_{C}(z') \\
+F_{\Omega}(z')\\ 
+F_{\phi}(z') \\
+\end{array}\right]^{T} \right>=\\
+& \frac{\sigma^2}{\sqrt{\pi}} \left[\begin{array}{c|cccccc}
+           & F_{E} & F_{W}           & F_{T}                &  F_{C}              & F_{\Omega}                                         & F_{\phi}                                               \\
+\hline                                                                                                                                                                                          \\
+F_{E}      & 2E    & 0               & 0                    &  0                  & 0                                                  & 0                                                      \\
+F_{W}      & 0     & \frac{W^2}{ E } & 0                    &  0                  & 0                                                  & 0                                                      \\
+F_{T}      & 0     & 0               & \frac{W^2}{E}        &  0                  & \frac{ CW^2 }{ E}                                  & \frac{\Omega W^2 }{ E}                                 \\ 
+F_{C}      & 0     & 0               & 0                    &  \frac{4}{ E W^4 }  & 0                                                  & -\frac{1}{2 E W^2}                                      \\
+F_{\Omega} & 0     & 0               & \frac{CW^2}{E}       &  0                  & \frac{1}{E} \left( \frac{1}{W^2} + C^2W^2 \right)  & \frac{C\Omega  W^2 }{ E }                              \\
+F_{\phi}   & 0     & 0               & \frac{\Omega W^2}{E} &  -\frac{1}{2 E W^2}    & \frac{C\Omega W^2 }{E }                            & \frac{1}{E} \left(\frac{3}{4}   + \Omega^2 W^2 \right) \\ 
+\end{array}\right] \delta(z-z')
+ \end{align}

@@ -1,0 +1,473 @@
+\section{Action Angle Coordinates}
+
+
+\begin{equation}
+\begin{split}
+ \dot{E} &=  \ip{U_E}{n(t,z)} \\
+ \dot{\Omega} & =   \ip{U_\Omega}{n(t,z)} \\
+ \dot{T} &=  2\avg{d} \Omega + \ip{ U_T }{ n(t,z)} \\
+ \dot{W} &=  2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \ip{U_W}{ n(t,z)}\\ 
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\\
+\dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 + \ip{U_{\phi}}{n(t,z)} \\
+\end{split}
+\end{equation}
+Defining the action $H$ and angle $G$ as
+\begin{equation}
+\begin{split}
+H &= C^2 W^2 + \frac{1}{W^2}\\
+\dot{H} &= 2CW^2 \dot{C} + 2WC^2 \dot{W} - 2\frac{1}{W^3}\dot{W}\\
+\dot{H} &= 2CW^2 \left[2d_{s} \left(\frac{1}{W^4}-C^2\right)-\frac{n_{l}}{\sqrt{2}}  \frac{E}{W^3} - \frac{4\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} \frac{C}{W^2} + F_C(z)\right] \\ 
+        &  + \left(2WC^2 - 2\frac{1}{W^3} \right)\left[ 2d_{s} C W + l \left[l_0(E,W) - 2l_2(E,W)\right] \frac{W}{\sqrt{\pi}} +  \frac{\tau(z)}{1+\frac{E \sqrt{\pi}}{E_{sat}}} \left(\frac{1}{W} - C^2W^3\right) + F_W(z)\right] \\ 
+\dot{H} &= -\sqrt{2}n_{l}E \left(\frac{H}{G^2+1}\right)^{\frac{2}{3}} G + \frac{2l}{\sqrt{\pi}} \left(\frac{H}{G^2+1}\right) \left(G^2-1\right)\left[p_0(E,G,H) - 2p_2(E,G,H)\right] \\
+        &  - \frac{2\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} H^2 + F_H(z) \\
+        F_H(z) &= \left[ 2G F_C(z) + 2\left(\frac{H}{G^2+1}\right)^{\frac{3}{2}} (G^2-1) F_W(z) \right] \\ 
+        \langle F_H(z) F_H(z') \rangle &= \frac{\sigma^2}{\sqrt{\pi}} \frac{4}{E}H^2 \delta(z-z') \\ 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+G &= C W^2\\
+\dot{G} &= \dot{C} W^2 + 2 C W \dot{W}\\ 
+\dot{G} &= W^2\left[2d_{s} \left(\frac{1}{W^4}-C^2\right)-\frac{n_{l}}{\sqrt{2}}  \frac{E}{W^3} - \frac{4\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} \frac{C}{W^2} + F_C(z)\right] \\
+        &+ 2 C W \left[2d_{s} C W + l \left[p_0(E,W) - 2p_2(E,W)\right] \frac{W}{\sqrt{\pi}} +  \frac{\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} \left(\frac{1}{W} - C^2W^3\right) + F_W(z)\right]\\
+\dot{G} &= 2 d_s(x) H - \frac{n_{l}}{\sqrt{2}}E \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} - 2\tau\frac{1}{1+\frac{E \sqrt{\pi}}{E_{sat}}} HG + \frac{2l}{\sqrt{\pi}}\left[p_0(E,G,H) - 2p_2(E,G,H)\right]G  + F_G(z)\\
+ F_G(z) &= \frac{G^2+1}{H} F_C(z) + 2 \left(\frac{H}{G^2+1}\right)^\frac{1}{2} G F_W(z)\\
+        \langle F_G(z) F_G(z') \rangle &= \frac{\sigma^2}{\sqrt{\pi}} \frac{4}{E}(1+G^2) \delta(z-z') \\ 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\langle F_H(z) F_G(z') \rangle &= \frac{\sigma^2}{\sqrt{\pi}} \frac{4}{E}HG \delta(z-z') \\ 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\langle F_H(z) F_\phi(z') \rangle &= -\frac{\sigma^2}{\sqrt{\pi}} \frac{1}{E}\frac{HG}{G^2+1} \delta(z-z') \\ 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\langle F_G(z) F_\phi(z') \rangle &= - \frac{\sigma^2}{\sqrt{\pi}} \frac{1}{2E} \delta(z-z') \\ 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\dot{E} &= 2g \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E - \frac{2l}{\sqrt{\pi}} l_0(E,W)   E - \tau \frac{1}{1+\frac{E \sqrt{\pi}}{E_{sat}}} E\left( 2\Omega^2 + \frac{1}{W^2} + C^2W^2\right) + F_E(z), \\
+\dot{E} &= 2g \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E - \frac{2l}{\sqrt{\pi}} p_0(E,G,H) E - \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E \left[2\Omega^2 + H\right] + F_E 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{T} &= 2d_{s}(x) \Omega - 2 \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \Omega W^2 C+ F_T \\
+ \dot{T} &= 2d_{s}(x) \Omega - 2 \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \Omega G + F_T 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{\Omega} & = -2\tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left[\frac{1}{W^2} + C^2 W^2 \right] \Omega + F_\Omega \\
+ \dot{\Omega} & = -2\tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} H \Omega + F_\Omega 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &= d_{s}(x) \Omega^2 - d_{s}(z) \frac{1}{W^2}  + \frac{5}{4\sqrt{2}}n_{l}(z)  \frac{E}{W} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( 1- 2W^2 \Omega^2  \right)C + F_{\phi} \\
+\dot{\phi} &= d_{s}(x) \Omega^2 - d_{s}(z) \frac{H}{G^2+1}  + \frac{5}{4\sqrt{2}}n_{l}(z)E  \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( \frac{HG}{G^2+1} - 2G\Omega^2  \right) + F_{\phi} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+p_k(E,G,H) = \Int{\Sigma^k \left(\frac{ \exp{-\Sigma^2} }{1+\frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}}\exp{-\Sigma^2}}\right)}{\Sigma} \\
+\end{split}
+\end{equation}
+
+Rewriting the SDEs in vector form of 
+\begin{equation}
+\begin{split}
+\pd{\vec{X}}{z} + \frac{1}{x_p} \pd{\vec{X}}{x} &= \vec{F}(\vec{X},x) + \left[M(\vec{X})\right]\vec{N}(z)\\
+x_p \pd{\vec{X}}{z} + \pd{\vec{X}}{x} &= x_p \vec{F}(\vec{X},x) + x_p \left[M(\vec{X})\right]\vec{N}(z)\\
+\end{split}
+\end{equation}
+where 
+\begin{align}
+\vec{F}(\vec{X},x)= \left[\begin{array}{c}
+2g \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E - \frac{2l}{\sqrt{\pi}} p_0(E,G,H) E - \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E \left[2\Omega^2 + H\right] \\ 
+2\left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \Omega - 2 \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \Omega G \\
+-2\tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} H \Omega\\
+-\sqrt{2}n_{l}E \left(\frac{H}{G^2+1}\right)^{\frac{2}{3}} G + \frac{2l}{\sqrt{\pi}} \left(\frac{H}{G^2+1}\right) \left(G^2-1\right)\left[p_0(E,G,H) - 2p_2(E,G,H)\right] - \frac{2\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} H^2 \\
+2 \left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) H - \frac{n_{l}}{\sqrt{2}}E \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} - 2\tau\frac{1}{1+\frac{E \sqrt{\pi}}{E_{sat}}} HG + \frac{2l}{\sqrt{\pi}}\left[p_0(E,G,H) - 2p_2(E,G,H)\right]G \\ 
+\left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \Omega^2 - \left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \frac{H}{G^2+1}  + \frac{5}{4\sqrt{2}}n_{l}(z)E  \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( \frac{HG}{G^2+1} - 2G\Omega^2  \right) \\
+\end{array}\right]
+ \end{align}
+
+\begin{align}
+\vec{X} = \left[\begin{array}{c}
+E(z) \\ 
+T(z) \\
+\Omega(z)\\
+H(z) \\
+G(z) \\ 
+\phi(z) \\
+\end{array}\right]
+ \end{align}
+\begin{align}
+\vec{N}(z) = \left[\begin{array}{c}
+N_E(z) \\ 
+N_T(z) \\
+N_\Omega(z)\\
+N_H(z) \\
+N_G(z) \\ 
+N_\phi(z) \\
+\end{array}\right] \quad \langle \vec{N}(z) \vec{N}^T(z')\rangle  = \frac{\sigma^2}{\sqrt{\pi}} I \delta(z-z')
+ \end{align}
+\begin{align} \left[M(\vec{X})M^{T}(\vec{X})\right] =
+&  \left[\begin{array}{c||ccccc|c}
+           & E     & T                               & \Omega             &  H                            & G                   & \phi                                                               \\                                   
+\hline    \hline                                                                                                                                                                                     
+E          & 2E    & 0                               & 0                  &  0                            & 0                   & 0                                                                  \\
+T          & 0     & \frac{1}{E}\frac{G^2+1}{H}      & \frac{G}{E}        &  0                            & 0                   & \frac{\Omega}{E}\frac{G^2+1}{H}                                    \\
+\Omega     & 0     & \frac{G}{E}                     & \frac{H}{E}        &  0                            & 0                   & \frac{\Omega G}{E}                                                 \\ 
+H          & 0     & 0                               & 0                  &  \frac{4H^2}{E}               & \frac{4HG}{E}       & -\frac{1}{E}\frac{HG}{G^2+1}                                       \\
+G          & 0     & 0                               & 0                  &  \frac{4HG}{E}                & \frac{4(1+G^2)}{E}  & -\frac{1}{2E}                                                      \\
+\hline
+\phi       & 0     & \frac{\Omega}{E}\frac{G^2+1}{H} & \frac{\Omega G}{E} &  -\frac{1}{E}\frac{HG}{G^2+1} & -\frac{1}{2E}       & \frac{1}{E} \left(\frac{3}{4}   + \Omega^2 \frac{G^2+1}{H} \right) \\ 
+\end{array}\right]
+ \end{align}
+which through the use of Cholesky factorization gives:
+\begin{align} M(\vec{X}) =
+&  \left[\begin{array}{c||ccccc|c}
+           & E                      & T                                                     & \Omega                                                 &  H                                   & G                                     & \phi                                                    \\                                   
+\hline    \hline                                                                                                                                                                                                                                                                                
+E          & (2E)^{\frac{1}{2}}    & 0                                                      & 0                                                      &  0                                   & 0                                     & 0                                                       \\
+T          & 0                     & \left(\frac{1}{E}\frac{G^2+1}{H}\right)^{\frac{1}{2}}  & 0                                                      &  0                                   & 0                                     & 0                                                       \\
+\Omega     & 0                     & G\left(\frac{1}{E}\frac{H}{G^2+1}\right)^{\frac{1}{2}} & \left(\frac{1}{E}\frac{H}{G^2+1}\right)^{\frac{1}{2}}  &  0                                   & 0                                     & 0                                                       \\ 
+H          & 0                     & 0                                                      & 0                                                      &  \frac{2H}{\sqrt{E}}                 & 0                                     & 0                                                       \\
+G          & 0                     & 0                                                      & 0                                                      &  \frac{2G}{\sqrt{E}}                 & \frac{2}{\sqrt{E}}                    & 0                                                       \\
+\hline                                                                                                                                                                                                                                                                                                               
+\phi       & 0                     & \Omega\left(\frac{G^2+1}{EH}\right)^{\frac{1}{2}}      & 0                                                      &  -\frac{1}{2\sqrt{E}}\frac{G}{G^2+1} & \frac{1}{4\sqrt{E}}\frac{G^2-1}{G^2+1} & \frac{11}{16 E} - \frac{2 \Omega^2 (G^2+1)}{EH}  \\ 
+\end{array}\right]
+ \end{align}
+\\
+Let 
+\begin{equation}
+\begin{split}
+\vec{X} = \vec{X}_0 + x_p \vec{X}_1 + \dots \mbox{ where } \vec{X} = \left[\begin{array}{c}
+E(z) \\ 
+T(z) \\
+\Omega(z)\\
+H(z) \\
+G(z) \\ 
+\phi(z)\\
+\end{array}\right]
+\end{split}
+\end{equation}
+
+At $O(1)$:
+
+\begin{equation}
+\begin{split}
+\pd{E_0}{x} &= 0\\
+\pd{T_0}{x} &= 2\Delta d_s(x) \Omega_0 \\
+\pd{\Omega_0}{x} &=  0\\
+\pd{H_0}{x} &= 0\\
+\pd{G_0}{x} &= 2\Delta d_s(x) H_0\\ 
+\pd{\phi_0}{x} &= \Delta d_s(x) \left(\Omega_0^2 - \frac{H_0}{G_0^2+1}\right) \\
+\end{split}
+\end{equation}
+
+which has the solution:
+
+\begin{equation}
+\begin{split}
+E_0 &= \tilde{E}_0(z) \\
+T_0 &= \tilde{T}_0(z) + 2 D_s(x) \tilde{\Omega}_0(z) \\
+\Omega_0 &= \tilde{\Omega}_0(z)\\ 
+H_0 &= \tilde{H}_0(z)\\
+G_0 &= \tilde{G}_0(z) + 2 D_s(x) \tilde{H}_0(z)\\ 
+\phi_0 & =\tilde{\phi}_0(z) +  D_s(x)\left(\tilde{\Omega}_0(z)\right)^2 - \tilde{H}_0(z) \int_{0}^{x}\frac{\Delta d_s(\tilde{x})}{\left[\tilde{G}_0(z) + 2 D_s(\tilde{x}) \tilde{H}_0(z)\right]^2 +1} \,d\tilde{x} \\
+\end{split}
+\end{equation}
+
+Recalling that:
+
+\begin{equation}
+\begin{split}
+D_s(x) &= \int_{0}^{x} \Delta d_s(y) \, dy\\
+\avg{d}_s &= \int_{0}^{1} d_s(x) \,dx = d_{2} (1-\theta_g) + d_{1} \theta_g\\
+\Delta d_s(x) &= d_s(x) - \avg{d}_s = \left(d_{1}-d_{2}\right) 
+\begin{cases} -\theta_g & 0 < x < \frac{(1- \theta_{g})}{2} \\
+1-\theta_g & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+-\theta_g &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+D_{s,str} &= \int_{0}^{1} |\Delta d_s(x)| \, dx = |d_{1} - d_{2}|\left[2\theta_g\left(1-\theta_g\right)\right]\\
+\Delta d_s(x) &= \frac{D_{s,str}}{2}
+\begin{cases} -\frac{1}{\left(1-\theta_g\right)} & 0 < x < \frac{(1- \theta_{g})}{2} \\
+\frac{1}{\theta_g} & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+-\frac{1}{\left(1-\theta_g\right)} &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+D_s(x) &= \left(d_{1}-d_{2}\right) \begin{cases} -\theta_g x & 0 < x < \frac{(1- \theta_{g})}{2} \\
+(1-\theta_g) (x-\frac{1}{2}) & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+-\theta_g (x-1) &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+\implies D_s(x) &= \frac{D_{s,str}}{2}  \begin{cases} - \frac{x}{(1- \theta_{g})} & 0 < x < \frac{(1- \theta_{g})}{2} \\
+\frac{(x-\frac{1}{2})}{\theta_g}  & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+- \frac{(x-1)}{(1- \theta_{g})} &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}
+\end{split}
+\end{equation}
+the integral in the $\phi$ equation can be written as:
+\begin{equation}
+\begin{split}
+I_{\phi}(x) &= \int_{0}^{x}\frac{\Delta d_s(\tilde{x})}{\left[\tilde{G}_0(z) + 2 D_s(x) \tilde{H}_0(z)\right]^2 +1} \,d\tilde{x} \\
+ &= \frac{1}{2\tilde{H}_0(z)} \begin{cases} 
+\atan{\tilde{G}_0(z) - \frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0(z) x} -\atan{\tilde{G}_0(z)}  & 0 < x < \frac{(1- \theta_{g})}{2} \\
+\atan{\tilde{G}_0(z) + \frac{D_{s,str}}{\theta_g}\tilde{H}_0(z) (x-\frac{1}{2})} -\atan{\tilde{G}_0(z)}    & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+\atan{\tilde{G}_0(z) - \frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0(z) (x-1)} -\atan{\tilde{G}_0(z)} &  \frac{(1+ \theta_{g})}{2}  < x < 1
+\end{cases}\\
+ &= -\frac{1}{2\tilde{H}_0} \begin{cases}
+ \atan{\frac{\frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0 x}{1+\left(\tilde{G}_0^2-\frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0\tilde{G}_0 x\right)}}  & 0 < x < \frac{(1- \theta_{g})}{2} \\
+-\atan{\frac{\frac{D_{s,str}}{\theta_g}\tilde{H}_0 (x-\frac{1}{2})}{1+\left(\tilde{G}_0^2+\frac{D_{s,str}}{\theta_g}\tilde{H}_0\tilde{G}_0 (x-\frac{1}{2})\right)}}    & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+\atan{\frac{\frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0 (x-1)}{1+\left(\tilde{G}_0^2-\frac{D_{s,str}}{(1-\theta_g)}\tilde{H}_0\tilde{G}_0 (x-1)\right)}}    &  \frac{(1+ \theta_{g})}{2}  < x < 1 
+\end{cases}
+\end{split}
+\end{equation}
+which gives a simplified solution of:
+\begin{equation}
+\begin{split}
+E_0 &= \tilde{E}_0(z) \\
+T_0 &= \tilde{T}_0(z) + 2 D_s(x) \tilde{\Omega}_0(z) \\
+\Omega_0 &= \tilde{\Omega}_0(z)\\ 
+H_0 &= \tilde{H}_0(z)\\
+G_0 &= \tilde{G}_0(z) + 2 D_s(x) \tilde{H}_0(z)\\ 
+\phi_0 & =\tilde{\phi}_0(z) +  D_s(x)\left(\tilde{\Omega}_0(z)\right)^2 + \frac{I_{\phi}(x,z)}{2}  \\
+\end{split}
+\end{equation}
+
+
+At $O(x_p)$:
+\begin{equation}
+\begin{split}
+\pd{E_1}{x} &= (-\pd{E_0}{z}) + 2g \frac{1}{1+\frac{E_0\sqrt{\pi}}{E_{sat}}} E_0 - \frac{2l}{\sqrt{\pi}} p_0(E_0,G_0,H_0) E_0 - \tau \frac{1}{1+\frac{E_0\sqrt{\pi}}{E_{sat}}} E_0 \left[2 (\Omega_0)^2 + H_0\right] \\
+&\quad+ (2E_0)^{\frac{1}{2}}N_E(z) \\
+\pd{T_1}{x}-2\Delta d_s(x) \Omega_1 &= (-\pd{T_0}{z}) + 2\avg{d}_s \Omega_0 - 2 \tau \frac{1}{1+\frac{E_0\sqrt{\pi}}{E_{sat}}} \Omega_0 G_0 + \left(\frac{1}{E_0}\frac{(G_0)^2+1}{H_0}\right)^{\frac{1}{2}} N_T(z)\\
+\pd{\Omega_1}{x} &= (-\pd{\Omega_0}{z}) - 2 \tau \frac{1}{1+\frac{E_0\sqrt{\pi}}{E_{sat}}} H_0 \Omega_0 + G_0\left(\frac{1}{E_0}\frac{H_0}{(G_0)^2+1}\right)^{\frac{1}{2}} N_T(z) + \left(\frac{1}{E_0}\frac{H_0}{(G_0)^2+1}\right)^{\frac{1}{2}}N_\Omega(z)\\
+\pd{H_1}{x} &= (-\pd{H_0}{z}) - \sqrt{2}n_{l}E_0 \left(\frac{H_0}{(G_0)^2+1}\right)^{\frac{2}{3}} G_0 + \frac{2l}{\sqrt{\pi}}H_0 \left(\frac{(G_0)^2-1}{(G_0)^2+1}\right) \left[p_0(E_0,G_0,H_0) - 2p_2(E_0,G_0,H_0)\right] \\
+&\quad - \frac{2\tau}{1+\frac{E_0 \sqrt{\pi}}{E_{sat}}} (H_0)^2  + \frac{2H_0}{\sqrt{E_0}} N_H(z)\\
+\pd{G_1}{x}- 2\Delta d_s(x) H_1 &= (-\pd{G_0}{z}) - 2 \avg{d}_s H_0 - \frac{n_{l}}{\sqrt{2}}E_0 \left(\frac{H_0}{(G_0)^2+1}\right)^{\frac{1}{2}} - 2\tau\frac{1}{1+\frac{E_0 \sqrt{\pi}}{E_{sat}}} H_0 G_0 + \frac{2l}{\sqrt{\pi}}\left[p_0(E_0,G_0,H_0) - 2p_2(E_0,G_0,H_0)\right]G_0 \\
+&\quad+ \frac{2G_0}{\sqrt{E_0}} N_H(z) + \frac{2}{\sqrt{E_0}} N_G(z) \\
+\pd{\phi_1}{x} &- \Delta d_s(x) \left[2\Omega_0 \Omega_1- \left( \frac{H_1}{G_0^2+1} - 2\frac{H_0 G_0 G_1}{(G_0^2+1)^2}\right)\right] =  \avg{d}_s \left[(\Omega_0)^2 -\frac{H_0}{G_0^2+1}  \right]\\
+\end{split}
+\end{equation}
+To find the Adjoint of this operator consider:
+\begin{equation}
+\begin{split}
+\pd{\vec{Y}}{x} -  [A]\vec{Y} = 0\\
+\end{split}
+\end{equation}
+where 
+\begin{align}
+\vec{Y} = \left[\begin{array}{c}
+Y_E      \\ 
+Y_T      \\
+Y_\Omega \\
+Y_H      \\
+Y_G      \\ 
+Y_\phi   \\
+\end{array}\right]
+ \end{align}
+and
+\begin{align} \left[A\right] =
+&  \left[\begin{array}{cccccc}
+0 & 0 & 0              &  0                               & 0                                         & 0\\
+0 & 0 & 2\Delta d_s(x) &  0                               & 0                                         & 0\\
+0 & 0 & 0              &  0                               & 0                                         & 0\\ 
+0 & 0 & 0              &  0                               & 0                                         & 0\\
+0 & 0 & 0              &  2\Delta d_s(x)                  & 0                                         & 0\\
+0 & 0 & 2\Delta d_s(x) &  -\Delta d_s(x)\frac{1}{G_0^2+1} & 2\Delta d_s(x)\frac{H_0 G_0}{(G_0^2+1)^2} & 0\\
+\end{array}\right]
+ \end{align}
+note:
+\begin{align} \left[A\right]^{T} =
+&  \left[\begin{array}{cccccc}
+0 & 0              & 0 & 0 & 0              & 0\\
+0 & 0              & 0 & 0 & 0              & 0\\
+0 & 2\Delta d_s(x) & 0 & 0 & 0              & 2\Delta d_s(x)\\ 
+0 & 0              & 0 & 0 & 2\Delta d_s(x) & -\Delta d_s(x)\frac{1}{G_0^2+1}\\
+0 & 0              & 0 & 0 & 0              & 2\Delta d_s(x)\frac{H_0 G_0}{(G_0^2+1)^2}\\
+0 & 0              & 0 & 0 & 0              & 0\\
+\end{array}\right]
+ \end{align}
+The adjoint for this equation is given by 
+\begin{equation}
+\begin{split}
+\pd{\vec{Y}^{\dagger}}{x} +  [A]^T\vec{Y}^{\dagger} = 0\\
+\end{split}
+\end{equation}
+which gives 
+\begin{align}
+\vec{Y}^{\dagger}_0= \left[\begin{array}{c}
+Y_E^{\dagger} \\ 
+Y_T^{\dagger} \\
+Y_\Omega^{\dagger}-2 D_s(x) Y_T^{\dagger}\\
+Y_H^{\dagger}-2 D_s(x) Y_G^{\dagger} \\
+Y_G^{\dagger} \\ 
+\end{array}\right] = 
+Y_E(z)\left[\begin{array}{c}
+1 \\ 
+0 \\
+0 \\
+0 \\
+0 \\ 
+\end{array}\right] + Y_T(z)\left[\begin{array}{c}
+0 \\ 
+1 \\
+-2 D_s(x)\\
+0 \\
+0 \\ 
+\end{array}\right] + Y_\Omega(z)\left[\begin{array}{c}
+0 \\ 
+0 \\
+1 \\
+0 \\
+0 \\ 
+\end{array}\right]\\
++ Y_H(z)\left[\begin{array}{c}
+0 \\ 
+0 \\
+0 \\
+1 \\
+0 \\ 
+\end{array}\right]+ Y_G(z)\left[\begin{array}{c}
+0 \\ 
+0 \\
+0 \\
+-2 D_s(x)\\
+1 \\ 
+\end{array}\right] 
+\end{align}
+
+
+or using the $O(1)$ solution
+\begin{equation}
+\begin{split}
+\pd{E_1}{x} &= (-\pd{\tilde{E}_0}{z}) + 2g \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 - \frac{2l}{\sqrt{\pi}} p_0(\tilde{E}_0,\tilde{G}_0+ 2 D_s(x) \tilde{H}_0,\tilde{H}_0) \tilde{E}_0 \\
+&\quad- \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 \left[2 (\tilde{\Omega}_0)^2 + \tilde{H}_0\right] + (2\tilde{E}_0)^{\frac{1}{2}}N_E(z) \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{T_1}{x}-2\Delta d_s(x) \Omega_1 &= -\pd{\tilde{T}_0}{z} - 2 D_s(x) \pd{\tilde{\Omega}_0}{z} + 2\avg{d}_s \tilde{\Omega}_0 - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{\Omega_0} \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \\
+&\quad+ \left(\frac{1}{\tilde{E}_0}\frac{\left(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0\right)^2+1}{\tilde{H}_0}\right)^{\frac{1}{2}} N_T(z)\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\Omega_1}{x} &= -\pd{\tilde{\Omega}_0}{z} - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{H}_0 \tilde{\Omega}_0 + \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)\left(\frac{1}{\tilde{E}_0}\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} N_T(z) \\
+&\quad+ \left(\frac{1}{\tilde{E}_0}\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}}N_\Omega(z)\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{H_1}{x} &= -\pd{\tilde{H}_0}{z} - \sqrt{2}n_{l}\tilde{E}_0 \left(\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{2}{3}} \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \\
+&\quad+ \frac{2l}{\sqrt{\pi}}\tilde{H}_0 \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2-1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right) \left[p_0(\tilde{E}_0,\left(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right] \\
+&\quad - \frac{2\tau}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}} (\tilde{H}_0)^2  + \frac{2\tilde{H}_0}{\sqrt{\tilde{E}_0}} N_H(z)\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{G_1}{x}- 2\Delta d_s(x) H_1 &= -\pd{\tilde{G}_0}{z} - 2 D_s(x) \pd{\tilde{H}_0}{z} - 2 \avg{d}_s \tilde{H}_0 - \frac{n_{l}}{\sqrt{2}}\tilde{E}_0 \left(\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \\
+&\quad- 2\tau\frac{1}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}}\tilde{H}_0 \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) + \frac{2l}{\sqrt{\pi}}\left[p_0(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right]\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \\
+&\quad+ \frac{2\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\sqrt{\tilde{E}_0}} N_H(z) + \frac{2}{\sqrt{\tilde{E}_0}} N_G(z) \\
+% \red{\pd{\phi_1}{x}} &\red{ =  \left[\avg{d}_s (\tilde{\Omega}_0)^2 + 2 \Delta d_s(x) (\tilde{\Omega}_0 \Omega_1)\right] - \left[\avg{d}_s \frac{H_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}  + \Delta d_s(x) \left( \frac{H_1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1} - 2\frac{H_0 \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) G_1}{(\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1)^2}\right)\right]}\\
+\end{split}
+\end{equation}
+and applying the Fredholm Alternative using the adjoint
+\begin{equation}
+\begin{split}
+\pd{\tilde{E}_0}{z} &= 2g \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 - \frac{2l}{\sqrt{\pi}}\tilde{E}_0  \int_{0}^{1} p_0(\tilde{E}_0,\tilde{G}_0 + 2 D_s(x) \tilde{H}_0,\tilde{H}_0) \,dx - \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 \left[2 (\tilde{\Omega}_0)^2 + \tilde{H}_0\right] \\
+&\quad+ (2\tilde{E}_0)^{\frac{1}{2}}N_E(z) \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+&\int_{0}^{1} \left( \left[- \pd{\tilde{T}_0}{z} - 2 D_s(x) \pd{\tilde{\Omega}_0}{z} + 2 \avg{d}_s \tilde{\Omega}_0 - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{\Omega}_0 \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) + \left(\frac{1}{\tilde{E}_0}\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}{\tilde{H}_0}\right)^{\frac{1}{2}} N_T(z) \right] \right. \\
+&\left. - (2 D_s(x)) \left[-\pd{\tilde{\Omega}_0}{z} - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{H}_0 \tilde{\Omega}_0 + \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)\left(\frac{1}{\tilde{E}_0}\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} N_T(z) + \left(\frac{1}{\tilde{E}_0}\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}}N_\Omega(z)\right]\right) = 0\\
+\pd{\tilde{T}_0}{z} &=  2\avg{d}_s \tilde{\Omega}_0 - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{\Omega}_0 \tilde{G}_0  + \left(\frac{1}{\tilde{E}_0 \tilde{H}_0}\right)^{\frac{1}{2}} \left(\int_{0}^{1} \left(\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1\right)^{\frac{1}{2}} \,dx \right) N_T(z) \\
+&\quad- \left(\frac{\tilde{H}_0}{\tilde{E}_0}\right)^{\frac{1}{2}} \left(\int_{0}^{1} (2 D_s(x)) \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}}\,dx\right) N_T(z) \\
+&\quad- \left(\frac{\tilde{H}_0}{\tilde{E}_0}\right)^{\frac{1}{2}} \left(\int_{0}^{1} (2 D_s(x)) \left(\frac{1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \,dx \right) N_\Omega(z) \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\tilde{\Omega}_0}{z} &= - 2 \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{H}_0 \tilde{\Omega}_0 + \left(\frac{\tilde{H}_0}{\tilde{E}_0}\right)^\frac{1}{2} \int_{0}^{1}\left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \,dx N_T(z) \\
+&\quad+ \left(\frac{\tilde{H}_0}{\tilde{E}_0}\right)^\frac{1}{2}  \int_{0}^{1} \left(\frac{1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \, dx N_\Omega(z)\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\tilde{H}_0}{z} &= - \sqrt{2}n_{l}\tilde{E}_0 \tilde{H}_0^{\frac{2}{3}} \int_{0}^{1} \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\left[\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1\right]^{\frac{2}{3}}}\right)\, dx  \\
+&\quad + \frac{2l}{\sqrt{\pi}}\tilde{H}_0 \int_{0}^{1} \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2-1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right) \left[p_0(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right] \\
+&\quad - \frac{2\tau}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}} (\tilde{H}_0)^2  + \frac{2\tilde{H}_0}{\sqrt{\tilde{E}_0}} N_H(z)\\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+&\int_{0}^{1} \left( (- 2 D_s(x)) \left[-\pd{\tilde{H}_0}{z} - \sqrt{2}n_{l}\tilde{E}_0 \left(\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{2}{3}} \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \right. \right.\\
+&\left. \left. \quad+ \frac{2l}{\sqrt{\pi}}\tilde{H}_0 \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2-1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right) \left[p_0(\tilde{E}_0,\left(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right] \right. \right.\\
+&\left.\left. \quad - \frac{2\tau}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}} (\tilde{H}_0)^2  + \frac{2\tilde{H}_0}{\sqrt{\tilde{E}_0}} N_H(z)\right] \right.\\
+&\left. + \left[-\pd{\tilde{G}_0}{z} - 2 D_s(x) \pd{\tilde{H}_0}{z} - 2 \avg{d}_s \tilde{H}_0 - \frac{n_{l}}{\sqrt{2}}\tilde{E}_0 \left(\frac{\tilde{H}_0}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \right. \right.\\
+&\left.\left. \quad- 2\tau\frac{1}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}}\tilde{H}_0 \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) + \frac{2l}{\sqrt{\pi}}\left[p_0(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right]\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \right.\right.\\
+&\left.\left. \quad+ \frac{2\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\sqrt{\tilde{E}_0}} N_H(z) + \frac{2}{\sqrt{\tilde{E}_0}} N_G(z) \right]\right) = 0\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\tilde{G}_0}{z} &= \sqrt{2}n_{l}\tilde{E}_0 (\tilde{H}_0)^{\frac{2}{3}}  \int_{0}^{1} (2 D_s(x)) \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\left(\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1\right)^{\frac{2}{3}}}\right) \,dx  \\
+&\quad- \frac{2l}{\sqrt{\pi}}\tilde{H}_0  \int_{0}^{1} (2 D_s(x)) \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2-1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right) \left[p_0(\tilde{E}_0,\left(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right] \, dx\\
+& + \left[ - 2 \avg{d}_s \tilde{H}_0 - \frac{n_{l}}{\sqrt{2}}\tilde{E}_0 (\tilde{H}_0)^{\frac{1}{2}} \int_{0}^{1} \left(\frac{1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \, dx \right.\\
+&\left. \quad- 2\tau\frac{1}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}}\tilde{H}_0 \int_{0}^{1} \left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \,dx + \frac{2l}{\sqrt{\pi}} \int_{0}^{1}\left[p_0(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right]\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \, dx \right.\\
+&\left. \quad+ \int_{0}^{1} \frac{2\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\sqrt{\tilde{E}_0}} \,dx N_H(z) + \frac{2}{\sqrt{\tilde{E}_0}} N_G(z) \right] \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\tilde{G}_0}{z} &= \sqrt{2}n_{l}\tilde{E}_0 (\tilde{H}_0)^{\frac{2}{3}}  \int_{0}^{1} (2 D_s(x)) \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)}{\left(\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1\right)^{\frac{2}{3}}}\right) \,dx  \\
+&\quad - \frac{2l}{\sqrt{\pi}}\tilde{H}_0  \int_{0}^{1} (2 D_s(x)) \left(\frac{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2-1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right) \left[p_0(\tilde{E}_0,\left(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right] \, dx\\
+&\quad - 2 \avg{d}_s \tilde{H}_0 - \frac{n_{l}}{\sqrt{2}}\tilde{E}_0 (\tilde{H}_0)^{\frac{1}{2}} \int_{0}^{1} \left(\frac{1}{\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right)^2+1}\right)^{\frac{1}{2}} \, dx\\
+&\quad - 2\tau\frac{1}{1+\frac{\tilde{E}_0 \sqrt{\pi}}{E_{sat}}}\tilde{H}_0 \tilde{G}_0 + \frac{2l}{\sqrt{\pi}} \int_{0}^{1}\left[p_0(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0) - 2p_2(\tilde{E}_0,\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right),\tilde{H}_0)\right]\left(\tilde{G}_0+ 2 D_s(x) \tilde{H}_0\right) \, dx\\
+&\quad + \frac{2\tilde{G}_0}{\sqrt{\tilde{E}_0}} N_H(z) + \frac{2}{\sqrt{\tilde{E}_0}} N_G(z) \\
+\end{split}
+\end{equation}
+
+
+\subsection{Approximating $p_0$ and $p_2$}
+See the Mathematica note book for calculations:
+\begin{equation}
+\begin{split}
+p_0(E,G,H) &= \Int{\left(\frac{ \exp{-\Sigma^2} }{1+\frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}}\exp{-\Sigma^2}}\right)}{\Sigma} = -\frac{\sqrt{\pi}}{C} \mbox{PolyLog}(0.5,-C) \approx \frac{\sqrt{\pi}}{1+C},\\
+\mbox{ where } C &= \frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+p_2(E,G,H) &= \Int{\Sigma^2 \left(\frac{ \exp{-\Sigma^2} }{1+\frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}}\exp{-\Sigma^2}}\right)}{\Sigma} = -\frac{\sqrt{\pi}}{2C} \mbox{PolyLog}(1.5,-C) \approx \frac{\sqrt{\pi}}{2C}\ln{C+1},\\
+\mbox{ where } C &= \frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} \\
+\end{split}
+\end{equation}
+
+\subsection{Averaging $E_0$}
+\begin{equation}
+\begin{split}
+\pd{\tilde{E}_0}{z} &= 2g \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 - \frac{2l}{\sqrt{\pi}}\tilde{E}_0  \int_{0}^{1} p_0(\tilde{E}_0,\tilde{G}_0 + 2 D_s(x) \tilde{H}_0,\tilde{H}_0) \,dx - \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 \left[2 (\tilde{\Omega}_0)^2 + \tilde{H}_0\right] \\
+&\quad+ (2\tilde{E}_0)^{\frac{1}{2}}N_E(z) \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pd{\tilde{E}_0}{z} &= 2g \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 - 2l\tilde{E}_0  \int_{0}^{1} \frac{1}{1+\frac{\tilde{E}_0}{P_{sat}}\left(\frac{\tilde{H}_0}{(\tilde{G}_0 + 2 D_s(x) \tilde{H}_0)^2+1}\right)^{\frac{1}{2}}} \,dx - \tau \frac{1}{1+\frac{\tilde{E}_0\sqrt{\pi}}{E_{sat}}} \tilde{E}_0 \left[2 (\tilde{\Omega}_0)^2 + \tilde{H}_0\right] \\
+&\quad+ (2\tilde{E}_0)^{\frac{1}{2}}N_E(z) \\
+\end{split}
+\end{equation}

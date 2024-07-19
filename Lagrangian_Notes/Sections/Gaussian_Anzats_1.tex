@@ -1,0 +1,255 @@
+\section{Perturbed Gaussian Beam I}
+We begin by using a Gaussian ansatz:
+\begin{equation}
+ u(\vect{r}_{\perp},A,W,R,P) = \frac{A}{W} \exp{-n_0 \alpha \frac{r^2}{2W^2}} \exp{ i n_0 \alpha \frac{r^2}{2R}} \exp{- i P }
+\end{equation}
+where $r = |\vect{r}_{\perp}|$ which is motivated by the exact Gaussian beam solution discussed above.   Each of the parameters $A,W,R,P$ are functions of $z$.  Now, lets calculate each term in the Lagrangian density:
+\begin{equation}
+    \begin{split}
+    \partial_{z}(u) &= \left[ \frac{\dot{A}}{A} - \frac{\dot{W}}{W} + n_0 \alpha \frac{r^2}{W^3} \dot{W} - i n_0 \alpha \frac{r^2}{2 R^2} \dot{R} - i \dot{P}  \right] u\\
+     \partial_{z}(u)\conj{u} &= \left[ \frac{\dot{A}}{A} - \frac{\dot{W}}{W} + n_0 \alpha \frac{r^2}{W^3} \dot{W} - i n_0 \alpha \frac{r^2}{2 R^2} \dot{R} - i \dot{P}  \right] |u|^2 \\
+     \partial_{z}(u)\conj{u} &=  \left[ \frac{\dot{A}}{A} - \frac{\dot{W}}{W} + n_0 \alpha \frac{r^2}{W^3} \dot{W} - i n_0 \alpha \frac{r^2}{2 R^2} \dot{R} - i \dot{P}  \right] \frac{A^2}{W^2}\exp{- \frac{r^2}{W^2}}\\
+     \overline{\partial_{z}(u)}u &=  \left[ \frac{\dot{A}}{A} - \frac{\dot{W}}{W} + n_0 \alpha \frac{r^2}{W^3} \dot{W} + i n_0 \alpha \frac{r^2}{2 R^2} \dot{R} + i \dot{P}  \right] \frac{A^2}{W^2}\exp{- \frac{r^2}{W^2}}\\     
+     i n_0 \alpha  \left(\partial_{z}(u) \overline{u} - \overline{\partial_{z}(u)}u\right) &=
+      i n_0 \alpha \left[ - i n_0 \alpha \frac{r^2}{ R^2} \dot{R} - i 2 n_0 \alpha \dot{P}  \right] \frac{A^2}{W^2}\exp{- \frac{r^2}{W^2}}\\ 
+      &= \left[ (n_0 \alpha)^2 \frac{r^2}{ R^2} \dot{R} + 2 n_0 \alpha \dot{P}  \right] \frac{A^2}{W^2}\exp{- \frac{r^2}{W^2}}\\
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+    u_{x} &= n_0 \alpha \left(i \frac{1}{R} - \frac{1}{W^2}\right) x u\\
+    |u_{x}|^2 &= (n_0 \alpha)^2 \left(\frac{1}{R^2} + \frac{1}{W^4}\right) x^2 |u|^2\\
+    u_{y} &= n_0 \alpha \left(i \frac{1}{R} - \frac{1}{W^2}\right) y u\\
+    |u_{y}|^2 &= (n_0 \alpha)^2\left(\frac{1}{R^2} + \frac{1}{W^4}\right) y^2 |u|^2\\
+    |u_{x}|^2 +|u_{y}|^2 &= (n_0 \alpha)^2 \left(\frac{1}{R^2} + \frac{1}{W^4}\right) r^2 |u|^2\\ 
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+    |u|^2 &= \frac{A^2}{W^2} \exp{-r^2 W^2}   
+    \end{split}
+\end{equation}
+
+
+Putting this into the definition of the Lagrangian Density gives
+\begin{equation}
+    \begin{split}
+    \mathcal{L}_{D}(u,\nabla u) &=   \left[ (n_0 \alpha)^2 \frac{r^2}{ R^2} \dot{R} + 2 n_0 \alpha \dot{P}    - (n_0 \alpha)^2 \left(\frac{1}{R^2} + \frac{1}{W^4}\right) r^2 + 2n_0 \gamma^2 n(\vect{r}_{\perp},z) \right] |u|^2 \\   
+    \end{split}
+\end{equation}
+
+and then the action becomes
+\begin{equation}
+    \begin{split}
+        J(u,\nabla u) &= \int_{0}^{\Lambda} \iint \mathcal{L}_{D}(u,\nabla u) dx dy \, dz\\
+        J(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P}) &= \int_{0}^{\Lambda} (n_0 \alpha)^2 \frac{1}{ R^2} \dot{R} I_2 + 2 n_0 \alpha \dot{P} I_0 - (n_0 \alpha)^2 \left(\frac{1}{R^2} + \frac{1}{W^4}\right) I_2 + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), |u|^2\right>  dz\\ 
+    \end{split}
+\end{equation}
+where is $\left<n(\vect{r}_{\perp},z), |u|^2\right>$ the projection of $|u|^2$ onto the index realizations $n(\vect{r}_{\perp},z)$ and 
+\begin{equation}
+    \begin{split}
+        I_0 &=  \int_{0}^{2\pi} \int_{0}^{\infty} \frac{A^2}{W^2} \exp{-n_0 \alpha \frac{r^2 }{W^2}} r \,dr \,d\theta \\
+        &=  2\pi \frac{A^2}{W^2} \int_{0}^{\infty}  \exp{-n_0 \alpha \frac{r^2}{W^2}} r \,dr \\
+        &=  \frac{2\pi}{n_0 \alpha} A^2 \int_{0}^{\infty}  \exp{-x^2} x \,dx \\
+        &= -\frac{\pi}{n_0 \alpha} A^2 \exp{-x^2}\big|_{0}^{\infty} \\
+        &= \frac{\pi}{n_0 \alpha} A^2 
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+      I_2 &=  \int_{0}^{2\pi} \int_{0}^{\infty} r^2 \frac{A^2}{W^2} \exp{-n_0 \alpha \frac{r^2 }{W^2}} r \,dr \,d\theta\\           
+          &= 2\pi\frac{A^2}{W^2} \int_{0}^{\infty} r^3 \exp{-n_0 \alpha \frac{r^2 }{W^2}} \,dr \\
+          &= \frac{2\pi}{(n_0 \alpha)^2} W^2 A^2 \int_{0}^{\infty} x^3 \exp{-x^2} \,dx \\
+          &= \frac{\pi}{(n_0 \alpha)^2} W^2 A^2 \int_{0}^{\infty} y \exp{-y} \,dy  \\
+          &= \frac{\pi}{(n_0 \alpha)^2} W^2 A^2
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    \begin{split}
+        J(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P}) &= \int_{0}^{\Lambda} (n_0 \alpha)^2 \frac{1}{ R^2} \dot{R} \frac{\pi}{(n_0 \alpha)^2} W^2 A^2 + 2 n_0 \alpha \dot{P} \frac{\pi}{n_0 \alpha} A^2 - (n_0 \alpha)^2 \left(\frac{1}{R^2} + \frac{1}{W^4}\right) \frac{\pi}{(n_0 \alpha)^2} W^2 A^2 + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), |u|^2\right>  dz\\ 
+    &=\int_{0}^{\Lambda} F_{D}(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P})  dz\\
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    F_{D}(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P}) = \pi \frac{W^2 A^2}{R^2} \dot{R} + 2 \pi A^2 \dot{P}   - \pi  A^2  \left(\frac{W^2}{R^2} + \frac{1}{W^2}\right) + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), |u|^2\right>  
+\end{equation}
+ 
+\begin{equation}
+    F_{D}(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P}) = A^2\pi \left[\frac{W^2}{R^2} \dot{R} + 2 \dot{P} - \left(\frac{W^2}{R^2} + \frac{1}{W^2}\right)\right] + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), |u|^2\right>  
+\end{equation} 
+
+\subsection{Euler-Lagrange equation(s)}
+
+Now, we can apply the Euler-Lagrange equations to the reduced density $F_{D}(A,W,R,P;\dot{A},\dot{W},\dot{R},\dot{P})$, i.e.
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{A}  - \der{}{z}\left(\pder{F_{D}}{\dot{A}}\right) &= 0 \\
+    \der{F_{D}}{P}  - \der{}{z}\left(\pder{F_{D}}{\dot{P}}\right) &= 0 \\
+    \der{F_{D}}{R}  - \der{}{z}\left(\pder{F_{D}}{\dot{R}}\right) &= 0 \\
+    \der{F_{D}}{W}  - \der{}{z}\left(\pder{F_{D}}{\dot{W}}\right) &= 0. \\
+\end{split}
+\end{equation}
+So lets calculate the terms on the left side of each:
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{A}  &= 2A \pi \left[\left(\frac{W^2}{R^2}\dot{R}  + 2\dot{P}\right) -  \left(\frac{W^2}{R^2} + \frac{1}{W^2}\right) \right] + 2 n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{A}}\right) &= \der{}{z}(0) = 0 \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+   \der{F_{D}}{P}  &= 2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{P}  \right> = 0 \\
+\der{}{z}\left(\pder{F_{D}}{\dot{P}}\right) &= \der{}{z}\left( 2 \pi A^2 \right)  \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{W}  &=  2 \pi A^2 \left[\frac{W}{R^2} \dot{R} -  \frac{1}{R^2}W + \frac{1}{W^3}\right] +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right> \\
+\der{}{z}\left(\pder{F_{D}}{\dot{W}}\right) &= \der{}{z}(0) = 0 \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{R}  &=  A^2 \pi \left[-\frac{W^2}{R^3}\dot{R} + \frac{W^2}{R^3}\right] +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{R}  \right> \\
+\der{}{z}\left(\pder{F_{D}}{\dot{R}}\right) &= \der{}{z}\left(  \pi A^2 \frac{W^2}{R^2}\right)\\
+&= \pi A^2 \left(\frac{2W }{R^2} \dot{W} - 2\frac{W^2}{R^3} \dot{R}\right)\\
+&= 2\pi A^2 \left(\frac{W}{R^2} \dot{W} - \frac{W^2}{R^3} \dot{R}\right)\\
+\end{split}
+\end{equation}
+
+
+\subsubsection{Equations in P}
+Since $|u|^2$ is only dependent on $A,W$, not $R,P$, the last of these equations says
+\begin{equation}
+\begin{split}
+    \der{}{z}\left( 2 \pi A^2 \right) = 0,
+\end{split}
+\end{equation}
+or that
+\begin{equation}
+\begin{split}
+    A(z) = A(0)
+\end{split}
+\end{equation}
+
+\subsubsection{Equations in W}
+
+\begin{equation}
+\begin{split}
+    \der{}{z}\left(\pder{F_{D}}{\dot{W}}\right) &= \der{F_{D}}{W} \\
+    2 \pi A^2 \left[\frac{W}{R^2} \dot{R} -  \frac{1}{R^2}W + \frac{1}{W^3}\right] +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>  &= 0\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+     \left[\frac{W}{R^2} \dot{R} -  \frac{1}{R^2}W + \frac{1}{W^3}\right] = -  \frac{2n_0 \gamma^2}{2 \pi A^2} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>  \\
+     \frac{W}{R^2} \dot{R} =  \frac{1}{R^2}W - \frac{1}{W^3}  -  \frac{2n_0 \gamma^2}{2 \pi A^2} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>  \\
+     \dot{R} =  \frac{R^2}{W} \left(\frac{1}{R^2}W + \frac{1}{W^3}\right)  -  \frac{R^2}{W}\frac{2n_0 \gamma^2}{2 \pi A^2} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>  \\
+       \dot{R} =   \left(1 -  \frac{R^2}{W^4 }\right) -  \frac{n_0 \gamma^2}{\pi} \frac{R^2}{W A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right> \\
+\end{split}
+\end{equation}
+
+\subsubsection{Equations in R}
+\begin{equation}
+\begin{split}
+   \der{}{z}\left( \pder{F_{D}}{\dot{R}} \right) &= \der{F_{D}}{R} \\
+\der{}{z}\left( \pi \frac{W^2 A^2}{R^2}\right) &= - 2 \pi \frac{A^2 W^2}{R^3}\dot{R} + 2\pi \frac{A^2 W^2}{R^3}
+\end{split}
+\end{equation}
+and because $\dot{A} = 0$ we get
+\begin{equation}
+\begin{split}
+2 \frac{W}{R^2} \dot{W}  - 2 \frac{W^2}{R^3} \dot{R} &= -  2\frac{W^2}{R^3} \dot{R} + 2\frac{W^2}{R^3} \\
+\frac{W}{R^2} \dot{W}  &=  \frac{W^2}{R^3} \\
+\dot{W}  &=  \frac{R^2}{W} \frac{W^2}{R^3} \\
+\dot{W}  &= \frac{W}{R} \\
+\end{split}
+\end{equation}
+
+\subsubsection{Equations in A}
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{A}  - \der{}{z}\left(\pder{F_{D}}{\dot{A}}\right) &= 0 \\
+   2A_0 \pi\left[ \left(\frac{W^2}{R^2}\dot{R} + 2 \dot{P}\right)  - \left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) \right] +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  &= 0 \\
+   \end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\left(\frac{W^2}{R^2}\dot{R} + 2 \dot{P}\right)  - \left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) &= -  \frac{n_0 \gamma^2}{ A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\
+ 2 \dot{P}  &= - \frac{W^2}{R^2}\dot{R} + \left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) -  \frac{n_0 \gamma^2}{ A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\
+  \dot{P}  &= - \frac{W^2}{2R^2}\dot{R} + \frac{1}{2}\left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) -  \frac{n_0 \gamma^2}{ 2 A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\
+   \end{split}
+\end{equation}
+
+Putting in the equation for $\dot{R}$
+\begin{equation}
+\begin{split}
+  \dot{P}  &= - \frac{W^2}{2R^2}\left[\left(1 -  \frac{R^2}{W^4 }\right) -  \frac{n_0 \gamma^2}{\pi} \frac{R^2}{W A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right> \right] + \frac{1}{2}\left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) -  \frac{n_0 \gamma^2}{ 2 A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\    
+  \dot{P}  &= \left[\left(- \frac{W^2}{2R^2} +  \frac{W^2}{2R^2} \frac{R^2}{W^4 }\right) + \frac{W^2}{2R^2}  \frac{n_0 \gamma^2}{\pi} \frac{R^2}{W A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right> \right] + \frac{1}{2}\left(\frac{1}{W^2} + \frac{W^2}{R^2}\right) -  \frac{n_0 \gamma^2}{ 2 A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\   
+ \dot{P}  &= - \frac{W^2}{2R^2} + \frac{1}{2W^2 } +  \frac{n_0 \gamma^2}{2\pi} \frac{W}{ A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>  + \frac{1}{2W^2} + \frac{W^2}{2R^2} -  \frac{n_0 \gamma^2}{ 2 A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\ 
+ \dot{P}  &=  \frac{1}{W^2 } +  \frac{n_0 \gamma^2}{2\pi} \frac{W}{ A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right>   -  \frac{n_0 \gamma^2}{ 2 A_0 \pi} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>  \\ 
+  \dot{P}  &=  \frac{1}{W^2 } +  \frac{n_0 \gamma^2}{2\pi A_0} \left< n(\vect{r}_{\perp},z),\frac{W}{ A_0 } \pder{|u|^2}{W}  - \pder{|u|^2}{A}\right>  \\
+\end{split}
+\end{equation}
+
+
+\subsubsection{Finding the modes that project onto the index realizations}
+
+
+\begin{equation}
+\begin{split}
+  \pder{|u|^2}{W} &= \pder{}{W}\left(\frac{A^2}{W^2}\exp{-\frac{r^2}{W^2}}\right)\\
+  &= -2\frac{A^2}{W^3} \exp{-\frac{r^2}{W^2}} + 2\frac{A^2}{W^2}\frac{r^2}{W^3}\exp{-\frac{r^2}{W^2}}\\
+  &= 2\frac{1}{W}\left[\frac{r^2 }{W^2} - 1\right] \frac{A^2}{W^2} \exp{-\frac{r^2}{W^2}}\\
+  &= 2\frac{1}{W}\left[\frac{r^2 }{W^2} - 1\right] |u|^2
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  \pder{|u|^2}{A} &= \pder{}{A}\left(\frac{A^2}{W^2}\exp{-\frac{r^2}{W^2}}\right)\\
+  &= 2\frac{A}{W^2} \exp{-\frac{r^2}{W^2}} \\
+  &= \frac{2}{A} |u|^2
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  \frac{W}{ A } \pder{|u|^2}{W}  - \pder{|u|^2}{A} &= 2\frac{W}{ A }  \frac{1}{W}\left[\frac{r^2 }{W^2} - 1\right] |u|^2 - \frac{2}{A} |u|^2\\
+  &= 2\frac{1}{ A }  \left[\frac{r^2 }{W^2}|u|^2 - |u|^2 - |u|^2 \right]\\
+  &= \frac{2}{A} \left[\frac{r^2 }{W^2} - 2  \right]|u|^2
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+      V_{R} &= \frac{n_0 \gamma^2 }{\pi} \frac{R^2}{W A_0^2 } \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{W}  \right> \\
+      &= \frac{n_0 \gamma^2 }{\pi} \frac{R^2}{W^2 A_0^2 } \left< n(\vect{r}_{\perp},z),\left[\frac{r^2 }{W^2} - 1\right] |u|^2 \right>
+\end{split}
+\end{equation}
+
+
+ 
+ 
+\begin{equation}
+\begin{split}
+      V_{P} &=  \frac{n_0 \gamma^2}{2\pi A_0} \left< n(\vect{r}_{\perp},z),\frac{W}{ A_0 } \pder{|u|^2}{W}  - \pder{|u|^2}{A}\right> \\
+      &=\frac{n_0 \gamma^2}{2\pi A_0} \left< n(\vect{r}_{\perp},z),\frac{2}{A} \left[\frac{r^2 }{W^2} - 2  \right]|u|^2\right> \\
+      &=\frac{n_0 \gamma^2}{\pi A_0^2} \left< n(\vect{r}_{\perp},z), \left[\frac{r^2 }{W^2} - 2  \right]|u|^2\right> \\
+\end{split}
+\end{equation}
+
+

@@ -1,0 +1,11 @@
+# Fdb version 3
+["pdflatex"] 1475767711 "Introduction.tex" "Introduction.pdf" "Introduction" 1475767712
+  "/usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf" 1470266149 31958 926ad82bc47ee89401cf24be7d2cbf7d ""
+  "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1474411287 1950515 49a2f0de8467d02420dc742360dc4a75 ""
+  "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1474411314 3873677 01c59ddc32f05c1e566d7ee736e82fdd ""
+  "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
+  "Introduction.aux" 1475429840 1896 8b1f75fa853f4fee689490b0c07b4ee3 ""
+  "Introduction.tex" 1475767710 28523 b84da1441d3eaca61fe58368807c99fd ""
+  (generated)
+  "Introduction.pdf"
+  "Introduction.log"

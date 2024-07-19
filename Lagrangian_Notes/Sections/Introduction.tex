@@ -1,0 +1,235 @@
+\section{Introduction}\label{sec:Introduction_and_Background}
+
+
+\subsection{Helmholtz Equation for  Atmospheric Propagation}
+
+A monochromatic EM source $E(\dim{x},\dim{y},\dim{z}) = A(\dim{x},\dim{y},\dim{z})\exp{-i\omega \dim{t}} + c.c.$, 
+propagating in a nondispersive static atmosphere follows a stochastic Helmholtz equation
+
+\begin{equation}
+\begin{split}
+  &\nabla^2 \dim{A} + k^2  (n_0 +  n(\dim{x},\dim{y},\dim{z}))^2 \dim{A} = 0 \quad  \mbox{for}   
+  \quad -\infty < \dim{x},\dim{y} < \infty, \quad 0 < \dim{z} < L, \\
+  &\quad  \mbox{where} \quad \dim{A}(\dim{x},\dim{y},0) = \dim{A}_{i}(\dim{x},\dim{y})\exp{i \Phi(\dim{x},\dim{y})},
+\end{split}
+\end{equation}
+and $\dim{A}_{i}(\dim{x},\dim{y})$ is of finite support, i.e. $\dim{A}_{i}(\dim{x},\dim{y}) = 0$ 
+when $\sqrt{\dim{x}^2 + \dim{y}^2} > D_{i}$. Note, $k = \frac{\omega}{c} = \frac{2\pi}{\lambda}$.  
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Atmospheric Statistics}
+ Normally, the stochastic part of the atmosphere is described by the structure function~\cite{andrews2005laser}
+\begin{equation}
+\begin{split}
+  \Expect{(n(\vect{\dim{r}}_1) - n(\vect{\dim{r}}_2))^2} &= 
+  C_n^2  \begin{cases}
+        l_{0}^{-4/3} \left|\vect{\dim{r}}_1-\vect{\dim{r}}_2\right|^{2} & 0 < \left|\vect{\dim{r}}_1-\vect{\dim{r}}_2\right| \leq l_{0} \\
+       \left|\vect{\dim{r}}_1 - \vect{\dim{r}}_2 \right|^{2/3} &  l_{0}  \leq \left|\vect{\dim{r}}_1 - \vect{\dim{r}}_2\right| \leq  L_{0}  \\
+   \end{cases}\\
+   &= \Expect{n^2(\vect{\dim{r}}_1)} +  \Expect{n^2(\vect{\dim{r}}_2)} 
+   - 2\Expect{n(\vect{\dim{r}}_1)n(\vect{\dim{r}}_2)} \\
+   &= 2\sigma_n^2(1-\cor{n_1,n_2})
+\end{split}
+\end{equation}
+so
+\begin{equation}
+  \cor{n_1,n_2} = 1 - 
+    \begin{cases}
+        \frac{C_n^2}{2\sigma_n^2}l_{0}^{-4/3} \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right|^{2} & 0 < \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| \leq l_{0} \\
+        \frac{C_n^2}{2\sigma_n^2} \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right|^{2/3} &  l_{0}  \leq \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| \leq  L_{0}  \\
+   \end{cases}
+\end{equation}
+
+If we assume that $|\cor{n_1,n_2}| \ll 1$ for $ \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| \gg L_0$, 
+then letting $\left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| = C_0 L_0$ for $C_0 > 1$ we can write
+\begin{equation}
+\begin{split}
+  0 = 1 - C_0^{2/3} \frac{C_n^2 L_0^{2/3}}{2\sigma_n^2},
+\end{split}
+\end{equation}
+or 
+\begin{equation}
+\begin{split}
+  \sigma_n^2 =  C_0^{2/3} \frac{C_n^2 L_0^{2/3}}{2} 
+\end{split}
+\end{equation}
+and
+\begin{equation}
+  \cor{n_1,n_2} = 1 - 
+    \begin{cases}
+        \frac{1}{C_0^{2/3}(L_0l_{0}^2)^{2/3}}\left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right|^{2} & 0 < \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| \leq l_{0} \\
+        \frac{1}{C_0^{2/3}L_0^{2/3}} \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right|^{2/3} &  l_{0}  \leq \left|\vect{\dim{r}}_1-\vect{\dim{r}}_{2}\right| \leq  L_{0}  \\
+   \end{cases}
+\end{equation}
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Quantity                 & Symbol                    & Characteristic Value(s)  \\       
+\hline
+\hline
+Wavelength               & $\lambda $                & $10^{-6} $ (meters)      \\                   
+\hline
+Wavenumber               & $k= \frac{2\pi}{\lambda}$ & $10^{6} $ (meters$^{-1}$)\\            
+\hline
+Kolmogorov Inner-scale   & $l_0$                     & $10^{-2} \leftrightarrow 10^{-3}$ (meters)       \\             
+\hline
+Kolmogorov Outer-scale   & $L_0$                     & $10 \leftrightarrow  10^{3}$ (meters)        \\            
+\hline
+Index Structure Constant & $C_n^2$                   & $10^{-20}\leftrightarrow 10^{-12}$ (meters$^{-2/3}$) \\
+\hline
+Index Variance           & $\sigma_n^2 =  C_0^{2/3} \frac{C_n^2 L_0^{2/3}}{2} $              & $C_0^{2/3} (10^{-18}\leftrightarrow 10^{-10})$ \\     
+\hline
+Apperture Diameter       & $D_{i}$                   & $1\leftrightarrow 10^{-2}$ (meters)     \\            
+\hline
+Propagation Distance     & $L$                       & $10^{3}\leftrightarrow 10^{4}$ (meters) \\     
+\hline     
+\end{tabular}
+\end{center}
+\caption{Atmospheric Scales}
+\label{Atmospheric Scales}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Nondimensionalization}
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Quantity                 & Scale                & New Variable        \\       
+\hline
+\hline
+$\dim{z}$                & $L_0$                & $\dim{z} = L_0 z$   \\                   
+\hline
+$\dim{x}$                & $l_0$                & $\dim{x} = l_0  x$  \\
+\hline
+$\dim{y}$                & $l_0$                & $\dim{y} = l_0  y$  \\
+\hline
+$n(l_0 \dim{x}, l_0 \dim{y}, L_0 \dim{z})$ & $\sigma_n$ & $n(l_0 \dim{x}, l_0 \dim{y}, L_0 \dim{z}) = \sigma_n n(x,y,z)$  \\
+\hline
+$\dim{A}(l_0 \dim{x}, l_0 \dim{y}, L_0 \dim{z})$ &  $A_0$  & $\dim{A}(l_0 \dim{x}, l_0 \dim{y}, L_0 \dim{z}) = A_0 A(x,y,z)$ \\
+\hline   
+\end{tabular}
+\end{center}
+\caption{Dimensional Scales}
+\label{Dimensional Scales}
+\end{table}
+
+
+\begin{equation}
+\begin{split}
+  & \frac{l_0^2}{L_0^2} \ppder{A}{z} + \nabla_{\perp}^2 A + l_0^2 k^2 n_0^2 A 
+  +  2 l_0^2k^2 n_0 \sigma_n n(x,y,z) A + l_0^2k^2 \sigma_n^2 n^2(x,y,z) A = 0 \\
+  &\quad  \mbox{for}   
+  \quad -\infty < x,y < \infty, \quad 0 < z < \frac{L}{L_0} \quad  
+  \mbox{where} \quad A(x,y,0) = A_{i}(x,y)\exp{i \Phi(x,y)}
+\end{split}
+\end{equation}
+and $A_{i}(x,y)$ is of finite support, \ie $A_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{i}}{l_0}$.
+
+
+\subsubsection{Paraxial Approximation }
+
+Letting $A = \exp{i k L_0 n_0 z} U(x,y,z)$ gives
+\begin{equation}\label{equ:helmholtz_equation_3}
+\begin{split}
+  & \frac{l_0^2}{L_0^2} \left( \ppder{U}{z}  + 2i k L_0 n_0 \pder{U}{z} - k^2 L_0^2 n_0^2 U \right) 
+  + \nabla_{\perp}^2 U + l_0^2 k^2 n_0^2 U + 2 l_0^2 k^2 n_0 \sigma_n n(x,y,z) U 
+  + l_0^2 k^2 \sigma_n^2 n^2(x,y,z) U = 0 \\
+  &\quad  \mbox{for}   
+  \quad -\infty < x,y < \infty, \quad 0 < z < \frac{L}{L_0} 
+  \quad \mbox{where} \quad U(x,y,0) = U_{i}(x,y) \exp{i\Phi(x,y)}
+\end{split}
+\end{equation}
+and $U_{i}(x,y)$ is of finite support, \ie $U_{i}(x,y) = 0$ when 
+$\sqrt{x^2 + y^2} > \frac{D_{i}}{l_0}$. 
+
+\begin{equation}
+\begin{split}
+  & \frac{l_0^2}{L_0^2} \ppder{U}{z} + 2i n_0 \frac{l_0^2 k}{L_0} \pder{U}{z} + \nabla_{\perp}^2 U 
+   +  2n_0  l_0^2 k^2 \sigma_n n(x,y,z)U + l_0^2 k^2 \sigma_n^2 n^2(x,y,z) U = 0 \\
+  &\quad  \mbox{for}   
+  \quad -\infty < x,y < \infty, \quad 0 < z < \frac{L}{L_0} \quad  \mbox{where} \quad U(x,y,0) = U_{i}(x,y)\exp{i \Phi(x,y)}
+\end{split}
+\end{equation}
+and $U_{i}(x,y)$ is of finite support, \ie $U_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \frac{D_{i}}{l_0}$.
+
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Ratio                      & Symbols                          & Range        \\       
+\hline
+\hline
+Index Variance             & $\sigma_n =  C_0^{1/3} \frac{C_n L_0^{1/3}}{\sqrt{2}}$   & $ (10^{-9}\leftrightarrow 10^{-5})$ \\ 
+\hline
+Inner-scale/Outer-scale    & $\epsilon = \frac{l_0}{L_0}$     & $10^{-4} \leftrightarrow 10^{-6}\quad$    \\                  
+\hline
+Inner-scale/Fresnel Length &  $\delta = \frac{l_0^2 k }{L_0} = (1 \leftrightarrow 10^{2})(10^{-3}\leftrightarrow 10^{-1}) $ & $10^{-3} \leftrightarrow 10$  \\
+\hline
+Inner-scale/Wavelength     & $\gamma = l_0^2 k^2 \sigma_n$    & $10^{-3} \leftrightarrow 1$  \\
+\hline
+Inner-scale/Wavelength     & $\nu   = \gamma \sigma_n$        & $10^{-12} \leftrightarrow 10^{-5}$  \\ 
+\hline   
+Propagation Distance/Outer-Scale & $\Lambda = \frac{L}{L_0}$  & $1 \leftrightarrow 10$ \\
+\hline
+Aperture Diameter/Inner-Scale    & $\Delta_{\perp} = \frac{\tilde{D_{i}}}{l_0}$  & $10^3 \leftrightarrow 10$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Dimensional Scales}
+\label{Dimensional Scales}
+\end{table}
+
+\begin{equation}
+ \epsilon^2 \ppder{U}{z} + 2i n_0 \delta \pder{U}{z}   + \nabla_{\perp}^2 U 
+   +  2n_0  \gamma n(\vect{r}) U + \nu n^2(\vect{r}) U = 0 
+\end{equation}
+for $-\infty < x,y < \infty$, $0 < z < \Lambda$ where $U(x,y,0) = U_{i}(x,y)\exp{i \Phi(x,y)}$
+and $U_{i}(x,y)$ is of finite support, i.e. $U_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \Delta_{\perp}$.
+\begin{equation}
+  2i n_0 \delta \pder{U}{z}  + \nabla_{\perp}^2 U + 2 n_0 \gamma n(\vect{r}) U = 0 
+\end{equation}
+for $-\infty < x,y < \infty$, $0 < z < \Lambda$ where $U(x,y,0) = U_{i}(x,y)\exp{i \Phi(x,y)}$
+and $U_{i}(x,y)$ is of finite support, i.e. $U_{i}(x,y) = 0$ when $\sqrt{x^2 + y^2} > \Delta_{\perp}$.
+Also, 
+\begin{equation}
+\begin{split}
+  \cor{n_1,n_2} = 1 - \frac{1}{C_0^{2/3}} \left( (z_{1} - z_{2})^{2} 
+  + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}\right)^{1/3}, 
+  \quad  \sqrt{\epsilon} \leq \sqrt{(z_{1} - z_{2})^{2} + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}}  \leq  1
+\end{split}
+\end{equation}
+
+\begin{equation}
+  \cor{n_1,n_2} = 1 - 
+    \frac{1}{C_0^{2/3}}  \begin{cases}
+        \frac{1}{\epsilon^{2/3}} \left( (z_{1} - z_{2})^{2} 
+  + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}\right) & 0 \leq \sqrt{(z_{1} - z_{2})^{2} + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}}  \leq  \sqrt{\epsilon} \\
+        \left( (z_{1} - z_{2})^{2} 
+  + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}\right)^{1/3} &  \sqrt{\epsilon} \leq \sqrt{(z_{1} - z_{2})^{2} + \epsilon \left|\vect{r}_{\perp,1}-\vect{r}_{\perp,2}\right|^{2}}  \leq  1  \\
+   \end{cases}
+\end{equation}
+
+
+
+\subsubsection{Numerically}
+If $z_{1} = z_{2}$
+\begin{equation}
+  \cor{n_1,n_2} = 1 - \frac{1}{C_0^{2/3}} \epsilon^{1/3} \left|\vect{r}_{1}-\vect{r}_{2}\right|^{2} \quad 0 \leq \left|\vect{r}_{1}-\vect{r}_{2}\right| \leq 1  
+\end{equation}
+\begin{equation}
+  \cor{n_1,n_2} = 1 - \frac{1}{C_0^{2/3}} \epsilon^{1/3} \left|\vect{r}_{1}-\vect{r}_{2}\right|^{2/3} \quad 1 \leq \left|\vect{r}_{1}-\vect{r}_{2}\right| \leq \frac{1}{\sqrt{\epsilon}}  
+\end{equation}
+
+If $1 \geq |z_{1} - z_{2}| \geq \sqrt{\epsilon}$
+\begin{equation}
+    \cor{n_1,n_2} = 1 - \frac{1}{C_0^{2/3}} \left( (z_{1} - z_{2})^{2}  + \epsilon \left|\vect{r}_{1}-\vect{r}_{2}\right|^{2}\right)^{1/3} \\  
+\end{equation}

@@ -1,0 +1,689 @@
+\section{Derivation of ODEs}
+\begin{equation}
+\begin{split}
+L_{den}(s,\conj{u}_s,u_r,\conj{u}_r) &= \Re{i\pder{u_s}{z}\conj{u}_s} + \Re{i \pder{u_r}{z}\conj{u}_r} - \avg{d}\left(\pder{u_s}{t}\pder{\conj{u}_s}{t}\right) - \avg{d}\left(\pder{u_r}{t}\pder{\conj{u}_r}{t} \right) \\
+&\quad + \frac{1}{2}\avg{s}\Re{\iint K(t_1,t_2) u_s(z,t_1+t) u_s(z,t_2+t) \conj{u}_s(z,t_1+t_2+t) \conj{u}_s(z,t)  \,dt_1 dt_2} \\
+&\quad + 2\avg{s}\Re{\iint K(t_1,t_2) u_s(z,t_1+t) r(z,t_2+t) \conj{u}_r(z,t_1+t_2+t) \conj{u}_s(z,t)   \,dt_1 dt_2} \\
+&\quad - 2\Re{\conj{u}_s \, in_{sol}} - 2\Re{\conj{u}_r\ in_{rad}}\\
+\end{split}
+\end{equation}
+
+Let 
+\begin{equation}\label{equ:Ansatz_Form}
+\begin{split}
+u_s &= A f(\Sigma) \exp{i\Phi}, \quad  \Sigma = \Sigma(t,z), \quad \Phi = \Phi(t,z),\\
+u_r &= \sum_{j=-N/2}^{N/2 - 1} \alpha_j(z) e^{-i \omega_j t} H(w-|t|),
+\end{split}
+\end{equation}
+
+\begin{itemize}
+ \item 
+ \begin{equation}
+ \begin{split}
+        \pder{u_s}{z} &= \left[ \left( \dot{A} f + A f' \pder{\Sigma}{z} \right)+ i \left( A f \pder{\Phi}{z} \right)\right] \exp{i\Phi}\\
+        \pder{\conj{u}_s}{z} &= \left[ \left( \dot{A} f + A f' \pder{\Sigma}{z} \right)- i \left( A f \pder{\Phi}{z} \right)\right] \exp{-i\Phi}\\
+        \conj{u}_s\pder{u_s}{z} &= [Af]\left[ \left( \dot{A} f + A f' \pder{\Sigma}{z} \right)+ i \left( A f \pder{\Phi}{z} \right)\right]  \\
+                      &= \left[ \left( A\dot{A} f^2 + A^2 ff' \pder{\Sigma}{z} \right)+ i \left( A^2 f^2 \pder{\Phi}{z} \right)\right]\\
+        \Re{i \pder{u_s}{z}\conj{u}_s} &= -\Im{\pder{u_s}{z}\conj{u}_s} = - A^2 f^2 \pder{\Phi}{z}  \\
+        2\Re{i u_s \pder{\conj{u}_s}{z} } &= 2A^2 f^2 \pder{\Phi}{z}  
+ \end{split}
+ \end{equation}
+ \item 
+ \begin{equation}
+       \begin{split}
+        \pder{u_s}{t} &= \left[ \left( A f' \pder{\Sigma}{t} \right) + i \left( A f \pder{\Phi}{t} \right) \right] \exp{i\Phi}\\
+        \ppder{u_s}{t} &= \left[  A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} + i A f' \pder{\Sigma}{t} \pder{\Phi}{t} + i A f \ppder{\Phi}{t} \right] \exp{i\Phi} + \left[ i A f' \pder{\Sigma}{t} \pder{\Phi}{t} -  A f \pder{\Phi}{t}^2 \right] \exp{i\Phi}\\
+               &=\left[\left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right) + i \left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\right] \exp{i\Phi}\\
+        \pder{u_s}{t}\pder{\conj{u}_s}{t} &= \left[ \left( A f' \pder{\Sigma}{t} \right) + i \left( A f \pder{\Phi}{t} \right) \right]\left[ \left( A f' \pder{\Sigma}{t} \right) - i \left( A f \pder{\Phi}{t} \right) \right]\\
+                         &= \left( A f' \pder{\Sigma}{t} \right)^2 + \left( A f \pder{\Phi}{t} \right)^2\\
+        \ppder{u_s}{t}\pder{\conj{u}_s}{z} &= \left[\left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right) + i \left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\right] \left[ \left( \dot{A} f + A f' \pder{\Sigma}{z} \right)- i \left( A f \pder{\Phi}{z} \right)\right]\\
+                        &= \left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right)\left( \dot{A} f + A f' \pder{\Sigma}{z} \right) + i \left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\left( \dot{A} f + A f' \pder{\Sigma}{z} \right) \\
+                        &\quad - i \left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right)\left( A f \pder{\Phi}{z} \right) + \left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\left( A f \pder{\Phi}{z} \right)\\
+                        &= \left[\left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right)\left( \dot{A} f + A f' \pder{\Sigma}{z} \right)+ \left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\left( A f \pder{\Phi}{z} \right)\right] \\
+                        &\quad + i \left[\left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\left( \dot{A} f + A f' \pder{\Sigma}{z} \right) -  \left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right)\left( A f \pder{\Phi}{z} \right) \right]\\
+        2\Re{i \ppder{u_s}{t}\pder{\conj{u}_s}{z}} &= -2\left[\left( 2 A f' \pder{\Sigma}{t} \pder{\Phi}{t} + A f \ppder{\Phi}{t} \right)\left( \dot{A} f + A f' \pder{\Sigma}{z} \right) -  \left( A f''  \pder{\Sigma}{t}^2 + A f' \ppder{\Sigma}{t} - A f \pder{\Phi}{t}^2 \right)\left( A f \pder{\Phi}{z} \right) \right]\\
+                        &= -2\left[ 2 A\dot{A} (ff') (\pder{\Sigma}{t} \pder{\Phi}{t}) + A\dot{A} (f^2) ( \ppder{\Phi}{t}) + 2 A^2 (f'^2) (\pder{\Sigma}{z} \pder{\Sigma}{t} \pder{\Phi}{t}) + A^2 (ff') (\ppder{\Phi}{t} \Sigma_{z})\right] \\
+                        & \quad +2 \left[ A^2 (ff'') (\pder{\Phi}{z} \Sigma_{t}^2) + A^2 (ff') (\pder{\Phi}{z} \ppder{\Sigma}{t}) - A^2 f^2 (\pder{\Phi}{z} \pder{\Phi}{t}^2) \right]\\
+                        &= -4 A\dot{A} (ff') (\pder{\Sigma}{t} \pder{\Phi}{t}) -  2A\dot{A} (f^2) ( \ppder{\Phi}{t}) - 4 A^2 (f'^2) (\pder{\Sigma}{z} \pder{\Sigma}{t} \pder{\Phi}{t}) - 2 A^2 (ff') (\ppder{\Phi}{t} \Sigma_{z}) \\
+                        &\quad + 2A^2 (ff'') (\pder{\Phi}{z} \Sigma_{t}^2) + 2A^2 (ff') (\pder{\Phi}{z} \ppder{\Sigma}{t}) - 2A^2 (f^2) (\pder{\Phi}{z} \pder{\Phi}{t}^2) \\
+                        &= \left[2A^2 (\pder{\Phi}{z} \Sigma_{t}^2)\right] (ff'') + \left[ 2A^2 (\pder{\Phi}{z} \ppder{\Sigma}{t}) - 4 A\dot{A} (\pder{\Sigma}{t} \pder{\Phi}{t})  - 2 A^2 (\ppder{\Phi}{t} \Sigma_{z})\right](ff')  \\
+                        &\quad -  \left[2A\dot{A} ( \ppder{\Phi}{t}) + 2A^2  (\pder{\Phi}{z} \pder{\Phi}{t}^2)\right](f^2) - \left[4 A^2 (\pder{\Sigma}{z} \pder{\Sigma}{t} \pder{\Phi}{t})\right](f'^2)     \\
+       \end{split}
+ \end{equation}
+ \item 
+ \begin{equation}
+ \begin{split}
+        \pder{u_r}{z} &= \sum_{j=-N/2}^{N/2 - 1} \dot{\alpha}_j(z) e^{-i \omega_j t} H(w-|t|)\\
+        \conj{u}_r\pder{u_r}{z} &= \sum_{j=-N/2}^{N/2 - 1} \dot{\conj{\alpha}}_j(z) e^{i \omega_j t} H(w-|t|)\\
+        u_r\pder{\conj{u}_r}{z} &= \sum_{j=-N/2}^{N/2 - 1} \alpha_j(z) e^{-i \omega_j t} H(w-|t|) \sum_{k=-N/2}^{N/2 - 1} \dot{\conj{\alpha}}_k(z) e^{i \omega_k t} H(w-|t|)\\
+                    &= \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j(z) \dot{\conj{\alpha}}_k(z) e^{i \omega_k t} e^{-i \omega_j t} H(w-|t|) \\
+        \conj{u}_r\pder{u_r}{z} &= \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \conj{\alpha}_j \dot{\alpha}_k e^{-i \omega_k t} e^{i \omega_j t} H(w-|t|) \\
+        \Re{i\pder{u_r}{z}\conj{u}_r} &= \frac{i}{2}\left[\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \conj{\alpha}_j \dot{\alpha}_k e^{-i \omega_k t} e^{i \omega_j t} H(w-|t|)-\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j \dot{\conj{\alpha}}_k e^{i \omega_k t} e^{-i \omega_j t} H(w-|t|)\right] \\
+          &= \frac{i}{2}\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_k e^{-i \omega_k t} e^{i \omega_j t} - \alpha_j \dot{\conj{\alpha}}_k e^{i \omega_k t} e^{-i \omega_j t}\right] H(w-|t|) \\
+        2\Re{iu_r\pder{\conj{u}_r}{z}} &= i\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \left[\alpha_j \dot{\conj{\alpha}}_k e^{i \omega_k t} e^{-i \omega_j t} - \conj{\alpha}_j \dot{\alpha}_k e^{-i \omega_k t} e^{i \omega_j t}\right] H(w-|t|) \\
+ \end{split}
+ \end{equation}
+ \item 
+ \begin{equation}
+ \begin{split}
+        \pder{u_r}{t} &= \sum_{j=-N/2}^{N/2 - 1} \alpha_j (-i \omega_j) e^{-i \omega_j t} H(w-|t|)\\
+        \ppder{u_r}{t} &= \sum_{j=-N/2}^{N/2 - 1} \alpha_j (-i \omega_j)^2 e^{-i \omega_j t} H(w-|t|)\\
+               &= -\sum_{j=-N/2}^{N/2 - 1} \alpha_j \ \omega_j^2 \ e^{-i \omega_j t} H(w-|t|)\\
+        \pder{u_r}{t}\pder{\conj{u}_r}{t} &= \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j \ \conj{\alpha}_k \ \omega_j \ \omega_k e^{-i \omega_j t}e^{i \omega_k t} H(w-|t|)\\
+        \ppder{u_r}{t}\pder{\conj{u}_r}{z} &= -\sum_{j=-N/2}^{N/2 - 1} \alpha_j \ \omega_j^2 \ e^{-i \omega_j t} H(w-|t|) \sum_{k=-N/2}^{N/2 - 1} \dot{\conj{\alpha}}_k e^{i \omega_k t} H(w-|t|)\\
+        &= -\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\dot{\conj{\alpha}}_k \ \omega_j^2 \ e^{-i \omega_j t} e^{i \omega_k t} H(w-|t|)\\
+        2\Re{i \ppder{u_r}{t} \ \pder{\conj{u}_r}{z} }  &= i\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \left[-\alpha_j\dot{\conj{\alpha}}_k \ e^{-i \omega_j t} e^{i \omega_k t} + \conj{\alpha}_j\dot{\alpha}_k \ e^{i \omega_j t} e^{-i \omega_k t}\right] \ \omega_j^2  H(w-|t|)\\
+\end{split}
+ \end{equation}
+\end{itemize}
+\begin{equation}
+\begin{split}
+L_{den} &= - A^2 f^2 \pder{\Phi}{z} + \frac{i}{2}\sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_k e^{-i \omega_k t} e^{i \omega_j t} - \alpha_j \dot{\conj{\alpha}}_k e^{i \omega_k t} e^{-i \omega_j t}\right] H(w-|t|)\\
+&- \avg{d} \left(\left( A f' \pder{\Sigma}{t} \right)^2 + \left( A f \pder{\Phi}{t} \right)^2\right) - \avg{d} \left( \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j \ \conj{\alpha}_k \ \omega_j \ \omega_k e^{-i \omega_j t}e^{i \omega_k t} H(w-|t|) \right) \\
+& + \frac{1}{2}\avg{s} A^4\Re{\iint K(t_1,t_2) f(\Sigma(t_1+t)) f(\Sigma(t_2+t)) f(\Sigma(t_1+t_2+t)) f(\Sigma(t)) \right.\\
+&\left. \hspace{1.5in} \exp{i\left(\Phi(t_1+t)+ \Phi(t_2+t)-\Phi(t_1+t_2+t)-\Phi(t)\right)} \,dt_1 dt_2} \\
+&+ 2\avg{s} A^2\Re{\iint K(t_1,t_2) f(\Sigma(t_1+t)) f(\Sigma(t))\exp{i\left(\Phi(t_1+t)-\Phi(t)\right)} \right.\\
+&\left. \hspace{0.5in} \sum_{j=-N/2}^{N/2 - 1} \alpha_j(z) e^{-i \omega_j (t_2+t)} H(w-|t_2+t|) \sum_{k=-N/2}^{N/2 - 1} \conj{\alpha}_k(z) e^{i \omega_k (t_1+t_2+t)} H(w-|t_1+t_2+t|)   \,dt_1 dt_2} \\
+&- 2\Re{\conj{u}_s \, in_{sol}} - 2\Re{\conj{u}_r\ in_{rad}}\\
+\end{split}
+\end{equation}
+Averaging:
+\begin{equation}
+\begin{split}
+L_{avg} &= -A^2  \left[\int{f^2\pder{\Phi}{z} \,dt} \right] + iw \sum_{j=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_j - \alpha_j \dot{\conj{\alpha}}_j\right] - \avg{d} A^2 \left[\int{\left(f' \pder{\Sigma}{t} \right)^2 + \left(f \pder{\Phi}{t} \right)^2\,dt}\right] - 2 \avg{d} w \sum_{j=-N/2}^{N/2 - 1} \alpha_j \ \conj{\alpha}_j \ \omega_j^2 \\
+&\quad + \frac{1}{2}\avg{s} A^4 \Re{\int \iint K(t_1,t_2) f(\Sigma(t_1+t)) f(\Sigma(t_2+t)) f(\Sigma(t_1+t_2+t)) f(\Sigma(t))\right.\\
+&\hspace{1in}\left. \exp{i\left(\Phi(t_1+t)+ \Phi(t_2+t)-\Phi(t_1+t_2+t)-\Phi(t)\right)} \,dt_1 dt_2\,dt} \\
+&\quad + 2 \avg{s} A^2 \Re{\int \iint K(t_1,t_2)  f(\Sigma(t_1+t))f(\Sigma(t)) \exp{i\left(\Phi(t_1+t)-\Phi(t)\right)}  \right.\\
+&\hspace{1in} \left. \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\conj{\alpha}_k  e^{-i \omega_j (t_2+t)} e^{i \omega_k (t_1+t_2+t)}  H(w-|t_2+t|) H(w-|t_1+t_2+t|) \,dt_1 dt_2\,dt} \\
+&\quad - 2\Re{\int{A f(\Sigma) \exp{-i\Phi} \, in_{sol}\,dt}} - 2\Re{\int{\sum_{j=-N/2}^{N/2 - 1}\conj{\alpha}_j e^{i \omega_j t} H(w-|t|)\ in_{rad}\,dt}}\\
+\end{split}
+\end{equation}
+
+
+\subsection{Chirped Gaussian}
+Let 
+\begin{equation}\label{equ:Chriped_Gaussian_Ansatz}
+\begin{split}
+f = \exp{-\frac{\Sigma^2}{2}} \quad \Sigma(t,z) = \frac{\left(t - T(z)\right)}{W(z)}, \quad \Phi(t,z) = \phi(z) + \Omega(z) (t-T) + \frac{C(z)}{2} (t-T)^2
+\end{split}
+\end{equation}
+than we have the following properties:
+For $f$:
+\begin{equation}
+\begin{split}
+f' &= -\Sigma f\\
+f'' & = -f - \Sigma f' = (\Sigma^2 - 1) f \\
+f'^2& = \Sigma^2 f^2 \\
+ff' & = -\Sigma f^2 \\
+ff''& = (\Sigma^2 - 1) f^2 \\
+\frac{f'}{f} &= -\Sigma
+\end{split}
+\end{equation}
+For $\Sigma$:
+\begin{equation}
+\begin{split}
+\pder{\Sigma}{t} & = \frac{1}{W} \\
+\ppder{\Sigma}{t} & = 0 \\
+\pder{\Sigma}{z} & = -\frac{1}{W^2}\left[\dot{W} (t-T)  + W \dot{T}\right]  = -\frac{1}{W}\left[\dot{W} \Sigma   + \dot{T}\right]\\
+&\Sigma(t_1+t)^2+\Sigma(t_2+t)^2+\Sigma(t_1+t_2+t)^2+\Sigma(t)^2 =\frac{1}{W^2}\left[(t_1+t-T)^2+(t_2+t-T)^2 \right. \\
+&\hspace{1.5in} \left.+(t_1+t_2+t-T)^2+(t-T)^2\right]\\
+&= \frac{1}{W^2} \left[ (t_1)^2 + 2 t_1 (t-T) + (t-T)^2 + (t_2)^2 + 2 t_2 (t-T) + (t-T)^2 \right. \\
+&\hspace{1.5in} \left. + (t_1 + t_2)^2 + 2 (t_1+t_2) (t-T) + (t-T)^2  + (t-T)^2 \right] \\
+&= \frac{1}{W^2} \left[ (t_1)^2 + (t_2)^2 + (t_1 + t_2)^2  + 4 (t_1+t_2) (t-T)  + 4(t-T)^2 \right] \\
+&= \frac{1}{W^2} \left[ (t_1)^2 + (t_2)^2 + (t_1 + t_2)^2 \right] + \frac{4}{W^2} \left[ (t_1+t_2) (t-T)  + (t-T)^2 \right] \\
+\end{split}
+\end{equation}
+For $\Phi$:
+\begin{equation}
+\begin{split}
+\pder{\Phi}{t} & = \Omega + C (t-T) = \Omega + C W \Sigma \\  
+\ppder{\Phi}{t} & = C \\
+\pder{\Phi}{z} & = \dot{\phi} + \dot{\Omega} (t-T) - \Omega\dot{T} + \frac{\dot{C}}{2} (t-T)^2 - C(t-T)\dot{T} \\
+       & = \left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right) (t-T)  + \frac{\dot{C}}{2} (t-T)^2  \\
+       & = \left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right)W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2  \\
+\Phi(t_1+t)&+ \Phi(t_2+t)-\Phi(t_1+t_2+t)-\Phi(t) =  \frac{C}{2}\left[ (t+t_1-T)^2 + (t+t_2-T)^2 \right.\\
+&\hspace{1.5in}\left. - (t+t_1+t_2-T)^2 - (t-T)^2 \right] \\
+& = \frac{C}{2} \left[ (t_1)^2 + 2t_1(t-T) + (t-T)^2 + (t_2)^2 + 2t_2(t-T) + (t-T)^2 \right.\\
+&\hspace{1.5in}\left. - (t_1 + t_1)^2 - 2(t_1+t_2)(t-T) - (t-T)^2 -(t-T)^2 \right] \\
+& = \frac{C}{2} \left[(t_1)^2 + (t_2)^2 - (t_1 + t_2)^2 \right]  \\
+& = - C t_1 t_2\\
+\Phi(t_1+t)-\Phi(t) &=  \Omega t_1 + \frac{C}{2}\left[t_1^2 + 2t_1(t-T)\right] \\
+\Phi(t_1+t)-\Phi(t_1+t_2+t) &= -\left(\Omega +\frac{C}{2}\left(2t_1 + t_2 + 2(t-T)\right)\right)t_2
+\end{split}
+\end{equation}
+
+  
+   \begin{equation}
+     \begin{split}
+       &\frac{1}{2}\avg{s} A^4 \Re{\int \iint K(t_1,t_2) f(\Sigma(t_1+t)) f(\Sigma(t_2+t)) f(\Sigma(t_1+t_2+t)) f(\Sigma(t))\right.\\
+       &\hspace{1in}\left. \exp{i\left(\Phi(t_1+t)+ \Phi(t_2+t)-\Phi(t_1+t_2+t)-\Phi(t)\right)} \,dt_1 dt_2\,dt} \\
+       &= \frac{1}{2} \avg{s}  A^4 \Re{\int \int \int K(t_1,t_2) \left[\exp{-i(C t_1 t_2)} \exp{-\frac{1}{2W^2} \left[ (t_1)^2 + (t_2)^2 + (t_1 + t_2)^2 \right] - \frac{2}{W^2} \left[ (t_1+_2) (t-T)  + (t-T)^2 \right]  } \right] \,dt_1\,dt_2\,dt} \\
+     \end{split}
+   \end{equation} 
+
+    \begin{equation}
+      \begin{split}
+      \int \exp{- \frac{2}{W^2} \left[ (t_1+t_2) (t-T)  + (t-T)^2 \right] }\,dt &=  \int \exp{ -\frac{2}{W^2} \left[ (t-T)^2 + (t_1+t_2) (t-T) \right] }\,dt \\
+      &=  \int \exp{ -\frac{2}{W^2} \left[ (t-T) + \frac{(t_1+t_2)}{2}\right]^2 }\,dt \ \exp{ \frac{2}{W^2} \frac{(t_1+t_2)^2}{4} } \\
+      &= \frac{W \sqrt{\pi}}{\sqrt{2}} \exp{ \frac{(t_1+t_2)^2 }{2W^2} } \\
+      \end{split}
+    \end{equation}
+
+   \begin{equation}
+     \begin{split}
+       &= \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s} A^4 W  \Re{\int \int K(t_1,t_2) \left[\exp{-i(C t_1 t_2)} \exp{-\frac{1}{2W^2} \left[ (t_1)^2 + (t_2)^2 + (t_1 + t_2)^2 \right]} \exp{ \frac{(t_1+t_2)^2 }{2W^2} } \right] \,dt_1\,dt_2} \\
+       &= \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s} A^4 W  \Re{\int \int K(t_1,t_2) \left[\exp{-i(C t_1 t_2)} \exp{-\frac{1}{2W^2} \left[ (t_1)^2 + (t_2)^2 \right]} \right] \,dt_1\,dt_2} \\
+       &= \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s} A^4 W^2 \Re{\int \int \frac{K(t_1,t_2)}{W} \left[\exp{-i(C t_1 t_2)} \exp{-\frac{1}{2W^2} \left[ (t_1)^2 + (t_2)^2 \right]} \right] \,dt_1\,dt_2} \\
+       &= \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s} A^4 W^2 K_1(W,C)
+     \end{split}
+   \end{equation}
+ 
+\begin{equation}
+\begin{split}
+K_1(W,C) & =\frac{1}{D_{r,str}} \frac{1}{2\beta}  \ln{\frac{ \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}}\\
+&  \mbox{ Where } \beta^2 = \frac{(1+W^4C^2)}{W^2},\ \kappa_1 = W^2C + \frac{D_{r,str}\beta^2}{2},\ \kappa_2 = W^2C - \frac{D_{r,str}\beta^2}{2} \\
+\end{split}
+\end{equation}
+
+   \begin{equation}
+     \begin{split}
+       &2\avg{s}  A^2 \Re{\int \iint K(t_1,t_2)  f(\Sigma(t_1+t))f(\Sigma(t)) \exp{i\left(\Phi(t_1+t)-\Phi(t)\right)}  \right.\\
+       &\hspace{1in} \left. \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\conj{\alpha}_k  e^{-i \omega_j (t_2+t)} e^{i \omega_k (t_1+t_2+t)}  H(w-|t_2+t|) H(w-|t_1+t_2+t|) \,dt_1 dt_2\,dt} \\
+       &= 2\avg{s} A^2 \Re{\int \iint K(t_1,t_2)  \exp{-\frac{1}{2W^2}\left(t_1 + t - T\right)^2}\exp{-\frac{1}{2W^2} \left(t - T\right)^2} \exp{i\left(\Omega t_1 + \frac{C}{2}\left[t_1^2 + 2t_1(t-T)\right]\right)}  \right.\\
+       &\hspace{1in} \left. \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\conj{\alpha}_k  e^{-i \omega_j (t_2+t)} e^{i \omega_k (t_1+t_2+t)}  H(w-|t_2+t|) H(w-|t_1+t_2+t|) \,dt_1 dt_2\,dt} \\
+       &= 2\avg{s} A^2 \Re{\int \iint K(t_1,t_2) \exp{-\frac{1}{2W^2}\left(t_1^2 + 2t_1(t-T)\right)} \exp{-\frac{1}{W^2}(t - T)^2} \exp{i\left(\Omega + \frac{C}{2}\left[t_1 + 2(t-T)\right]\right)t_1}  \right.\\
+       &\hspace{1in} \left. \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\conj{\alpha}_k  e^{-i \omega_j (t_2+t)} e^{i \omega_k (t_1+t_2+t)}  H(w-|t_2+t|) H(w-|t_1+t_2+t|) \,dt_1 dt_2\,dt} \\
+          \end{split}
+   \end{equation}
+   \begin{itemize}
+     \item  Consider only $\omega_j =\omega_k$ and $w \gg 0$
+
+   \begin{equation}
+     \begin{split}
+       &\approx 2\avg{s} A^2 \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \Re{\int \iint K(t_1,t_2) \exp{-\frac{1}{2W^2}\left(t_1^2 + 2t_1(t-T)\right)} \exp{-\frac{1}{W^2}(t - T)^2} \exp{i\left(\Omega + \frac{C}{2}\left[t_1 + 2(t-T)\right]\right)t_1} \exp{i \omega_k t_1}  \,dt_1 dt_2\,dt} \\
+       &= 2\avg{s}  A^2\sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \Re{\int \iint  \iint \frac{\exp{-i \omega_1 t_1 } \exp{-i \omega_2 t_2 }}{(2\pi)^2}  \sinc{\omega_1\omega_2 \frac{D_{r,str}}{2}} \,d\omega_1 \,d\omega_2 \right. \\
+       &\hspace{1in} \left. \exp{-\frac{1}{2W^2}\left(t_1^2 + 2t_1(t-T)\right)} \exp{-\frac{1}{W^2}(t - T)^2} \exp{i\left(\Omega + \frac{C}{2}\left[t_1 + 2(t-T)\right]\right)t_1} \exp{i \omega_j t_1}  \,dt_1 dt_2\,dt} \\
+       &= 2\avg{s} A^2  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \Re{\int \int  \iint \frac{\exp{-i \omega_1 t_1 } }{(2\pi)} \del{\omega_2}  \sinc{\omega_1\omega_2 \frac{D_{r,str}}{2}} \,d\omega_1 \,d\omega_2 \right. \\
+       &\hspace{1in} \left. \exp{-\frac{1}{2W^2}\left(t_1^2 + 2t_1(t-T)\right)} \exp{-\frac{1}{W^2}(t - T)^2} \exp{i\left(\Omega + \frac{C}{2}\left[t_1 + 2(t-T)\right]\right)t_1} \exp{i \omega_j t_1}  \,dt_1 \,dt} \\
+       &= 2\avg{s} A^2  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \Re{\int \int  \del{t_1} \exp{-\frac{1}{2W^2}\left(t_1^2 + 2t_1(t-T)\right)} \exp{-\frac{1}{W^2}(t - T)^2} \exp{i\left(\Omega + \frac{C}{2}\left[t_1 + 2(t-T)\right]\right)t_1} \exp{i \omega_j t_1}  \,dt_1 \,dt} \\
+       &= 2\avg{s}  A^2 \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \Re{\int \exp{-\frac{1}{W^2}(t - T)^2} \,dt} \\
+       &= 2\sqrt{\pi}\avg{s} A^2 W  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \\
+     \end{split}
+   \end{equation}
+
+    \item 
+     \begin{equation}
+      \begin{split}
+      &\Sigma^2 + \frac{(t_1+t_2)}{W} \Sigma  = \left(\Sigma + \frac{(t_1+t_2)}{2W}\right)^2 -  \frac{(t_1+t_2)^2}{4W^2}\\
+      \end{split}
+    \end{equation}
+   \end{itemize}
+
+   \begin{itemize}
+    \item 
+     \begin{equation}
+      \begin{split}
+      &\Sigma = \frac{\Gamma}{\sqrt{2}}-\frac{(t_1+t_2)}{2W}\\
+      &\frac{1}{\sqrt{2}}\int \exp{-\Gamma^2} \left(\frac{\Gamma}{\sqrt{2}}-\frac{(t_1+t_2)}{2W}\right)   \\
+      &=-\frac{\sqrt{\pi}}{\sqrt{2}}\frac{(t_1+t_2)}{2W}\\
+      &\Sigma^2 = \left(\frac{\Gamma}{\sqrt{2}}-\frac{(t_1+t_2)}{2W}\right)^2 = \frac{\Gamma^2}{2} - \frac{\Gamma}{\sqrt{2}}\frac{(t_1+t_2)}{W} + \frac{(t_1+t_2)^2}{4W^2}\\
+      &\frac{1}{\sqrt{2}}\int \exp{-\Gamma^2} \left(\frac{\Gamma^2}{2} - \frac{\Gamma}{\sqrt{2}}\frac{(t_1+t_2)}{W} + \frac{(t_1+t_2)^2}{4W^2}\right)   \\
+      &= \frac{1}{\sqrt{2}} \left(\frac{\sqrt{\pi}}{4} + \frac{(t_1+t_2)^2}{4W^2}\sqrt{\pi}\right) = \frac{\sqrt{\pi}}{4\sqrt{2}} \left(1 + \frac{(t_1+t_2)^2}{W^2}\right) \\
+     \end{split}
+    \end{equation}
+   \end{itemize}
+ 
+
+
+
+
+
+Useful Quantities:
+\begin{itemize}
+ \item 
+\begin{equation}
+\begin{split}
+\pder{\Sigma}{t}^2  & = \frac{1}{W^2}\\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Phi}{t}^2 & = (\Omega + CW\Sigma)^2 = \Omega^2 + 2\Omega C W \Sigma + C^2 W^2 \Sigma^2\\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Phi}{z} \Sigma_{t}^2 &= \left(\left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right) W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2 \right)\left(\frac{1}{W^2}\right) \\
+                      &= \frac{1}{W^2}\left(\left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right) W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2 \right) \\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Phi}{z} \ppder{\Sigma}{t} &= 0 \\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Sigma}{t} \pder{\Phi}{t} &= \left(\frac{1}{W}\right) \left( \Omega + C W \Sigma \right) = \frac{\Omega}{W} + C \Sigma\\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+ \ppder{\Phi}{t} \Sigma_{z} &=  \left( C \right) \left[-\frac{1}{W}\left(\dot{W}\Sigma + \dot{T} \right) \right] \\
+                      &=  -\frac{C}{W}\left( \dot{W}\Sigma  + \dot{T}\right)  \\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Phi}{z} \pder{\Phi}{t}^2 & =  \left( \left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right)W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2  \right)\left(\Omega^2 + 2\Omega CW\Sigma + C^2 W^2 \Sigma^2\right) \\
+%                 & = \Omega^2  \left(\dot{\phi}- \Omega\dot{T}\right) +  2\Omega C  \left(\dot{\phi}- \Omega\dot{T}\right) (t-T) + C^2  \left(\dot{\phi}- \Omega\dot{T}\right) (t-T)^2 \\
+% &\quad + \Omega^2 \left(\dot{\Omega}- C\dot{T}\right) (t-T)  +  2 \Omega C \left(\dot{\Omega}- C\dot{T}\right) (t-T)^2 + C^2 \left(\dot{\Omega}- C\dot{T}\right) (t-T)^3 \\
+% &\quad  + \Omega^2 \frac{\dot{C}}{2} (t-T)^2  +  2 \Omega C \frac{\dot{C}}{2} (t-t)^3 + C^2 \frac{\dot{C}}{2} (t-T)^4 \\
+& = \Omega^2  \left(\dot{\phi}- \Omega\dot{T}\right) +  2\Omega C  \left(\dot{\phi}- \Omega\dot{T}\right)W \Sigma + C^2  \left(\dot{\phi}- \Omega\dot{T}\right) W^2 \Sigma^2 \\
+&\quad + \Omega^2 \left(\dot{\Omega}- C\dot{T}\right) W\Sigma  +  2 \Omega C \left(\dot{\Omega}- C\dot{T}\right) W^2 \Sigma^2 + C^2 \left(\dot{\Omega}- C\dot{T}\right)W^3 \Sigma^3 \\
+&\quad  + \Omega^2 \frac{\dot{C}}{2}W^2 \Sigma^2  +  2 \Omega C \frac{\dot{C}}{2}W^3 \Sigma^3 + C^2 \frac{\dot{C}}{2}W^4 \Sigma^4 \\
+\end{split}
+\end{equation}
+
+\item
+\begin{equation}
+\begin{split}
+\pder{\Sigma}{z} \pder{\Sigma}{t} \pder{\Phi}{t} & = \left(-\frac{1}{W}\left[\dot{W}\Sigma  + \dot{T}\right] \right) \left( \frac{1}{W} \right) \left(\Omega + C W\Sigma \right) \\
+%                          & = -\frac{1}{W^3}\left[\dot{W} (t-T)  + W \dot{T}\right] \left(\Omega + C (t-T)  \right) \\ 
+%                          & = -\frac{1}{W^3}\left[\Omega \dot{W} (t-T)  + \Omega W \dot{T} + C \dot{W} (t-T)^2  + W C \dot{T}(t-T)  \right]  \\
+                         & = -\frac{1}{W^2}\left[ \Omega \dot{T} + \left(\Omega \dot{W}  +  C W\dot{T} \right) \Sigma  + C  W \dot{W}\Sigma^2  \right]  
+\end{split}
+\end{equation}
+\end{itemize}
+
+And...
+
+\begin{equation}
+\begin{split}
+\Int{\left(f^2\right)  \left(\pder{\Phi}{z}\right)}{t}  &= W \Int{\left(f^2\right)  \left(\pder{\Phi}{z}\right)}{\Sigma}\\
+& = W\left[\left(\dot{\phi}- \Omega\dot{T}\right)\Int{f^2}{\Sigma} + \left(\dot{\Omega}- C\dot{T}\right)W \Int{ f^2 \Sigma}{\Sigma}  + \frac{\dot{C}}{2}W^2 \Int{ f^2 \Sigma^2}{\Sigma} \right]  \\
+& = W\left[\left(\dot{\phi}- \Omega\dot{T}\right)\sqrt{\pi} + \frac{\dot{C}}{2}W^2 \frac{\sqrt{\pi}}{2} \right]  \\
+& = \sqrt{\pi} W\left[\left(\dot{\phi}- \Omega\dot{T}\right) + \frac{W^2}{4}\dot{C}\right]  \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{\left(f'^2\right) \left(\pder{\Sigma}{t}^2\right)}{t} & = W\Int{\left(f'^2\right) \left(\pder{\Sigma}{t}^2\right) }{\Sigma} =W\Int{\left(\Sigma^2f^2\right) \left(\pder{\Sigma}{t}^2\right) }{\Sigma}  \\
+& = W\frac{1}{W^2}\Int{\Sigma^2 f^2}{\Sigma}  = \frac{1}{2W}\sqrt{\pi}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ \left(f^2\right)  \left(\pder{\Phi}{t}^2\right)}{t} & = W\Int{ \left(f^2\right)  \left(\Omega^2 + 2\Omega C W \Sigma + C^2 W^2 \Sigma^2\right) }{\Sigma} \\
+& = W\left[ \Omega^2 \Int{f^2}{\Sigma} + C^2 W^2 \Int{f^2\Sigma^2 }{\Sigma} \right]\\
+& = \sqrt{\pi} W \left[ \Omega^2 + \frac{C^2 W^2}{2}\right]
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ \left(f^4\right)}{t} & = W\Int{f^4 }{\Sigma} = \frac{W}{\sqrt{2}} \sqrt{\pi}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{\left(f^4\right)  \left(\pder{\Phi}{z}\right)}{t}  &= W \Int{ \left(\pder{\Phi}{z}\right) \left(f^4\right) }{\Sigma}\\
+&= W \Int{  \left( \left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right)W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2 \right) \left(f^4\right)}{\Sigma}\\
+& = W\left[\left(\dot{\phi}- \Omega\dot{T}\right)\Int{f^4}{\Sigma} + \left(\dot{\Omega}- C\dot{T}\right)W \Int{ f^4 \Sigma}{\Sigma}  + \frac{\dot{C}}{2}W^2 \Int{ f^4 \Sigma^2}{\Sigma} \right]  \\
+& = W\left[\left(\dot{\phi}- \Omega\dot{T}\right)\frac{\sqrt{\pi}}{\sqrt{2}} + \frac{\dot{C}}{2}W^2 \frac{\sqrt{2}\sqrt{\pi}}{8} \right]  \\
+& = \frac{\sqrt{\pi}}{\sqrt{2}}W\left[\dot{\phi}- \Omega\dot{T} + \frac{W^2}{8}\dot{C} \right]  \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{(\pder{\Phi}{z} \Sigma_{t}^2)(ff'')}{t}  &= W \Int{ \frac{1}{W^2}\left(\left(\dot{\phi}- \Omega\dot{T}\right) + \left(\dot{\Omega}- C\dot{T}\right) W \Sigma  + \frac{\dot{C}}{2}W^2 \Sigma^2 \right)\left((\Sigma^2 - 1) f^2\right)}{\Sigma}\\
+&= \frac{1}{W}\left(\dot{\phi}- \Omega\dot{T}\right) \Int{(\Sigma^2 - 1) f^2}{\Sigma} + \frac{1}{W} \frac{\dot{C}}{2}W^2\Int{(\Sigma^2 - 1) f^2 \Sigma^2 }{\Sigma}\\
+&= \frac{1}{W}\left(\dot{\phi}- \Omega\dot{T}\right)\left( -\frac{1}{2}\sqrt{\pi} \right) + \frac{\dot{C}}{2}W\left( \frac{1}{4}\sqrt{\pi} \right) \\
+&= -\frac{1}{2}\sqrt{\pi} \left[\frac{1}{W}\left(\dot{\phi}- \Omega\dot{T} \right)- \frac{\dot{C}}{4}W \right] \\
+&= -\frac{\sqrt{\pi} }{2W}\left[\left(\dot{\phi}- \Omega\dot{T} \right)- \frac{W^2}{4} \dot{C}\right] \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ (\pder{\Phi}{z} \ppder{\Sigma}{t}) (ff')}{t}  &= 0
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ (\pder{\Sigma}{t} \pder{\Phi}{t}) (ff')}{t}  &= W \Int{ \left(\frac{\Omega}{W} + C \Sigma\right) \left(-\Sigma f^2\right) }{\Sigma}\\
+&= -W C\Int{\Sigma^2 f^2}{\Sigma} = -W C \frac{1}{2}\sqrt{\pi}  = -\frac{WC}{2}\sqrt{\pi} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ (\ppder{\Phi}{t} \Sigma_{z}) (ff') }{t}  &= W \Int{ -\frac{C}{W} \left(\dot{W}\Sigma  +\dot{T} \right) \left(-\Sigma f^2\right)}{\Sigma}\\
+&= C\dot{W}\Int{\Sigma^2 f^2}{\Sigma} =  C\dot{W} \frac{1}{2}\sqrt{\pi} = \frac{C}{2}\dot{W} \sqrt{\pi} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ ( \ppder{\Phi}{t}) (f^2) }{t}  &= WC \Int{\left( f^2\right)}{\Sigma} = \sqrt{\pi}WC\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \Int{ (\pder{\Phi}{z} \pder{\Phi}{t}^2)(f^2)  }{t}  &= W \Int{\left( f^2\right) \left(\Omega^2  \left(\dot{\phi}- \Omega\dot{T}\right) +  2\Omega C  \left(\dot{\phi}- \Omega\dot{T}\right)W \Sigma + C^2  \left(\dot{\phi}- \Omega\dot{T}\right) W^2 \Sigma^2\right)}{\Sigma}\\
+ &\quad +  W \Int{\left( f^2\right) \left(\Omega^2 \left(\dot{\Omega}- C\dot{T}\right) W\Sigma  +  2 \Omega C \left(\dot{\Omega}- C\dot{T}\right) W^2 \Sigma^2 + C^2 \left(\dot{\Omega}- C\dot{T}\right)W^3 \Sigma^3 \right)}{\Sigma}\\
+&\quad  +  W \Int{\left( f^2\right) \left(\Omega^2 \frac{\dot{C}}{2}W^2 \Sigma^2  +  2 \Omega C \frac{\dot{C}}{2}W^3 \Sigma^3 + C^2 \frac{\dot{C}}{2}W^4 \Sigma^4 \right)}{\Sigma}\\
+&= W \Int{\left( f^2\right) \left(\Omega^2  \left(\dot{\phi}- \Omega\dot{T}\right) + C^2  \left(\dot{\phi}- \Omega\dot{T}\right) W^2 \Sigma^2\right)}{\Sigma}\\
+ &\quad +  W \Int{\left( f^2\right) \left( 2 \Omega C \left(\dot{\Omega}- C\dot{T}\right) W^2 \Sigma^2 \right)}{\Sigma}\\
+&\quad  +  W \Int{\left( f^2\right) \left(\Omega^2 \frac{\dot{C}}{2}W^2 \Sigma^2  + C^2 \frac{\dot{C}}{2}W^4 \Sigma^4 \right)}{\Sigma}\\
+&= \sqrt{\pi} W \left[ \Omega^2  \left(\dot{\phi} - \Omega\dot{T}\right) + \frac{C^2W^2}{2}  \left(\dot{\phi} -  \Omega\dot{T}\right) \right]\\
+&\quad +  \sqrt{\pi} W  \left[  \frac{W^2}{2} \left( 2 \Omega C \left(\dot{\Omega}- C\dot{T}\right) \right) + \left(\frac{\Omega^2 W^2}{2} \frac{\dot{C}}{2}   + \frac{3C^2W^4}{4} \frac{\dot{C}}{2} \right)\right]\\
+&= \sqrt{\pi} W \left[ \left(\Omega^2   + \frac{C^2W^2}{2}\right)  \left(\dot{\phi}- \Omega\dot{T}\right)  + W^2\Omega C \left(\dot{\Omega}- C\dot{T}\right) + \frac{\Omega^2 W^2}{4}\dot{C}  + \frac{3C^2W^4}{8}\dot{C}\right]\\
+&= \sqrt{\pi} W \left[ \left(\Omega^2   + \frac{C^2W^2}{2}\right) \dot{\phi}-\left(\Omega^3   + \frac{C^2W^2\Omega}{2}\right) \dot{T}  + W^2\Omega C \dot{\Omega}-W^2\Omega C^2\dot{T} + \frac{W^2}{4}\left(\Omega^2 + \frac{3C^2W^2}{2}\right)\dot{C}\right]\\
+&= \sqrt{\pi} W \left[ \left(\Omega^2   + \frac{C^2W^2}{2}\right) \dot{\phi} - \left(\Omega^3   + \frac{3C^2W^2\Omega}{2}\right) \dot{T}  + \left(W^2\Omega C\right) \dot{\Omega} + \frac{W^2}{4}\left(\Omega^2 + \frac{3C^2W^2}{2}\right)\dot{C}\right]\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Int{ (\pder{\Sigma}{z} \pder{\Sigma}{t} \pder{\Phi}{t})(f'^2) }{t}  &= W \Int{\left(\Sigma^2 f^2\right) \left(-\frac{1}{W^2}\left[\Omega \dot{W} \Sigma  + \Omega \dot{T} + C \dot{W} W \Sigma^2  + W C \dot{T} \Sigma  \right]  \right)}{\Sigma}\\
+ &= -\frac{1}{W} \Int{\Omega \dot{T} \Sigma^2 f^2 + C \dot{W} W \Sigma^4 f^2}{\Sigma}\\
+ &= -\frac{\sqrt{\pi}}{W} \left[\Omega \dot{T} \frac{1}{2} + C \dot{W} W \frac{3}{4}\right]\\
+ &= -\frac{\sqrt{\pi}}{2W} \left[\Omega \dot{T}+ \frac{3C W }{2}\dot{W} \right]\\
+\end{split}
+\end{equation}
+
+This give an averaged Lagrangian of:
+\begin{equation}
+\begin{split}
+L_{avg} &= -A^2  \left[\int{f^2\pder{\Phi}{z} \,dt} \right] + iw \sum_{j=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_j - \alpha_j \dot{\conj{\alpha}}_j\right] - \avg{d} A^2 \left[\int{\left(f' \pder{\Sigma}{t} \right)^2 + \left(f \pder{\Phi}{t} \right)^2\,dt}\right] - 2 \avg{d} w \sum_{j=-N/2}^{N/2 - 1} \alpha_j \ \conj{\alpha}_j \ \omega_j^2 \\
+&\quad + \frac{1}{2}\avg{s} A^4  \Re{\int \iint K(t_1,t_2) f(\Sigma(t_1+t)) f(\Sigma(t_2+t)) f(\Sigma(t_1+t_2+t)) f(\Sigma(t))\right.\\
+&\hspace{1in}\left. \exp{i\left(\Phi(t_1+t)+ \Phi(t_2+t)-\Phi(t_1+t_2+t)-\Phi(t)\right)} \,dt_1 dt_2\,dt} \\
+&\quad + 2\avg{s}  A^2 \Re{\int \iint K(t_1,t_2)  f(\Sigma(t_1+t))f(\Sigma(t)) \exp{i\left(\Phi(t_1+t)-\Phi(t)\right)}  \right.\\
+&\hspace{1in} \left. \sum_{j=-N/2}^{N/2 - 1}\sum_{k=-N/2}^{N/2 - 1} \alpha_j\conj{\alpha}_k  e^{-i \omega_j (t_2+t)} e^{i \omega_k (t_1+t_2+t)}  H(w-|t_2+t|) H(w-|t_1+t_2+t|) \,dt_1 dt_2\,dt} \\
+&\quad - 2\Re{\int{A f(\Sigma) \exp{-i\Phi} \, in_{sol}\,dt}} - 2\Re{\int{\sum_{j=-N/2}^{N/2 - 1}\conj{\alpha}_j e^{i \omega_j t} H(w-|t|)\ in_{rad}\,dt}}\\
+&\approx -A^2  \sqrt{\pi} W \left[\left(\dot{\phi}- \Omega\dot{T}\right) + \frac{W^2}{4}\dot{C}\right] + iw \sum_{j=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_j - \alpha_j \dot{\conj{\alpha}}_j\right] \\
+&\quad - \avg{d} A^2 \left[\frac{1}{2W}\sqrt{\pi} + \sqrt{\pi} W \left[ \Omega^2 + \frac{C^2 W^2}{2}\right]\right] - 2 \avg{d} w \sum_{j=-N/2}^{N/2 - 1} \alpha_j \conj{\alpha}_j \ \omega_j^2 \\
+&\quad + \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s}  A^4W^2\  K_1(W,C) + 2\sqrt{\pi} \avg{s} A^2 W   \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \\
+&\quad - 2\Re{\int{A f(\Sigma) \exp{-i\Phi} \, in_{sol}\,dt}} - 2\Re{\int{\sum_{j=-N/2}^{N/2 - 1}\conj{\alpha}_j e^{i \omega_j t} H(w-|t|)\ in_{rad}\,dt}}\\
+&\approx -\sqrt{\pi} A^2W \dot{\phi} + \sqrt{\pi} A^2W \Omega\dot{T} - \frac{\sqrt{\pi}}{4} (A^2W) W^2 \dot{C} - \frac{\sqrt{\pi}}{2} \avg{d} \frac{A^2}{W} - \sqrt{\pi} \avg{d} A^2 W \Omega^2 - \frac{\sqrt{\pi}}{2} \avg{d} (A^2W)C^2 W^2\\
+&\quad + iw \sum_{j=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_j - \alpha_j \dot{\conj{\alpha}}_j\right] - 2 \avg{d} w \sum_{j=-N/2}^{N/2 - 1} \alpha_j \conj{\alpha}_j \ \omega_j^2 \\
+&\quad + \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s} A^4W^2\ K_1(W,C) + 2\sqrt{\pi} \avg{s} A^2 W  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \\
+&\quad - 2\Re{\int{A f(\Sigma) \exp{-i\Phi} \, in_{sol}\,dt}} - 2\Re{\int{\sum_{j=-N/2}^{N/2 - 1}\conj{\alpha}_j e^{i \omega_j t} H(w-|t|)\ in_{rad}\,dt}}\\
+\end{split}
+\end{equation}
+
+
+It is easier at this point to sub Energy $E$ for $A$, let $E = A^2W$
+\begin{itemize}
+ \item $E = A^2W$
+ \item $A = \left(\frac{E}{W}\right)^{1/2}$ 
+ \item $\frac{A^2}{W} = \frac{E}{W^2}$
+ \item $A^4 W = \frac{E^2}{W} $
+ \item $\bar{F}(E,W,T,\Omega,\phi,C) = \left(\frac{E}{W}\right)^{\frac{1}{2}}\bar{f}(\Sigma)\exp{-i\Phi}$
+\end{itemize}
+
+\begin{equation}
+\begin{split}
+L_{avg} &= -\sqrt{\pi} E \dot{\phi} + \sqrt{\pi} E \Omega\dot{T} - \frac{\sqrt{\pi}}{4} E W^2\dot{C} - \avg{d} \frac{\sqrt{\pi}}{2} \frac{E}{W^2} - \avg{d}\sqrt{\pi} E \Omega^2 - \avg{d}\frac{\sqrt{\pi}}{2} E C^2 W^2\\
+&\quad + iw \sum_{j=-N/2}^{N/2 - 1} \left[\conj{\alpha}_j \dot{\alpha}_j - \alpha_j \dot{\conj{\alpha}}_j\right] - 2 \avg{d} w \sum_{j=-N/2}^{N/2 - 1} \alpha_j \conj{\alpha}_j \ \omega_j^2 + \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 K_1(W,C) + 2\sqrt{\pi}\avg{s} E  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \\
+&\quad - 2\Re{\int{\left(\frac{E}{W}\right)^{1/2} f(\Sigma) \exp{-i\Phi} \, in_{sol}\,dt}} - 2\Re{\int{\sum_{j=-N/2}^{N/2 - 1}\conj{\alpha}_j \exp{i \omega_j t} H(w-|t|)\ in_{rad}\,dt}}\\
+\end{split}
+\end{equation}
+
+
+
+Which gives the ODEs as
+\begin{itemize}
+\item $\alpha$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{\alpha_j} &= -iw \dot{\conj{\alpha}}_j - 2 \avg{d} w \conj{\alpha}_j \ \omega_j^2 + 2\sqrt{\pi}\avg{s} E \conj{\alpha}_j + \int{ \exp{-i \omega_j t} H(w-|t|)\ i \conj{n}_{rad}\,dt} \\
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{\alpha}_j}\right] &= \frac{d}{dz} \left[i w \conj{\alpha}_j\right] = i w \dot{\conj{\alpha}}_j\\
+\pder{L_{avg}}{\alpha_j} - \frac{d}{dz}\left[\pder{L_{avg}}{\dot{\alpha}_j}\right] &= -iw \dot{\conj{\alpha}}_j - 2 \avg{d} w \conj{\alpha}_j \ \omega_j^2 + 2\sqrt{\pi}\avg{s} E \conj{\alpha}_j + \int{ \exp{-i \omega_j t} H(w-|t|)\ i \conj{n}_{rad}\,dt} - i w \dot{\conj{\alpha}}_j\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+-iw \dot{\conj{\alpha}}_j - 2 \avg{d} w \conj{\alpha}_j \ \omega_j^2 + 2\sqrt{\pi}\avg{s} E  \conj{\alpha}_j + \int{ \exp{-i \omega_j t} H(w-|t|)\ i \conj{n}_{rad}\,dt} - i w \dot{\conj{\alpha}}_j &= 0 \\
+-2iw \dot{\conj{\alpha}}_j - 2 \avg{d} w \conj{\alpha}_j \ \omega_j^2 + 2\sqrt{\pi}\avg{s} E \conj{\alpha}_j + \int{ \exp{-i \omega_j t} H(w-|t|)\ i \conj{n}_{rad}\,dt} &= 0\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\dot{\conj{\alpha}}_j &= i \left(\avg{d}\ \omega_j^2 - \frac{\sqrt{\pi}\avg{s} E}{w}\right) \conj{\alpha}_j+ \frac{1}{2w}\int{ \exp{-i \omega_j t} H(w-|t|)\ \conj{n}_{rad}\,dt}\\
+\end{split}
+\end{equation}
+
+
+\item $\phi$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{\phi} &=- 2\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\\
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{\phi}}\right] &= \frac{d}{dz}\left[-\sqrt{\pi} E \right] = -\sqrt{\pi} \dot{E} \\
+ \pder{L_{avg}}{\phi} - \frac{d}{dz}\left[\pder{L_{avg}}{\dot{\phi}}\right] &=  - 2\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt} + \sqrt{\pi} \dot{E}\\
+- 2\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt} + \sqrt{\pi} \dot{E} &= 0\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\dot{E} &=  \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}
+\end{split}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $T$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{T} &= - 2\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}\\
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{T}}\right] &= \frac{d}{dz}\left[ \sqrt{\pi} E \Omega\right] =  \sqrt{\pi} \left[\dot{E}\Omega + E\dot{\Omega}\right] \\
+\pder{L_{avg}}{T} - \frac{d}{dz}\left[\pder{L_{avg}}{\dot{T}}\right] &= - 2\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}- \sqrt{\pi} \left[\dot{E}\Omega + E\dot{\Omega}\right]\\
+- 2\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}- \sqrt{\pi} \left[\dot{E}\Omega + E\dot{\Omega}\right] &= 0 \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+ \dot{\Omega} & =  - \frac{2}{\sqrt{\pi}E }\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt} - \frac{\Omega}{E} \dot{E}  \\
+ \dot{\Omega} & =  - \frac{2}{\sqrt{\pi}E }\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt} - \frac{\Omega}{E} \left[ \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] \\
+ \dot{\Omega} & =  - \frac{2}{\sqrt{\pi}E }\left[\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}  + \Omega\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{\Omega} =  - \frac{2}{\sqrt{\pi}E }\left[\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}  + \Omega\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] \\
+\end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $W$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{W} &= -\frac{\sqrt{\pi}}{2} E W\dot{C} + \sqrt{\pi}  \avg{d} \frac{E}{W^3}  - \sqrt{\pi} \avg{d} E C^2 W  + \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s}  E^2 \pder{K_1}{W} - 2\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}\\
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{W}}\right] &= 0\\
+\pder{L_{avg}}{W} - \frac{d}{dz}\left[\pder{L_{avg}}{\dot{W}}\right] &= -\frac{\sqrt{\pi}}{2} E W\dot{C} + \sqrt{\pi}  \avg{d} \frac{E}{W^3}  - \sqrt{\pi}\avg{d} E C^2 W + \frac{\sqrt{\pi}}{2\sqrt{2}} \avg{s}  E^2 \pder{K_1}{W} - 2\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}\\
+-\frac{\sqrt{\pi}}{2} E W\dot{C} &+ \sqrt{\pi}  \avg{d} \frac{E}{W^3}  - \sqrt{\pi} \avg{d} E C^2 W  + \frac{\sqrt{\pi}}{2\sqrt{2}}\avg{s} E^2\pder{K_1}{W}  - 2\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} = 0  \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\frac{\sqrt{\pi}}{2} E W\dot{C} &= \sqrt{\pi}  \avg{d} \frac{E}{W^3}  - \sqrt{\pi} \avg{d} E C^2 W  + \frac{\sqrt{\pi}}{2\sqrt{2}}\avg{s} E^2\pder{K_1}{W}  - 2\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}   \\
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W}  - \frac{4}{\sqrt{\pi}EW}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}   \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W}  - \frac{4}{\sqrt{\pi}EW}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt}  \\
+\end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $\Omega$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{\Omega} &= \sqrt{\pi} E \dot{T} - 2\sqrt{\pi}\avg{d} E \Omega - 2\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}\\
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{\Omega}}\right] &= 0\\
+\pder{L_{avg}}{\Omega} -\frac{d}{dz}\left[\pder{L_{avg}}{\dot{\Omega}}\right] &= \sqrt{\pi} E \dot{T} - 2\sqrt{\pi}\avg{d} E \Omega - 2\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\sqrt{\pi} E \dot{T} - 2\sqrt{\pi}\avg{d} E \Omega - 2\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} = 0\\
+\sqrt{\pi} E \dot{T} =  2\sqrt{\pi}\avg{d} E \Omega + 2\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} \\
+ \dot{T} =  2\avg{d} \Omega + \frac{2}{\sqrt{\pi} E}\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{T} =  2\avg{d} \Omega + \frac{2}{\sqrt{\pi} E}\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}\\
+\end{split}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{equation}
+\begin{split}
+&\pder{L_{avg}}{C} =  -\sqrt{\pi} \avg{d} E C W^2 + \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 \pder{K_1}{C} - 2\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt}\\
+&\frac{d}{dz}\left[\pder{L_{avg}}{\dot{C}}\right] = \frac{d}{dz}\left[-\frac{\sqrt{\pi}}{4} E W^2 \right] = -\frac{\sqrt{\pi}}{4} \dot{E} W^2 - \frac{\sqrt{\pi}}{2} E W\dot{W}\\
+&\pder{L_{avg}}{C} -\frac{d}{dz}\left[\pder{L_{avg}}{\dot{C}}\right] = -\sqrt{\pi} \avg{d} E C W^2 + \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 \pder{K_1}{C} - 2\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt}  + \frac{\sqrt{\pi}}{4} \dot{E} W^2 + \frac{\sqrt{\pi}}{2} E W\dot{W}\\
+&-\sqrt{\pi} \avg{d} E C W^2 + \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 \pder{K_1}{C} - 2\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt}  + \frac{\sqrt{\pi}}{4} \dot{E} W^2 + \frac{\sqrt{\pi}}{2} E W\dot{W} = 0\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+-\sqrt{\pi} \avg{d} E C W^2 &+ \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 \pder{K_1}{C} - 2\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt}  + \frac{\sqrt{\pi}}{4} \dot{E} W^2 + \frac{\sqrt{\pi}}{2} E W\dot{W} = 0\\
+ \frac{\sqrt{\pi}}{2} E W\dot{W} &= \sqrt{\pi} \avg{d} E C W^2 - \avg{s} \frac{\sqrt{\pi}}{2\sqrt{2}} E^2 \pder{K_1}{C} + 2\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt}  - \frac{\sqrt{\pi}}{4} \dot{E} W^2 \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\dot{W} &=  2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \frac{4}{\sqrt{\pi}E W}\left(\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt} - \frac{W^2}{4}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt} \right)  \\
+\end{split}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item $E$:
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{E} &= -\sqrt{\pi} \dot{\phi} + \sqrt{\pi} \Omega \dot{T} - \frac{\sqrt{\pi}}{4} W^2\dot{C} - \avg{d} \frac{\sqrt{\pi}}{2} \frac{1}{W^2} - \avg{d}\sqrt{\pi} \Omega^2 - \avg{d}\frac{\sqrt{\pi}}{2} C^2 W^2\\
+&+ \avg{s} \frac{\sqrt{\pi}}{\sqrt{2}} E K_1(W,C) + 2\sqrt{\pi}\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2- 2\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt}\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\frac{d}{dz}\left[\pder{L_{avg}}{\dot{E}}\right]&= 0
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\pder{L_{avg}}{E} &-\frac{d}{dz}\left[\pder{L_{avg}}{\dot{E}}\right]= -\sqrt{\pi} \dot{\phi} + \sqrt{\pi} \Omega \dot{T} - \frac{\sqrt{\pi}}{4} W^2\dot{C} - \avg{d} \frac{\sqrt{\pi}}{2} \frac{1}{W^2} - \avg{d}\sqrt{\pi} \Omega^2 - \avg{d}\frac{\sqrt{\pi}}{2} C^2 W^2\\
+&+ \avg{s} \frac{\sqrt{\pi}}{\sqrt{2}} E K_1(W,C) + 2\sqrt{\pi}\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 - 2\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} = 0\\
+\dot{\phi} &=  \Omega \dot{T} - \frac{1}{4} W^2\dot{C} - \avg{d} \frac{1}{2} \frac{1}{W^2} - \avg{d}\Omega^2 - \avg{d}\frac{1}{2} C^2 W^2+ \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 \\
+&- \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &=  \Omega \left(\dot{T} \right) - \frac{1}{4} W^2 \left(\dot{C}\right) - \avg{d} \frac{1}{2} \frac{1}{W^2} - \avg{d}\Omega^2 - \avg{d}\frac{1}{2} C^2 W^2+ \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} \\
+\dot{\phi} &=  \Omega \left(2\avg{d} \Omega + \frac{2}{\sqrt{\pi} E}\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} \right) - \frac{1}{4} W^2 \left(2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} - \frac{4}{\sqrt{\pi}EW}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} \right) \\
+&- \avg{d} \frac{1}{2} \frac{1}{W^2} - \avg{d}\Omega^2 - \avg{d}\frac{1}{2} C^2 W^2+ \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} \\
+\dot{\phi} &=  \left(2\avg{d} \Omega^2 + \frac{2}{\sqrt{\pi} E}\Omega\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} \right) + \left( - \avg{d} \frac{1}{2W^2}  + \frac{1}{2}\avg{d} C^2W^2 - \frac{1}{4\sqrt{2}}\avg{s} EW \pder{K_1}{W} + \frac{W}{\sqrt{\pi}E}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} \right) \\
+&- \avg{d} \frac{1}{2} \frac{1}{W^2} - \avg{d}\Omega^2 - \avg{d}\frac{1}{2} C^2 W^2+ \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} \\
+\dot{\phi} &= 2\avg{d} \Omega^2  + \frac{2}{\sqrt{\pi} E} \Omega \Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt}- \avg{d} \frac{1}{2W^2}  + \frac{1}{2}\avg{d} C^2W^2 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W}  \\
+&+ \frac{W}{\sqrt{\pi}E}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} - \avg{d} \frac{1}{2} \frac{1}{W^2} - \avg{d}\Omega^2 - \avg{d}\frac{1}{2} C^2 W^2+ \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2\\
+&+ \frac{W}{\sqrt{\pi}E}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} + \frac{2}{\sqrt{\pi} E}\Omega\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt} \\
+\end{split}
+\end{equation}
+
+\end{itemize}
+% 
+
+\subsection{ODEs}
+
+
+\begin{equation}
+\begin{split}
+\dot{E} &= \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{\Omega} & = - \frac{2}{\sqrt{\pi}E }\left[\Re{\int \pder{\bar{F}}{T} (in(t,z))\,dt}  + \Omega\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt}\right] \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{T} =  2\avg{d} \Omega + \frac{2}{\sqrt{\pi} E}\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W}  - \frac{4}{\sqrt{\pi}EW}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{W} &= 2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} \\
+&+ \frac{4}{\sqrt{\pi}E W}\left(\Re{\int \pder{\bar{F}}{C} (in(t,z))\,dt} - \frac{W^2}{4}\Re{\int \pder{\bar{F}}{\phi} (in(t,z))\,dt} \right)\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1(W,C) - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2\\
+&+ \frac{W}{\sqrt{\pi}E}\Re{\int \pder{\bar{F}}{W} (in(t,z))\,dt} + \frac{2}{\sqrt{\pi} E}\Omega\Re{\int \pder{\bar{F}}{\Omega} (in(t,z))\,dt} - \frac{2}{\sqrt{\pi}}\Re{\int \pder{\bar{F}}{E} (in(t,z))\,dt}  \\
+\end{split}
+\end{equation}
+
+    \begin{equation}
+    \begin{split}
+    K_1(W,C) & =  \frac{1}{D_{r,str}} \frac{1}{2\beta}  \ln{\frac{ \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}}\\
+    \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ \pder{\beta^{-1}}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+    \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ -\frac{1}{\beta^2}\pder{\beta}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+    &\mbox{ Where } \beta^2 = \frac{(1+W^4C^2)}{W^2},\ \kappa_1 = W^2C + \frac{D_{r,str}\beta^2}{2},\ \kappa_2 = W^2C - \frac{D_{r,str}\beta^2}{2} \\
+    \end{split}
+    \end{equation}

@@ -1,0 +1,346 @@
+\section{Lagrangian Approach}
+The Lagrangian approach to atmospheric propagation involves recasting the propagation equation as a functional, where stationary points of the functional are also solutions of the propagation equation.  \href{https://en.wikipedia.org/wiki/Hamilton%27s_principle}{See Hamilton's Principle}
+
+The functional for the paraxial equation above is defined as 
+\begin{equation}
+    J(u,\nabla u) = \int_{0}^{\Lambda} \iint \mathcal{L}_{D}(u,\nabla u) dx dy \, dz
+\end{equation}
+where $\mathcal{L}_{D}(u,\nabla u)$ is referred to as the Lagrangian Density, and is defined as 
+\begin{equation}
+\begin{split}
+    \mathcal{L}_{D}(u,\nabla u) &= i n_0 \alpha  \left(\partial_{z}(u) \overline{u} - \overline{\partial_{z}(u)}u\right) - |\nabla_{\perp} u|^2 + 2n_0 \gamma^2 n(\vect{r}_{\perp},z) |u|^2 \\
+    &= -2 n_0 \alpha\, \mathrm{Im}\left(\partial_{z}(u) \overline{u}\right) - |\nabla_{\perp} u|^2 + 2n_0 \gamma^2 n(\vect{r}_{\perp},z) |u|^2 
+\end{split}
+\end{equation}
+It is fairly easy to show that critical points (points where derivative of the functional is zero) of this functional are also solutions of the propagation equation.  Derivatives of a functional are calculated much the same way an derivatives of a vector equation:
+\begin{equation}
+\begin{split}
+    \lim_{\epsilon \to 0} &\frac{J(u+\epsilon v, \nabla u + \epsilon \nabla v)-J(u,\nabla u)}{\epsilon} \\
+    &= \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left[\int_{0}^{\Lambda} \iint \mathcal{L}_{D}(u+\epsilon v,\nabla u + \epsilon \nabla v) dx dy \, dz - \int_{0}^{\Lambda} \iint \mathcal{L}_{D}(u,\nabla u) dx dy \, dz\right] \\
+    &= \int_{0}^{\Lambda} \iint \pder{\mathcal{L}_{D}}{u} v+ \pder{\mathcal{L}_{D}}{(\partial_{x}(u))} \partial_{x}(v) + \pder{\mathcal{L}_{D}}{(\partial_{y}(u))} \partial_{y}(v)   + \pder{\mathcal{L}_{D}}{(\partial_{z}(u))} \partial_{z}(v) \,dx dy \, dz\\
+    &= \int_{0}^{\Lambda} \iint \left[\pder{\mathcal{L}_{D}}{u}  - \pder{}{x}\left(\pder{\mathcal{L}_{D}}{(\partial_{x}(u))}\right)
+    -\pder{}{y}\left(\pder{\mathcal{L}_{D}}{(\partial_{y}(u))}\right)
+    -\pder{}{z}\left(\pder{\mathcal{L}_{D}}{(\partial_{z}(u))}\right)\right] v \,dx dy \, dz \\
+    &+ \pder{\mathcal{L}_{D}}{(\partial_{x}(u))}v \big|_{-\infty}^{\infty} + \pder{\mathcal{L}_{D}}{(\partial_{y}(u))} v \big|_{-\infty}^{\infty} + \pder{\mathcal{L}_{D}}{(\partial_{z}(u))} v \big|_{0}^{\Lambda}.
+\end{split}
+\end{equation}
+We can neglect the boundary terms by assuming that $v(0) = v(\Lambda) = \lim_{x\to\pm\infty}v =\lim_{y\to\pm\infty}v =0$.  This leaves 
+\begin{equation}
+    \pder{J}{u} = \int_{0}^{\Lambda} \iint \left[\pder{\mathcal{L}_{D}}{u}  - \pder{}{x}\left(\pder{\mathcal{L}_{D}}{(\partial_{x}(u))}\right)
+    -\pder{}{y}\left(\pder{\mathcal{L}_{D}}{(\partial_{y}(u))}\right)
+    -\pder{}{z}\left(\pder{\mathcal{L}_{D}}{(\partial_{z}(u))}\right)\right] v \,dx dy \, dz 
+\end{equation}
+and thus stationary points are given by $u$ such that 
+\begin{equation}
+    \pder{J}{u} = \int_{0}^{\Lambda} \iint \left[\pder{\mathcal{L}_{D}}{u}  - \pder{}{x}\left(\pder{\mathcal{L}_{D}}{(\partial_{x}(u))}\right)
+    -\pder{}{y}\left(\pder{\mathcal{L}_{D}}{(\partial_{y}(u))}\right)
+    -\pder{}{z}\left(\pder{\mathcal{L}_{D}}{(\partial_{z}(u))}\right)\right] v \,dx dy \, dz = 0.
+\end{equation}
+However, the only way this holds for all $v$ is if 
+\begin{equation}
+    \pder{\mathcal{L}_{D}}{u}  - \pder{}{x}\left(\pder{\mathcal{L}_{D}}{(\partial_{x}(u))}\right)
+    -\pder{}{y}\left(\pder{\mathcal{L}_{D}}{(\partial_{y}(u))}\right)
+    -\pder{}{z}\left(\pder{\mathcal{L}_{D}}{(\partial_{z}(u))}\right) = 0.
+\end{equation}
+This is called the Euler-Lagrange equation(s) and one can verify that inserting the definition for $\mathcal{L}_{D}$ recovers the paraxial equation discussed above.  Thus, stationary points of $J$ are also solutions to the paraxial propagation equation.
+
+
+\subsection{Variational Approximations for Low Dimensional Propagation}
+
+One could proceed in a straight forward manor and try to find stationary points of the functional $J$ through numerical algorithms.  However, the approach we take here is to use the Lagrangian formulation to find low dimensional (finite dimensional) approximations to the governing equations through variational means.  The application of **variational approximations** to PDEs is not a new concept.  I was introduced to the methodology while studying the propagation of nonlinear solitary waves (solitons) in optical fiber.  The seminal paper for this application was [Anderson, *Variational approach to nonlinear pulse propagation in optical fibers*, (1983)], which introduced the method by following the work done in applying VA methods to soliton propagation in plasmas.  The method was further developed for the context of optical fiber in [Anderson, Lisak and Reichel, *Approximate analytical approaches to nonlinear pulse propagation in optical fibers: A comparison*, (1988)].  
+
+The approximation procedure begins with postulation of an ansatz (trial solution in  analytically form) which has a given function for the solution which allows us to integrate out the $x$ and $y$ dimensions and use the corresponding Euler-Lagrange equations to derive stochastic ODEs for the $z$ evolution.
+
+
+\subsection{Derivation of Gaussian Beam Solution}
+Consider the unperturbed Helmholtz equation $(n(x,y,z) = 0)$
+\begin{equation}
+   2i n_0 \alpha \pder{U}{z}  + \nabla_{\perp}^2 U  = 2i n_0 \alpha \pder{U}{z}  + \frac{1}{r}\pder{}{r}\left(r\pder{U}{r}\right) + \frac{1}{r^2}\pder{U}{\theta^2} = 0 
+\end{equation}
+Now, lets look for a radially symmetric solution of the form 
+\begin{equation}
+\begin{split}
+   U  \propto \exp{-i\left[ \frac{k r^2}{2 q(z)} + p(z) \right]}
+\end{split}
+\end{equation}
+where $k=n_0 \alpha $.  The terms become
+\begin{equation}
+   \pder{U}{z} =  -i\left[-\frac{k r^2}{2 q^2(z)} \dot{q} + \dot{p}\right] U 
+\end{equation}
+\begin{equation}
+   \frac{1}{r}\pder{}{r}\left(r\pder{U}{r}\right) =  -\left[i \frac{2k}{q} + \frac{k^2}{q^2} r^2\right] U 
+\end{equation}
+and the equation becomes 
+\begin{equation}
+   \begin{split}
+       &2i k (-i) \left[-\frac{k r^2}{2 q^2} \dot{q} + \dot{p}\right] - \left[i \frac{2k}{q} + \frac{k^2}{q^2} r^2\right]   = \left[-\frac{2k^2 r^2}{2 q^2} \dot{q} + 2k\dot{p}\right] - \left[i \frac{2k}{q} + \frac{k^2}{q^2} r^2\right]  = \\
+       &\left(-\frac{2k^2 r^2}{2 q^2} \dot{q} - i \frac{2k}{q}\right) + \left(2k\dot{p} -  \frac{k^2}{q^2} r^2\right) = -\frac{k^2 r^2}{q^2} \left(\dot{q} + 1\right) + 2k\left(\dot{p}- i \frac{1}{q}\right) = 0
+   \end{split}
+\end{equation}
+Now, since this equation has to hold for all $r$, both terms above have to be independently equal to $0$.   
+\begin{equation}
+   \begin{split}
+       \dot{q} + 1 &= 0 \rightarrow q = q(z_0) - (z-z_0)\\
+       \dot{p}- i \frac{1}{q} &= 0 \rightarrow \dot{p} =  i \frac{1}{q(z_0) - (z-z_0)}
+   \end{split}
+\end{equation}
+For the solution to be of finite engergy ($L_2$), the value of $q_0$ must be complex.  To see this consider if $q_0$ was real, then $|\exp{-i\left[ \frac{k r^2}{2 q(z)} + p(z) \right]}| = |\exp{-i p(z)}|$, which doesn't depend on $r$ and hence has infinite energy.  In addition, we can absorb any real part of $q(z_0)$ into $z_0$.  Hence, $q(z_0) = iq_0$ where $q_0$ is real.
+
+For the $p$ equation, we have
+\begin{equation}
+   \begin{split}
+       p(z) &= i \int_{z_0}^{z} \frac{1}{i q_0 - (z'-z_0)} dz'= -i \int_{0}^{z-z_0} \frac{1}{ z' - i q_0} dz' \\
+       &= -i \ln{z' - i q_0}|_{0}^{z-z_0} = -i \ln{z - z_0 - i q_0} + i \ln{- i q_0}\\
+       &= -i \left(\ln{z - z_0 - i q_0} - \ln{- i q_0}\right)\\
+       &= -i \ln{\frac{z - z_0 - i q_0}{- i q_0}} = -i \ln{1 + i \frac{z - z_0}{q_0}}
+   \end{split}
+\end{equation}
+so
+\begin{equation}
+   \begin{split}
+       \exp{-i p(z)} = \exp{- \ln{1 + i \frac{z - z_0}{q_0}}}  = \frac{1}{1 + i \frac{z - z_0}{q_0}}
+   \end{split}
+\end{equation}
+
+Now, we can represent complex numbers $z = a+ib$ as $(a^2+b^2)^{1/2}\exp{i \atan{\frac{b}{a}} }$ so 
+\begin{equation}
+   \begin{split}
+       \exp{-i p(z)} = \frac{1}{\left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^\frac{1}{2} \exp{i \atan{ \frac{z - z_0}{q_0} } }} = \left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^{-\frac{1}{2}} \exp{-i \atan{ \frac{z - z_0}{q_0} } }
+   \end{split} 
+\end{equation}
+
+Finally,
+\begin{equation}
+\begin{split}
+   U  &\propto \left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^{-\frac{1}{2}} \exp{i\left[ \frac{k r^2}{2 ((z'-z_0) - i q_0)} \right]} \exp{-i \atan{ \frac{z - z_0}{q_0} } } \\
+   &\propto \left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^{-\frac{1}{2}} \exp{i\left[ \frac{k r^2((z'-z_0) + i q_0)}{2 ((z'-z_0)^2 + q_0^2)} \right]} \exp{-i \atan{ \frac{z - z_0}{q_0} } } \\
+   &\propto \left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^{-\frac{1}{2}} \exp{i\left[ \frac{k r^2(z'-z_0)}{2 ((z'-z_0)^2 + q_0^2)} \right]} \exp{-\left[ \frac{k r^2 q_0}{2 ((z'-z_0)^2 + q_0^2)} \right]} \exp{-i \atan{ \frac{z - z_0}{q_0} } }\\
+   &\propto \left(1 + \frac{(z - z_0)^2}{q_0^2}\right)^{-\frac{1}{2}} \exp{i\left[ \frac{k r^2}{2 (z'-z_0)\left(1 + \left(\frac{q_0}{z'-z_0}\right)^2\right)} \right]} \exp{-\left[ \frac{k r^2}{2q_0\left(1+\left(\frac{z'-z_0}{q_0}\right)^2\right)} \right]} \exp{-i \atan{ \frac{z - z_0}{q_0} } }\\
+\end{split}
+\end{equation}
+
+Now we can define the spot size and beam waist as 
+\begin{equation}
+\begin{split}
+   w(z) = w_0 \sqrt{1+\left(\frac{z-z_0}{q_0}\right)^2}, \quad  w_0 = \sqrt{q_0}
+\end{split}
+\end{equation}
+so
+\begin{equation}
+\begin{split}
+   w^2(z) = q_0\left(1+\left(\frac{z-z_0}{q_0}\right)^2\right) = \frac{1}{q_0} \left(q_0^2+(z-z_0)^2\right) \rightarrow q_0 w^2(z) = \left(q_0^2+(z-z_0)^2\right) 
+\end{split}
+\end{equation}
+
+
+We can also define radius of curvature as 
+\begin{equation}
+\begin{split}
+   R(z) = (z-z_0)\left[1 + \left(\frac{q_0}{ z-z_0}\right)^2\right]
+\end{split}
+\end{equation}
+so
+\begin{equation}
+\begin{split}
+  \frac{k r^2(z'-z_0)}{2 ((z'-z_0)^2 + q_0^2)} &= \frac{k r^2(z'-z_0)}{2 (z'-z_0)^2(1 + \frac{q_0^2}{(z'-z_0)^2})}\\
+  &=\frac{k r^2}{2 R(z)}
+\end{split}
+\end{equation}
+
+Finally,
+\begin{equation}
+\begin{split}
+   U  &\propto \frac{w_0}{w(z)} \exp{i k \frac{r^2}{2 R(z)}} \exp{-k \frac{r^2}{2 w^2(z)}} \exp{-i \atan{ \frac{z - z_0}{q_0} } }
+\end{split}
+\end{equation}
+Simplest form is to let $z_0 = 0$ , so the spot size is smallest at the origin, and put $k = n_0 \alpha$ and we get
+\begin{equation}
+\begin{split}
+   U  = A_0\frac{w_0}{w(z)} \exp{in_0 \alpha\frac{r^2}{2 R(z)}} \exp{-n_0 \alpha\frac{r^2}{2w^2(z)}} \exp{-i \atan{ \frac{z}{q_0} } }
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+   R(z) = z\left[1 + \left(\frac{q_0}{z}\right)^2\right]\quad    w(z) = w_0 \sqrt{1+\left(\frac{z}{q_0}\right)^2} , \quad  w_0 = \sqrt{q_0}
+\end{split}
+\end{equation}
+or 
+\begin{equation}
+\begin{split}
+   q_0= w_0^2 \rightarrow R(z) = z\left[1 + \left(\frac{w_0^2}{z}\right)^2\right] 
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+   q_0= w_0^2 \rightarrow  w(z) = w_0 \sqrt{1+\left(\frac{z}{w_0^2}\right)^2}
+\end{split}
+\end{equation}
+
+
+Alternatively, for our purposes we need $z_0 = \Lambda$
+\begin{equation}
+\begin{split}
+   R(z) = (z-\Lambda)\left[1 + \left(\frac{w_0^2}{(z-\Lambda)}\right)^2\right]
+\end{split}
+\end{equation}
+and 
+\begin{equation}
+\begin{split}
+   R(0) = -\Lambda\left[1 + \left(\frac{w_0^2}{\Lambda}\right)^2\right]
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+   w(z) = w_0 \sqrt{1+\left(\frac{(z-\Lambda)}{w_0^2}\right)^2}
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+   w(0) = w_0 \sqrt{1+\left(\frac{\Lambda}{w_0^2}\right)^2}
+\end{split}
+\end{equation}
+
+So in total...
+\begin{equation}
+\begin{split}
+   U  = A_0\frac{w_0}{w(z)} \exp{in_0 \alpha\frac{r^2}{2 R(z)}} \exp{-n_0 \alpha\frac{r^2}{2w^2(z)}} \exp{-i \atan{ \frac{z}{w_0^2} } }
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+   w(z) = w_0 \sqrt{1+\left(\frac{z-z_0}{w_0^2}\right)^2} 
+   = \frac{w_0}{w_0^2} \sqrt{w_0^4+\left(z-z_0\right)^2} = \frac{1}{w_0} \sqrt{w_0^4+\left(z-z_0\right)^2}
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+   R(z) = (z-z_0)\left[1 + \left(\frac{w_0^2}{z-z_0}\right)^2\right] = \frac{1}{z-z_0} \left[(z-z_0)^2 + w_0^4\right] 
+\end{split}
+\end{equation}
+But I would rather work with the inverse of these
+\begin{equation}
+\begin{split}
+   W(z) = \frac{1}{w(z)} = \frac{w_0}{\sqrt{w_0^4+\left(z-z_0\right)^2}} 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+   F(z) = \frac{1}{R(z)} = \frac{z-z_0}{(z-z_0)^2 + w_0^4}
+\end{split}
+\end{equation}
+with solution 
+\begin{equation}
+\begin{split}
+   U  = A_0 w_0 W(z) \exp{i\frac{n_0 \alpha}{2} F(z) r^2} \exp{- \frac{n_0 \alpha}{2} W^2(z) r^2} \exp{-i \atan{ \frac{z}{w_0^2} } }
+\end{split}
+\end{equation}
+
+%\subsubsection{Putting Dimension in Back In}
+%
+%Letting $z = \dim{z}/L_0, r = \dim{r}/l_0$ and $q_0 =\dim{q_0}/l_0$ recall 
+%$\alpha = \frac{l_0^2 k }{L_0}$
+%
+%\begin{equation}
+%\begin{split}
+%   U  = A_0\frac{w_0}{w(\dim{z})} \exp{in_0\alpha \frac{1}{l_0^2} \frac{\dim{r}^2}{2 R(\dim{z})}} \exp{-n_0\alpha \frac{1}{l_0^2}\frac{\dim{r}^2}{2 w^2(\dim{z})}} \exp{-i \atan{ \frac{\dim{z}}{L_0 q_0} } }
+%\end{split}
+%\end{equation}
+%where
+%\begin{equation}
+%\begin{split}
+%   R(\dim{z}) &= \frac{\dim{R}}{l_0} = (\dim{z}/L_0-\Lambda)\left[1 + \left(\frac{q_0}{(\dim{z}/L_0-\Lambda)}\right)^2\right] \\
+%   &= \frac{1}{L_0} (\dim{z}-L)\left[1 + \left(\frac{L_0 w_0^2}{(\dim{z}-L)}\right)^2\right] \\
+%   &= \frac{1}{L_0} (\dim{z}-L)\left[1 + \left(\frac{L_0 q_0}{(\dim{z}-L)}\right)^2\right] \\
+%\end{split}
+%\end{equation}
+%\begin{equation}
+%\begin{split}
+%   R(\dim{z}) &= (\dim{z}/L_0-\Lambda)\left[1 + \left(\frac{q_0}{(\dim{z}/L_0-\Lambda)}\right)^2\right] \\
+%   &= \frac{1}{L_0} (\dim{z}-L)\left[1 + \left(\frac{L_0 w_0^2}{(\dim{z}-L)}\right)^2\right] \\
+%   &= \frac{1}{L_0} (\dim{z}-L)\left[1 + \left(\frac{L_0 q_0}{(\dim{z}-L)}\right)^2\right] \\
+%   &= \frac{1}{L_0} \dim{R}(\dim{z})
+%\end{split}
+%\end{equation}
+%and 
+%\begin{equation}
+%\begin{split}
+%   R(0) = -L\left[1 + \left(\frac{L_0 q_0}{L}\right)^2\right]
+%\end{split}
+%\end{equation}
+%
+%\begin{equation}
+%\begin{split}
+%   w(\dim{z}) &= \sqrt{q_0} \sqrt{1+\left(\frac{(\dim{z}-L)}{L_0 q_0}\right)^2}\\
+%              &= \sqrt{q_0}\frac{1}{L_0 q_0} \sqrt{(L_0 q_0)^2+(\dim{z}-L)^2}\\
+%              &= \frac{1}{L_0} \sqrt{(L_0 q_0)^2+(\dim{z}-L)^2}\\
+%              &= \frac{1}{L_0} \dim{w}(\dim{z})
+%\end{split}
+%\end{equation}
+%and
+%\begin{equation}
+%\begin{split}
+%   w(0) = \frac{1}{L_0} \dim{w}(0) = \frac{1}{L_0} \sqrt{(L_0 q_0)^2+ L^2}
+%\end{split}
+%\end{equation}
+%
+%
+%\begin{equation}
+%\begin{split}
+%   U  &= A_0\frac{L_0w_0}{\dim{w}(\dim{z})} \exp{in_0\alpha \frac{L_0}{l_0^2} \frac{\dim{r}^2}{2 \dim{R}(\dim{z})}} \exp{-n_0\alpha \frac{L_0^2}{l_0^2}\frac{\dim{r}^2}{2 \dim{w}^2(\dim{z})}} \exp{-i \atan{ \frac{\dim{z}}{L_0 q_0} } }\\
+%   &=A_0\frac{L_0w_0}{\dim{w}(\dim{z})} \exp{in_0\frac{l_0^2 k }{L_0} \frac{L_0}{l_0^2} \frac{\dim{r}^2}{2 \dim{R}(\dim{z})}} \exp{-n_0\frac{l_0^2 k }{L_0} \frac{L_0^2}{l_0^2}\frac{\dim{r}^2}{2 \dim{w}^2(\dim{z})}} \exp{-i \atan{ \frac{\dim{z}}{L_0 q_0} } }\\
+%   &=A_0\frac{L_0w_0}{\dim{w}(\dim{z})} \exp{in_0 k  \frac{\dim{r}^2}{2 \dim{R}(\dim{z})}} \exp{-n_0 k L_0\frac{\dim{r}^2}{2 \dim{w}^2(\dim{z})}} \exp{-i \atan{ \frac{\dim{z}}{L_0 q_0} } }\\  
+%\end{split}
+%\end{equation}
+%
+\subsubsection{Normalization}
+\begin{equation}
+   |U|^2  = A^2_0 \frac{w_0^2}{w^2(z)} \exp{- n_0 \alpha \frac{r^2}{w^2(z)}} 
+\end{equation}
+so
+\begin{equation}
+\iint |U|^2 \, dx \, dy = 2 \pi A^2_0 \frac{w_0^2}{w^2(z)}  \int_{0}^{\infty}\exp{- n_0 \alpha\frac{r^2}{w^2(z)}} r \,dr
+\end{equation}
+letting $r = \frac{w(z)}{\sqrt{ n_0 \alpha }} x$ so $dr = \frac{w(z)}{\sqrt{ n_0 \alpha }} dx$
+\begin{equation}
+2 \pi A^2_0 \frac{w_0^2}{w^2(z)}  \int_{0}^{\infty}\exp{-r^2} \frac{w(z)}{\sqrt{ n_0 \alpha }} x \,\frac{w(z)}{\sqrt{ n_0 \alpha }} dx
+\end{equation}
+
+\begin{equation}
+2 \pi A^2_0 \frac{w_0^2}{n_0 \alpha }  \int_{0}^{\infty}\exp{-x^2}  x \, dx = \pi A^2_0 \frac{w_0^2}{n_0 \alpha } = 1
+\end{equation}
+
+\begin{equation}
+A_0 = \sqrt{\frac{n_0 \alpha }{\pi w_0^2}} = \sqrt{\frac{n_0 \alpha }{\pi}} \frac{1}{w_0}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+   W(z) = \frac{1}{w(z)} = \frac{w_0}{\sqrt{w_0^4+\left(z-z_0\right)^2}} 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+   F(z) = \frac{1}{R(z)} = \frac{z-z_0}{(z-z_0)^2 + w_0^4}
+\end{split}
+\end{equation}
+with solution 
+\begin{equation}
+\begin{split}
+   U  = \sqrt{\frac{n_0 \alpha}{\pi}} W(z) \exp{i\frac{n_0 \alpha}{2} F(z) r^2} \exp{- \frac{n_0 \alpha}{2} W^2(z) r^2} \exp{-i \atan{ \frac{z}{w_0^2} } }
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,626 @@
+\section{Gaussian Ansatz: Hermine Expansion}
+
+\subsection{Hermite Polynomials}
+
+There are two different ways of standardizing the Hermite polynomials:
+
+\begin{itemize}
+\item The probabilists Hermite polynomials are given by 
+\begin{equation}
+\mathit{He}_n(x)=(-1)^n e^{\frac{x^2}{2}}\frac{d^n}{dx^n}e^{-\frac{x^2}{2}}=\left (x-\frac{d}{dx} \right )^n \cdot 1,
+\end{equation}
+\item The physicists Hermite polynomials are given by
+\begin{equation}
+H_n(x)=(-1)^n e^{x^2}\frac{d^n}{dx^n}e^{-x^2}=\left (2x-\frac{d}{dx} \right )^n \cdot 1. 
+\end{equation}
+\end{itemize}
+These two definitions are not exactly identical; each one is a rescaling of the other,
+
+\begin{equation}
+H_n(x)=2^{\tfrac{n}{2}}{\mathit{He}}_n(\sqrt{2} \,x), \qquad \mathit{He}_n(x)=2^{-\tfrac{n}{2}}H_n\left(\frac x{\sqrt{2}} \right).
+\end{equation}
+
+These are Hermite polynomial sequences of different variances; see the material on variances below.
+
+The notation $\mathit{He}$ and $\mathit{H}$ is that used in the standard references Abramowitz and Stegun. 
+The polynomials $\mathit{He}$  are sometimes denoted by $\mathit{H}$, especially in probability theory, because
+\begin{equation}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+\end{equation}
+is the probability density function for the normal distribution with expected value 0 and standard deviation 1.
+The first eleven probabilists' Hermite polynomials are:
+\begin{equation}{\mathit{He}}_0(x)=1\,\end{equation}
+\begin{equation}{\mathit{He}}_1(x)=x\,\end{equation}
+\begin{equation}{\mathit{He}}_2(x)=x^2-1\,\end{equation}
+\begin{equation}{\mathit{He}}_3(x)=x^3-3x\,\end{equation}
+\begin{equation}{\mathit{He}}_4(x)=x^4-6x^2+3\,\end{equation}
+\begin{equation}{\mathit{He}}_5(x)=x^5-10x^3+15x\,\end{equation}
+\begin{equation}{\mathit{He}}_6(x)=x^6-15x^4+45x^2-15\,\end{equation}
+\begin{equation}{\mathit{He}}_7(x)=x^7-21x^5+105x^3-105x\,\end{equation}
+\begin{equation}{\mathit{He}}_8(x)=x^8-28x^6+210x^4-420x^2+105\,\end{equation}
+\begin{equation}{\mathit{He}}_9(x)=x^9-36x^7+378x^5-1260x^3+945x\,\end{equation}
+\begin{equation}{\mathit{He}}_{10}(x)=x^{10}-45x^8+630x^6-3150x^4+4725x^2-945\,\end{equation}
+and the first eleven physicists' Hermite polynomials are:
+\begin{equation}H_0(x)=1\,\end{equation}
+\begin{equation}H_1(x)=2x\,\end{equation}
+\begin{equation}H_2(x)=4x^2-2\,\end{equation}
+\begin{equation}H_3(x)=8x^3-12x\,\end{equation}
+\begin{equation}H_4(x)=16x^4-48x^2+12\,\end{equation}
+\begin{equation}H_5(x)=32x^5-160x^3+120x\,\end{equation}
+\begin{equation}H_6(x)=64x^6-480x^4+720x^2-120\,\end{equation}
+\begin{equation}H_7(x)=128x^7-1344x^5+3360x^3-1680x\,\end{equation}
+\begin{equation}H_8(x)=256x^8-3584x^6+13440x^4-13440x^2+1680\,\end{equation}
+\begin{equation}H_9(x)=512x^9-9216x^7+48384x^5-80640x^3+30240x\,\end{equation}
+\begin{equation}H_{10}(x)=1024x^{10}-23040x^8+161280x^6-403200x^4+302400x^2-30240\,\end{equation}
+
+As an alternative to calculating $N^{th}$ order derivatives of $e^{-x^2/2}$  and $e^{-x^2}$, 
+an easier, less computationally intensive method of sequentially deriving individual terms of 
+the $N^{th}$ order Hermite polynomials is to consider the combination of coefficients in the 
+corresponding terms in the $N?1^{th}$ Hermite polynomial. For the probabilists' notation, follow 
+the following rules:
+\begin{itemize}
+\item For the starting point in the sequence, the 0th-order polynomial $H_0$ is equal to 1.
+\item The first term has a power of $x$ equal to the given $N^{th}$-order polynomial being derived, 
+and the coefficient of this term is 1.
+\item The power of $x$ of each successive term is 2 less than the preceding term.
+\item The coefficient of each term after the first term is calculated by taking the coefficient 
+of the same-numbered term in the $N^{th}$ polynomial, and adding to it the product 
+of the power of $x$ and the corresponding coefficient of the immediately preceding term in the N^{th} polynomial.
+\item All even-numbered terms in each polynomial are negative, and all odd-numbered terms are positive.
+\end{itemize}
+
+
+\subsection{Properties}
+H_n is a polynomial of degree n. The probabilists' version He has leading coefficient 1, 
+while the physicists' version H has leading coefficient 2^n.
+
+\subsection{Orthogonality}
+$H_n(x)$ and $He_n(x)$ are $n^{th}$-degree polynomials for $n= 0, 1, 2, 3,\dots$.  
+These orthogonal polynomials with respect to the weight function
+\begin{equation}
+(He): w(x) = e^{-\frac{x^2}{2}}
+\end{equation} 
+or
+\begin{equation}
+(H): w(x) = e^{-x^2}
+\end{equation}
+\ie, we have
+\begin{equation}
+\int_{-\infty}^\infty H_m(x) H_n(x)\, w(x) \, \mathrm{d}x = 0, \qquad m \neq n.
+\end{equation}
+
+Furthermore,
+\begin{equation}
+\int_{-\infty}^\infty {\mathit{He}}_m(x) \mathit{He}_n(x)\, e^{-\frac{x^2}{2}} \, \mathrm{d}x = \sqrt{2 \pi} n! \delta_{nm}    (probabilistic)
+\end{equation}
+or
+\begin{equation}
+\int_{-\infty}^\infty H_m(x) H_n(x) e^{-x^2}\, \mathrm{d}x = \sqrt{ \pi} 2^n n! \delta_{nm} (physicists')
+\end{equation}.
+The probabilist polynomials are thus orthogonal with respect to the standard normal probability density function.
+
+\subsection{ Completeness }
+The Hermite polynomials (probabilist or physicist) form an orthonormal basis of the Hilbert space of functions satisfying
+\begin{equation}
+\int_{-\infty}^\infty |f(x)|^2\, w(x) \, \mathrm{d}x <\infty,
+\end{equation}
+in which the inner product is given by the integral including the Gaussian weight 
+function $w(x)$ defined in the preceding section,
+\begin{equation}
+\langle f,g\rangle=\int_{-\infty}^\infty f(x)\overline{g(x)}\, w(x) \, \mathrm{d}x.
+\end{equation}
+
+An orthogonal basis for $L^2(\mathrm{R},w(x)dx)$ is a complete orthogonal system.  
+For an orthogonal system, completeness is equivalent to the fact that the 0 function is the only function 
+$f \in L^{2}(R,w(x) dx) orthogonal to all functions in the system.
+
+Since the linear span of Hermite polynomials is the space of all polynomials, 
+one has to show (in physicist case) that if $f$ satisfies
+\begin{equation}
+\int_{-\infty}^\infty f(x) x^n e^{- x^2} \, \mathrm{d}x = 0
+\end{equation}
+for every $n \geq 0$, then $f =0$.
+
+One possible way to do this is to appreciate that the entire function
+\begin{equation}
+F(z) = \int_{-\infty}^\infty f(x) e^{z x - x^2} \, \mathrm{d}x = \sum_{n=0}^\infty \frac{z^n}{n!}\int f(x) x^n e^{- x^2} \, \mathrm{d}x = 0
+\end{equation}
+vanishes identically. The fact then that $F(it)=0$ for every $t$ real 
+means that the Fourier transform of $f(x)exp(?x^2)$ is 0, hence $f$ is 
+0 almost everywhere. Variants of the above completeness proof apply to 
+other weights with exponential decay.
+
+In the Hermite case, it is also possible to prove an explicit identity 
+that implies completeness (see section on the Completeness relation below).
+
+An equivalent formulation of the fact that Hermite polynomials are an orthogonal 
+basis for $L^{2}(R,w(x)dx)$ consists in introducing Hermite functions (see below), 
+and in saying that the Hermite functions are an orthonormal basis for $L^2(R)$.
+
+
+
+
+We begin by using a Gaussian ansatz:
+\begin{equation}
+    u(\vect{r}_{\perp},\vect{p}(z)) = I(\vect{p}) \exp{- \left(\Theta(\vect{r}_{\perp},\vect{p}) + i \Phi(\vect{r}_{\perp},\vect{p}) \right)}
+\end{equation}
+Now, lets calculate each term in the Lagrangian density:
+\begin{equation}
+    \begin{split}
+    \partial_{z}(u) &= \left[ \frac{\nabla_{\vect{p}}{I}\cdot\vect{\dot{p}}}{I} - \nabla_{\vect{p}}{\Theta}\cdot\vect{\dot{p}} - i \nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}} \right] u\\
+    \partial_{z}(u)\conj{u} &= \left[ \frac{\nabla_{\vect{p}}{I}\cdot\vect{\dot{p}}}{I} -\nabla_{\vect{p}}{\Theta}\cdot\vect{\dot{p}} - i \nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}} \right] |u|^2 \\
+   -2 n_0 \alpha \Im{\partial_{z}(u)\conj{u}} &= 2 n_0 \alpha \left(\nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}}\right) |u|^2 \\    
+   &= 2 n_0 \alpha \left(\nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}}\right) I^2(\vect{p})\exp{-2 \Theta(\vect{r}_{\perp},\vect{p})} \\    
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \nabla_{\perp} u &= -\left(\nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p}) + i \nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p}) \right) u \\
+    -|\nabla_{\perp} u|^2 &= - \left(|\nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p})|^2 + |\nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p})|^2 \right)|u|^2 \\
+    &= - \left(|\nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p})|^2 + |\nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p})|^2 \right)I^2(\vect{p})\exp{-2 \Theta(\vect{r}_{\perp},\vect{p})} 
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    |u|^2 &= I^2(\vect{p})\exp{-2 \Theta(\vect{r}_{\perp},\vect{p})}  
+    \end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \mathcal{L}_{D}(u,\nabla u) &= -2 n_0 \alpha\, \mathrm{Im}\left(\partial_{z}(u) \overline{u}\right) - |\nabla_{\perp} u|^2 + 2n_0 \gamma^2 n(\vect{r}_{\perp},z) |u|^2 \\
+    & = \left(2 n_0 \alpha \nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}} - \left(|\nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p})|^2 + |\nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p})|^2 \right) + 2n_0 \gamma^2 n(\vect{r}_{\perp},z)\right) I^2(\vect{p})\exp{-2 \Theta(\vect{r}_{\perp},\vect{p})}
+\end{split}
+\end{equation}
+
+\subsection{Tilted Gaussian}
+\begin{equation}
+    \vect{p} = \left[A, W_x,W_y; T_x, T_y, X, Y; F_x,F_y, P\right]
+\end{equation}
+\begin{equation}
+    \begin{split}
+        I(\vect{p}) &= \frac{A \sqrt{W_x W_y}}{\sqrt{\pi}} \\
+        \Theta(\vect{r}_{\perp},\vect{p}) &= \frac{1}{2} \left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right) \\
+        \Phi(\vect{r}_{\perp},\vect{p}) &= P + T_x (x-X) + T_y (y-Y) + F_x (x-X)^2 + F_{y} (y-Y)^2
+    \end{split}
+\end{equation}
+
+
+
+
+\begin{equation}
+    \vect{p} = \left[A, W_x,W_y; T_x, T_y, X, Y; F_x,F_y, P\right]
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \nabla_{\vect{p}}{\Phi}\cdot\vect{\dot{p}} &= \dot{P} + \dot{T}_x (x-X) + \dot{T}_y (y-Y) + \dot{F}_{x} (x-X)^2 + \dot{F}_{y} (y-Y)^2 \\
+        &\quad - \dot{X} (T_x + 2F_x(x-X)) - \dot{Y} (T_y + 2F_y(y-Y)) \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p}) &= \left[ W_x^2 (x-X),  W_y^2 (y-Y) \right] \\
+        |\nabla_{\perp}\Theta(\vect{r}_{\perp},\vect{p})|^2 &= W_x^4 (x-X)^2 +  W_y^4 (y-Y)^2 \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p}) &= \left[T_x + 2 F_x (x-X), T_y + 2 F_{y} (y-Y)\right] \\
+        |\nabla_{\perp}\Phi(\vect{r}_{\perp},\vect{p})|^2 &= \left(T_x + 2 F_x (x-X)\right)^2 +  \left(T_y + 2 F_{y} (y-Y)\right)^2
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    \mathcal{L}_{D}(u,\nabla u) & = 2 n_0 \alpha\, \left(\dot{P} + \dot{T}_x (x-X) + \dot{T}_y (y-Y) + \dot{F}_{x} (x-X)^2 + \dot{F}_{y} (y-Y)^2\right)\frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \\
+        &\quad - \dot{X} (T_x + 2F_x(x-X)) \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\\
+&- \dot{Y} (T_y + 2F_y(y-Y)) \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\\ 
+        &- \left(W_x^4 (x-X)^2 +  W_y^4 (y-Y)^2\right) \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\\
+        &- \left(T_x + 2 F_x (x-X)\right)^2 \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\\
+        &-  \left(T_y + 2 F_{y} (y-Y)\right)^2 \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\\
+        &+ 2n_0 \gamma^2 n(\vect{r}_{\perp},z) \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \\
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+ \mathcal{F}_{D}(\vect{p},\dot{\vect{p}}) &= 2 n_0 \alpha\, \frac{A^2W_x W_y}{\pi} \left(\dot{P} I_0 + \dot{T}_x I_{1,x}  + \dot{T}_y I_{1,y} + \dot{F}_{x} I_{2,x} + \dot{F}_{y} I_{2,x}\right) \\
+        &\quad - \dot{X} \frac{A^2W_x W_y}{\pi} (T_x I_0 + 2 F_x I_{1,x}) \\
+&- \dot{Y}\frac{A^2W_x W_y}{\pi} (T_y I_0 + 2 F_y I_{1,y}) \\ 
+        &- \frac{A^2W_x W_y}{\pi}\left(W_x^4 I_{2,x} +  W_y^4 I_{2,y}\right) \\
+        &- \frac{A^2W_x W_y}{\pi}\left(T_x^2 I_0 + 2 T_{x} F_{x} I_{1,x} + 4 F_{x}^2 I_{2,x}\right) \\
+        &- \frac{A^2W_x W_y}{\pi}\left(T_y^2 I_0 + 2 T_{y} F_{y} I_{1,y} + 4 F_{y}^2 I_{2,y}\right) \\
+        &+ 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\right>
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+       I_0 &= \iint^{\infty}_{\infty} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \, dx \,dy =   \frac{\pi}{W_{x}W_{y}}\\
+       I_{1,x} &= \iint^{\infty}_{\infty} (x-X) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \, dx \,dy = 0\\
+       I_{1,y} &= \iint^{\infty}_{\infty} (y-Y) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \, dx \,dy = 0\\
+       I_{2,x} &= \iint^{\infty}_{\infty} (x-X)^2 \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \, dx \,dy = \frac{\pi}{2W_{x}^3W_{y}}\\
+       I_{2,y} &= \iint^{\infty}_{\infty} (y-Y)^2 \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \, dx \,dy = \frac{\pi}{2W_{y}^3W_{x}}\\
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+    \mathcal{F}_{D}(\vect{p},\dot{\vect{p}}) & = 2 n_0 \alpha\, \frac{A^2W_x W_y}{\pi} \left(\dot{P} \frac{\pi}{W_{x}W_{y}}  + \dot{F}_{x} \frac{\pi}{2W_{x}^3W_{y}} + \dot{F}_{y} \frac{\pi}{2W_{y}^3W_{x}} \right) \\
+        &\quad - \dot{X} \frac{A^2W_x W_y}{\pi} T_x \frac{\pi}{W_{x}W_{y}} \\
+&- \dot{Y}\frac{A^2W_x W_y}{\pi} T_y \frac{\pi}{W_{x}W_{y}} \\ 
+        &- \frac{A^2W_x W_y}{\pi}\left(W_x^4 \frac{\pi}{2W_{x}^3W_{y}} +  W_y^4 \frac{\pi}{2W_{y}^3W_{x}}\right) \\
+        &- \frac{A^2W_x W_y}{\pi}\left(T_x^2 \frac{\pi}{W_{x}W_{y}}  + 4 F_{x}^2 \frac{\pi}{2W_{x}^3W_{y}}\right) \\
+        &- \frac{A^2W_x W_y}{\pi}\left(T_y^2 \frac{\pi}{W_{x}W_{y}}  + 4 F_{y}^2 \frac{\pi}{2W_{y}^3W_{x}}\right) \\
+        &+ 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\right>
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    \mathcal{F}_{D}(\vect{p},\dot{\vect{p}}) & = 2 n_0 \alpha\, A^2 \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) - A^2 \dot{X}  T_x - A^2  \dot{Y} T_y  - A^2 \left( \frac{W_x^2}{2} +   \frac{W_y^2}{2}\right) \\
+        &- A^2 \left(T_x^2 + 2  \frac{F_{x}^2}{W_{x}^2}\right) - A^2 \left(T_y^2 + 2 \frac{F_{y}^2}{W_{y}^2}\right) \\
+        &+ 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\right>
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+    \mathcal{F}_{D}(\vect{p},\dot{\vect{p}}) & = 2 n_0 \alpha\, A^2 \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) - A^2 \left(\dot{X}T_x + \dot{Y} T_y\right)  - \frac{A^2}{2} \left(W_x^2+ W_y^2\right) \\
+        &- A^2 \left(T_x^2 + T_y^2 \right) - 2 A^2 \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) \\
+        &+ 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\right>
+    \end{split}
+\end{equation}
+
+
+
+
+\subsection{Euler-Lagrange equation(s)}
+Now, we can apply the Euler-Lagrange equations to the reduced density $\mathcal{F}_{D}(\vect{p},\dot{\vect{p}})$, i.e.
+\begin{equation}
+\begin{split}
+    \der{\mathcal{F}_{D}}{p_i}  - \der{}{z}\left(\pder{\mathcal{F}_{D}}{\dot{p_i}}\right) = 0 
+\end{split}
+\end{equation}
+for $p_i = A, W_x,W_y; T_x, T_y, X, Y; F_x,F_y, P$.
+So lets calculate the terms on the left side of each:
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{A}  &=  2 n_0 \alpha\, (2A) \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) - 2A  \left(\dot{X}T_x + \dot{Y} T_y\right)  - A  \left(W_x^2+ W_y^2\right) \\
+        &- 2A  \left(T_x^2 + T_y^2 \right) - 4A  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>\\
+    \der{}{z}\left(\pder{F_{D}}{\dot{A}}\right) &= \der{}{z}(0) = 0 \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{W_x} & = 2 n_0 \alpha\, A^2 \left(  -\frac{\dot{F}_{x} }{W_{x}^3} \right)  - A^2 W_x + 4 A^2 \frac{F_{x}^2}{W_{x}^3}  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{W_x}}\right) &= \der{}{z}(0) = 0 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{W_y} & = 2 n_0 \alpha\, A^2 \left(  -\frac{\dot{F}_{y} }{W_{y}^3} \right)  - A^2 W_y + 4 A^2 \frac{F_{y}^2}{W_{y}^3}  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{W_y}}\right) &= \der{}{z}(0) = 0 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{T_x} & = -A^2 \dot{X} - 2A^2 T_x  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{x}}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{T_x}}\right) &= \der{}{z}(0) = 0 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{T_y} & = -A^2 \dot{Y} - 2A^2 T_y  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{y}}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{T_y}}\right) &= \der{}{z}(0) = 0 
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{X} & = 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{X}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{X}}\right) &= \der{}{z}\left(-A^2 T_x \right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{Y} & = 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{Y}\right>\\
+\der{}{z}\left(\pder{F_{D}}{\dot{Y}}\right) &= \der{}{z}\left(-A^2 T_y \right)
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{F_x}  &=  - 4 A^2 \frac{F_{x}}{W_{x}^2} + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_x}\right> \\
+    \der{}{z}\left(\pder{F_{D}}{\dot{F_x}}\right) &= \der{}{z}\left(A^2 \frac{1}{2W_{x}^2} \right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{F_y}  &=  - 4 A^2 \frac{F_{y}}{W_{y}^2} + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_y}\right> \\
+    \der{}{z}\left(\pder{F_{D}}{\dot{F_y}}\right) &= \der{}{z}\left(A^2 \frac{1}{2W_{y}^2} \right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \der{F_{D}}{P}  &= 2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{P}  \right> \\
+\der{}{z}\left(\pder{F_{D}}{\dot{P}}\right) &= 2 n_0 \alpha \der{}{z}\left(A^2 \right)  
+\end{split}
+\end{equation}
+
+
+\subsubsection{Equations in P}
+Since $|u|^2$ is only dependent on $A,W$, not $R,P$, the last of these equations says
+\begin{equation}
+\begin{split}
+    \der{}{z}\left( 2 n_0 \alpha A^2 \right) = 0,
+\end{split}
+\end{equation}
+or that
+\begin{equation}
+\begin{split}
+    A(z) = A(0)
+\end{split}
+\end{equation}
+
+
+\subsubsection{Equations in $F_x$, $F_y$}
+
+\begin{equation}
+\begin{split}
+    - 4 A^2 \frac{F_{x}}{W_{x}^2} + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_x}\right> &= A^2  \der{}{z}\left(\frac{1}{2W_{x}^2} \right) = -2 A^2 \frac{\dot{W_{x}}}{2W_{x}^3} \\
+      A^2 \frac{\dot{W_{x}}}{W_{x}^3} &= 4 A^2 \frac{F_{x}}{W_{x}^2} - 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_x}\right>\\
+     \dot{W_{x}} &= 4 F_{x}W_{x} - 2n_0 \gamma^2 \frac{W_{x}^3}{A^2} \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_x}\right> \\
+     \dot{W_{x}} &= 4 F_{x}W_{x}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  - 4 A^2 \frac{F_{y}}{W_{y}^2} + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_y}\right>
+    &= \der{}{z}\left(A^2 \frac{1}{2W_{y}^2} \right) = -2 A^2 \frac{\dot{W_{y}}}{2W_{y}^3} \\
+   \dot{W_{y}} &= 4 F_{y}W_{y} - 2n_0 \gamma^2 \frac{W_{y}^3}{A^2} \left<n(\vect{r}_{\perp},z),\pder{|u|^2}{F_y}\right> \\
+      \dot{W_{y}} &= 4 F_{y}W_{y}
+\end{split}
+\end{equation}
+
+
+\subsubsection{Equations in $X$,$Y$}
+
+\begin{equation}
+\begin{split}
+    2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{X}\right> &= \der{}{z}\left(-A^2 T_x \right) =  -A^2 \dot{T_x}\\
+        \dot{T_x} &= - 2n_0 \gamma^2 \frac{1}{A^2} \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{X}\right> 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+   2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{Y}\right> &= \der{}{z}\left(-A^2 T_y \right) \\
+        \dot{T_y} &= - 2n_0 \gamma^2 \frac{1}{A^2} \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{Y}\right> 
+\end{split}
+\end{equation}
+
+\subsubsection{Equations in $T_x$,$T_y$}
+
+\begin{equation}
+\begin{split}
+   -A^2 \dot{X} - 2A^2 T_x  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{x}}\right> &= 0\\
+   \dot{X} &= - 2T_x  + 2n_0 \gamma^2 \frac{1}{A^2} \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{x}}\right>\\
+   \dot{X} &= - 2T_x 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+   -A^2 \dot{Y} - 2A^2 T_y  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{y}}\right> &=0\\
+      \dot{Y} &= - 2T_y  + 2n_0 \gamma^2 \frac{1}{A^2} \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{T_{y}}\right>\\
+      \dot{Y} &= - 2T_y 
+\end{split}
+\end{equation}
+
+\subsubsection{Equations in $W_x$,$W_y$}
+
+\begin{equation}
+\begin{split}
+     2 n_0 \alpha\, A^2 \left(  -\frac{\dot{F}_{x} }{W_{x}^3} \right)  &- A^2 W_x + 4 A^2 \frac{F_{x}^2}{W_{x}^3}  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right> = 0 \\
+     2 n_0 \alpha\, A^2 \frac{\dot{F}_{x} }{W_{x}^3}  &=   - A^2 W_x + 4 A^2 \frac{F_{x}^2}{W_{x}^3}  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right>  \\
+     \frac{\dot{F}_{x} }{W_{x}^3}  &=   - \frac{A^2 W_x}{2 n_0 \alpha\, A^2} + \frac{4 A^2 }{2 n_0 \alpha\, A^2} \frac{F_{x}^2}{W_{x}^3}  + \frac{2n_0 \gamma^2}{2 n_0 \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right> \\
+     \dot{F}_{x}  &=   - \frac{W_{x}^4}{2 n_0 \alpha} + \frac{2 W_{x}^3}{n_0 \alpha} \frac{F_{x}^2}{W_{x}^3}  + \frac{\gamma^2 W_{x}^3}{ \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right> \\ 
+     \dot{F}_{x}  &=   - \frac{1}{2 n_0 \alpha} W_{x}^4+ \frac{2}{n_0 \alpha} F_{x}^2  + \frac{\gamma^2 W_{x}^3}{ \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right> \\    
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    2 n_0 \alpha\, A^2 \left(  -\frac{\dot{F}_{y} }{W_{y}^3} \right) & - A^2 W_y + 4 A^2 \frac{F_{y}^2}{W_{y}^3}  + 2n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right>= 0 \\
+         \dot{F}_{y}  &=   - \frac{1}{2 n_0 \alpha} W_{y}^4 + \frac{2}{n_0 \alpha} F_{y}^2  + \frac{\gamma^2 W_{y}^3}{ \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right> \\
+\end{split}
+\end{equation}
+
+\subsubsection{ Equations in A}
+\begin{equation}
+\begin{split}
+    &2 n_0 \alpha\, (2A) \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) - 2A  \left(\dot{X}T_x + \dot{Y} T_y\right)  - A  \left(W_x^2+ W_y^2\right) \\
+    &- 2A  \left(T_x^2 + T_y^2 \right) - 4A  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) +  2n_0 \gamma^2 \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right> = 0\\
+    & \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) = \frac{2A}{2 n_0 \alpha\, (2A)}  \left(\dot{X}T_x + \dot{Y} T_y\right)  + \frac{A}{2 n_0 \alpha\, (2A)}  \left(W_x^2+ W_y^2\right) \\
+    &\quad+ \frac{2A}{2 n_0 \alpha\, (2A)}  \left(T_x^2 + T_y^2 \right) + \frac{4A}{2 n_0 \alpha\, (2A)}  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) -  \frac{2n_0 \gamma^2}{2 n_0 \alpha\, (2A)} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right> \\ 
+    & \left(\dot{P}  + \frac{\dot{F}_{x} }{2W_{x}^2} + \frac{\dot{F}_{y}}{2W_{y}^2} \right) = \frac{1}{2 n_0 \alpha}  \left(\dot{X}T_x + \dot{Y} T_y\right)  + \frac{1}{4 n_0 \alpha}  \left(W_x^2+ W_y^2\right) \\
+    &\quad + \frac{1}{2 n_0 \alpha}  \left(T_x^2 + T_y^2 \right) + \frac{1}{n_0 \alpha}  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) -  \frac{\gamma^2}{2 \alpha A)} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>    
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    \dot{P}  &= -\frac{\dot{F}_{x} }{2W_{x}^2} - \frac{\dot{F}_{y}}{2W_{y}^2} 
+    + \frac{1}{2 n_0 \alpha}  \left(\dot{X}T_x + \dot{Y} T_y\right) 
+     + \frac{1}{4 n_0 \alpha}  \left(W_x^2+ W_y^2\right) \\    
+    &\quad + \frac{1}{2 n_0 \alpha}  \left(T_x^2 + T_y^2 \right) + \frac{1}{n_0 \alpha}  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) -  \frac{\gamma^2}{2 \alpha A} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>    
+\end{split}
+\end{equation}
+
+
+
+\begin{equation}
+\begin{split}
+    \dot{P}  &= -\frac{1}{2W_{x}^2} \left(- \frac{1}{2 n_0 \alpha} W_{x}^4+ \frac{2}{n_0 \alpha} F_{x}^2  + \frac{\gamma^2 W_{x}^3}{ \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right>\right)  \\
+    &\quad - \frac{1}{2W_{y}^2} \left(- \frac{1}{2 n_0 \alpha} W_{y}^4 + \frac{2}{n_0 \alpha} F_{y}^2  + \frac{\gamma^2 W_{y}^3}{ \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right>\right)\\
+    &\quad + \frac{1}{2 n_0 \alpha}T_x  \left( - 2T_x \right) \\
+    &\quad + \frac{1}{2 n_0 \alpha}T_y  \left( - 2T_y \right) \\
+    &\quad + \frac{1}{4 n_0 \alpha}  \left(W_x^2+ W_y^2\right) \\    
+    &\quad + \frac{1}{2 n_0 \alpha}  \left(T_x^2 + T_y^2 \right) \\
+    &\quad + \frac{1}{n_0 \alpha}  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) \\
+    &\quad -  \frac{\gamma^2}{2 \alpha A} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>   \\
+    &=  \left(\frac{1}{4 n_0 \alpha} W_{x}^2 -\frac{1}{n_0 \alpha} \frac{F_{x}^2}{W_{x}^2} - \frac{\gamma^2 W_{x}}{ 2 \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right>\right)  \\
+    &\quad\left( \frac{1}{4 n_0 \alpha} W_{y}^2 - \frac{1}{n_0 \alpha} \frac{F_{y}^2}{W_{y}^2} - \frac{\gamma^2 W_{y}}{ 2 \alpha\, A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right>\right)\\
+    &\quad + \frac{1}{4 n_0 \alpha}  \left(W_x^2+ W_y^2\right) \\    
+    &\quad + \frac{1}{n_0 \alpha}  \left(\frac{F_{x}^2}{W_{x}^2} + \frac{F_{y}^2}{W_{y}^2}\right) \\
+    &\quad -  \frac{\gamma^2}{2 \alpha A} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right>   \\ 
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \dot{P}  &= \frac{1}{2 n_0 \alpha} \left(W_{x}^2 + W_{y}^2\right)  - \frac{\gamma^2 W_{x}}{ 2 \alpha A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{x}}\right>  
+    - \frac{\gamma^2 W_{y}}{ 2 \alpha A^2}  \left<n(\vect{r}_{\perp},z), \pder{|u|^2}{W_{y}}\right>\\
+    &\quad -  \frac{\gamma^2}{2 \alpha A} \left< n(\vect{r}_{\perp},z),\pder{|u|^2}{A}\right> 
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+    \dot{P}  &= \frac{1}{2 n_0 \alpha} \left(W_{x}^2 + W_{y}^2\right)  - \frac{\gamma^2 }{ 2 \alpha }\left<n(\vect{r}_{\perp},z), \frac{W_{x}}{A^2} \pder{|u|^2}{W_{x}}+ \frac{ W_{y}}{A^2}\pder{|u|^2}{W_{y}}+\frac{1}{A}\pder{|u|^2}{A}\right> 
+\end{split}
+\end{equation}
+
+
+
+\pagebreak
+\subsection{Equations}
+\begin{equation}
+\begin{split}
+  A(z) &= A(0)\\
+\dot{P}  &= \frac{1}{2 n_0 \alpha} \left(W_{x}^2 + W_{y}^2\right)  - \frac{\gamma^2 }{\alpha } \left<n(\vect{r}_{\perp},z), \frac{W_{x}}{2A^2} \pder{|u|^2}{W_{x}}+ \frac{ W_{y}}{2A^2}\pder{|u|^2}{W_{y}}+\frac{1}{2A}\pder{|u|^2}{A}\right> \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+ \dot{X} &= - 2T_x \\
+\dot{Y} &= - 2T_y \\
+\dot{T_x} &= - n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{2}{A^2}\pder{|u|^2}{X}\right> \\
+\dot{T_y} &= - n_0 \gamma^2 \left<n(\vect{r}_{\perp},z), \frac{2}{A^2} \pder{|u|^2}{Y}\right> \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\dot{W_{x}} &= 4 F_{x}W_{x} \\
+\dot{W_{y}} &= 4 F_{y}W_{y} \\
+\dot{F}_{x}  &=   - \frac{1}{2 n_0 \alpha} W_{x}^4+ \frac{2}{n_0 \alpha} F_{x}^2  
++ \frac{\gamma^2}{\alpha}  \left<n(\vect{r}_{\perp},z), \frac{W_{x}^3}{A^2} \pder{|u|^2}{W_{x}}\right> \\    
+\dot{F}_{y}  &=   - \frac{1}{2 n_0 \alpha} W_{y}^4 + \frac{2}{n_0 \alpha} F_{y}^2  + \frac{\gamma^2}{\alpha}  \left<n(\vect{r}_{\perp},z), \frac{W_{y}^3}{A^2} \pder{|u|^2}{W_{y}}\right>\\
+\end{split}
+\end{equation}
+
+
+
+\begin{equation}
+\begin{split}
+|u|^2 = \frac{A^2W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\pder{|u|^2}{A}  = 2A \frac{W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\pder{|u|^2}{X}  &= \frac{A^2W_x W_y}{\pi} (2W_x^2(x-X)) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 
+\right)}\\
+\pder{|u|^2}{Y}  &= \frac{A^2W_x W_y}{\pi} (2W_y^2(y-Y)) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\end{split}
+\end{equation}
+
+
+
+
+
+\begin{equation}
+\begin{split}
+\pder{|u|^2}{W_{x}} &= \left( \frac{A^2 W_y}{\pi} - \frac{A^2 W_{x} W_y}{\pi} \left(2W_x(x-X)^2\right)  \right)\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= \left( 1 - W_{x} \left(2W_x(x-X)^2\right)  \right) \frac{A^2 W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= \left(1  - 2 W_{x}^2 (x-X)^2  \right) \frac{A^2 W_y}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\pder{|u|^2}{W_{y}} &= \left( \frac{A^2 W_x}{\pi} - \frac{A^2 W_{y} W_x}{\pi} \left(2W_y(y-Y)^2\right) \right)\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= \left( 1 - W_{y} \left(2W_y(y-Y)^2\right)  \right) \frac{A^2 W_x}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= \left(1  - 2 W_{y}^2 (y-Y)^2  \right) \frac{A^2 W_x}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V = \frac{1}{2A}\pder{|u|^2}{A}  &= \frac{W_x W_y}{\pi} \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\frac{W_{x}}{2A^2} \pder{|u|^2}{W_{x}} &= \frac{1}{2}\left(1  - 2 W_{x}^2 (x-X)^2  \right) \frac{W_{x} W_y}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \\
+&= \frac{1}{2}\left(1  - 2 W_{x}^2 (x-X)^2  \right) V \\
+\frac{W_{y}}{2A^2} \pder{|u|^2}{W_{y}} &= \frac{1}{2} \left(1  - 2 W_{y}^2 (y-Y)^2  \right) \frac{W_{x} W_y}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= \frac{1}{2} \left(1  - 2 W_{y}^2 (y-Y)^2  \right)  V \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\frac{2}{A^2} \pder{|u|^2}{X}  &= \frac{W_x W_y}{\pi} (4W_x^2(x-X)) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 
+\right)}\\
+&=  4 W_x^2(x-X) V\\
+\frac{2}{A^2} \pder{|u|^2}{Y}  &= \frac{W_x W_y}{\pi} (4W_y^2(y-Y)) \exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)} \\
+&=  4 W_y^2(y-Y) V\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\frac{W_{x}^3}{A^2}\pder{|u|^2}{W_{x}} &= \left(1  - 2 W_{x}^2 (x-X)^2  \right) \frac{W_{x}^3 W_y}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= W_{x}^2 \left(1  - 2 W_{x}^2 (x-X)^2  \right) V \\
+\frac{W_{y}^3}{A^2}\pder{|u|^2}{W_{y}} &= \left(1  - 2 W_{y}^2 (y-Y)^2  \right) \frac{W_{y}^3 W_x}{\pi}\exp{-\left( W_x^2(x-X)^2 + W_y^2(y-Y)^2 \right)}\\
+&= W_{y}^2 \left(1  - 2 W_{y}^2 (y-Y)^2  \right) V \\
+\end{split}
+\end{equation}
+
+
+

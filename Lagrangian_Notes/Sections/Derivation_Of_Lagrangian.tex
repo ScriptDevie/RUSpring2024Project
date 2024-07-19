@@ -1,0 +1,230 @@
+\section{Stationary action}
+\begin{equation}\label{equ:DMNLSE}
+\begin{split}
+i&q_z + \avg{d}q_{tt}  + s\iint K(t_1,t_2) q(z,t_2+t) q(z,t_1+t) \conj{q}(z,t_1+t_2+t)   \,dt_1 dt_2 = in, \\
+-i&\conj{q}_z + \avg{d}\conj{q}_{tt} + s\iint \conj{K}(t_1,t_2)  \conj{q}(z,t_2+t) \conj{q}(z,t_1+t) q(z,t_1+t_2+t)  \,dt_1 dt_2 = -i\conj{n}, \\
+\end{split}
+\end{equation}
+where the kernel is given by,
+\begin{equation}\label{equ:DMNLSE_Kernal}
+\begin{split}
+K(t_1,t_2) &= \iint \exp{-i \omega_1 t_1} \exp{-i \omega_2 t_2 }   \hat{K}(\omega_1,\omega_2) \,d\omega_1 \,d\omega_2 \\
+\hat{K}(\omega_1,\omega_2) &= \frac{1}{(2\pi)^2}\int_{0}^{1} \exp{2i\omega_1\omega_2 D(x)}  \,dx,  \\
+\implies K(t_1,t_2) &= \iint \frac{\exp{-i \omega_1 t_1 } \exp{-i \omega_2 t_2 }}{(2\pi)^2}  \sinc{\omega_1\omega_2 \frac{D_{str}}{2}} \,d\omega_1 \,d\omega_2
+\end{split}
+\end{equation}
+Note that $K$ is the 2-D Fourier Transform of a real and even function, so it is real and even.
+\begin{equation}
+\begin{split}
+D &= \int_{0}^{x} \Delta d(y) \, dy\\
+\avg{d} &= \int_{0}^{1} \Delta d(x) \,dx = d_{2}(1-\theta_g) + d_{1}\theta_g\\
+\Delta d(x)&= d(x) - \avg{d} = \left(d_{1}-d_{2}\right) 
+\begin{cases} -\theta_g & 0 < x < \frac{(1- \theta_{g})}{2} \\
+1-\theta_g & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+-\theta_g &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+D(x) &= \left(d_{1}-d_{2}\right) \begin{cases} -\theta_g x & 0 < x < \frac{(1- \theta_{g})}{2} \\
+(1-\theta_g) (x-\frac{1}{2}) & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+-\theta_g (x-1) &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+D_{str} &= \int_{0}^{1} |\Delta d(x)| \, dx = |d_{1} - d_{2}|\left[2\theta_g\left(1-\theta_g\right)\right]\\
+\implies D(x) &= \frac{D_{str}}{2}  \begin{cases} - \frac{x}{(1- \theta_{g})} & 0 < x < \frac{(1- \theta_{g})}{2} \\
+\frac{(x-\frac{1}{2})}{\theta_g}  & \frac{(1- \theta_{g})}{2} < x < \frac{(1+ \theta_{g})}{2}  \\
+- \frac{(x-1)}{(1- \theta_{g})} &  \frac{(1+ \theta_{g})}{2}  < x < 1\end{cases}\\
+\end{split}
+\end{equation}
+
+To correctly capture the effect of radiation, we insert a two term ansatz $q = u_s+u_r$, 
+rewriting the system as coupled equations.
+\begin{equation}\label{equ:coupled_DMNLSE}
+\begin{split}
+i&\pder{u_s}{z} + \avg{d} \ppder{u_s}{t} +  s \iint K(t_1,t_2)  u_s(z,t_1+t) u_s(z,t_2+t) \conj{u}_s(z,t_1+t_2+t)  \,dt_1 dt_2 \\
+&+ 2 s\iint K(t_1,t_2)  u_s(z,t_1+t) u_r(z,t_2+t) \conj{u}_r(z,t_1+t_2+t)  \,dt_1 dt_2 = in_{sol}, \\
+i&\pder{u_r}{z} + \avg{d} \ppder{u_r}{t} + 2 s\iint K(t_1,t_2) u_s(z,t_1+t) u_r(z,t_2+t) \conj{u}_s(z,t_1+t_2+t)   \,dt_1 dt_2 = in_{rad}, \\
+-i&\pder{\conj{u}_s}{z} + \avg{d}\ppder{\conj{u}_s}{t} + s \iint \conj{K}(t_1,t_2)  \conj{u}_s(z,t_1+t) \conj{u}_s(z,t_2+t) u_s(z,t_1+t_2+t)  \,dt_1 dt_2 \\
+&+ 2s \iint \conj{K}(t_1,t_2) \conj{u}_s(z,t_1+t) \conj{u}_r(z,t_2+t) u_r(z,t_1+t_2+t)   \,dt_1 dt_2 = -i\conj{n}_{sol}, \\
+-i&\pder{\conj{u}_r}{z} + \avg{d}\ppder{\conj{u}_r}{t} + 2 s\iint \conj{K}(t_1,t_2)  \conj{u}_s(z,t_1+t) \conj{u}_r(z,t_2+t) u_s(z,t_1+t_2+t)  \,dt_1 dt_2 = -i\conj{n}_{rad}, \\
+\end{split}
+\end{equation}
+
+\begin{equation}\label{equ:NLSE_Functional}
+\begin{split}
+J(u_s,\conj{u}_s,u_r,\conj{u}_r) &= \int_{0}^{z_f} \int L_{den}(u_s,\conj{u}_s,u_r,\conj{u}_r) \, dt dz\\
+ L_{den}(u_s,\conj{u}_s,u_r,\conj{u}_r) &= \frac{i}{2} \left(\pder{u_s}{z}\conj{u}_s - u_s \pder{\conj{u}_s}{z}\right)  
++  \frac{i}{2} \left(\pder{u_r}{z}\conj{u}_r - u_r \pder{\conj{u}_r}{z}\right) - \avg{d} \left(\pder{u_s}{t} \pder{\conj{u}_s}{t}\right) 
+- \avg{d} \left(\pder{u_r}{t} \pder{\conj{u}_r}{t}\right) \\
+&\quad + s\frac{1}{4} \iint K(t_1,t_2) u_s(z,t_1+t) u_s(z,t_2+t) \conj{u}_s(z,t_1+t_2+t) \conj{u}_s(z,t)  \,dt_1 dt_2 \\
+&\quad + s\frac{1}{4} \iint K(t_1,t_2) \conj{u}_s(z,t_1+t) \conj{u}_s(z,t_2+t) u_s(z,t_1+t_2+t) u_s(z,t)   \,dt_1 dt_2  \\
+&\quad + s\iint K(t_1,t_2) u_s(z,t_1+t) u_r(z,t_2+t) \conj{u}_r(z,t_1+t_2+t) \conj{u}_s(z,t)   \,dt_1 dt_2 \\
+&\quad + s\iint K(t_1,t_2) \conj{u}_s(z,t_1+t) \conj{u}_r(z,t_2+t) u_r(z,t_1+t_2+t) u_s(z,t)   \,dt_1 dt_2  \\
+&\quad - i (n_{sol}(t,z)\conj{u}_s -  \conj{n}_{sol}(t,z)u_s)- i (n_{rad}(t,z)\conj{u}_r -  \conj{n}_{rad}(t,z)u_r)\\
+\end{split}
+\end{equation}
+Now consider just the term 
+\begin{equation}\label{equ:Nonlinear_Term_1_Functional}
+ \begin{split}
+N_1(u_s,\conj{u}_s) &=s\frac{1}{4}\int_{0}^{z_f} \int\left[  \iint K(t_1,t_2)\ u_s(z,t_1+t)\ u_s(z,t_2+t)\ \conj{u}_s(z,t_1+t_2+t)\ \conj{u}_s(z,t) \,dt_1\, dt_2 \right.\\
+&\left. + \iint K(t_1,t_2)\  \conj{u}_s(z,t_2+t)\ \conj{u}_s(z,t_1+t)\ u_s(z,t_1+t_2+t) \ u_s(z,t) \,dt_1\,dt_2\right]\,dt\,dz, \\
+\end{split}
+\end{equation}
+Now take the Fr\`{e}chet derivative of $N$ with respect to $\conj{u}_s$,
+\begin{equation}\label{equ:Nonlinear_Term_Functional}
+ \begin{split}
+\frac{\delta N_1}{\delta \conj{u}_s} & =\frac{s}{4}\int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_s(z,t_1+t)\ u_s(z,t_2+t)\ \conj{u}_s(z,t_1+t_2+t)\  \conj{\nu}(t)  \,dt_1 dt_2 \\
+&+ \iint  K(t_1,t_2) u_s(z,t_1+t)\ u_s(z,t_2+t)\  \conj{u}_s(z,t)\ \conj{\nu}(t_1+t_2+t) \ dt_1 dt_2 \\
+&+ \iint  K(t_1,t_2)\ u_s(z,t_1+t_2+t)\ u_s(z,t)\ \conj{u}_s(z,t_1+t)\ \conj{\nu}(z,t_2+t) \ dt_1 dt_2 \\
+&+ \iint  K(t_1,t_2)\ u_s(z,t_1+t_2+t)\ u_s(z,t)\ \conj{u}_s(z,t_2+t)\ \conj{\nu}(z,t_1+t) \ dt_1 dt_2 \, dt dz. \\
+\end{split}
+\end{equation}
+Using the transformation of variables
+\begin{equation}
+\begin{split}
+t + t_1 + t_2 &= \tau  \\
+ t &= \tau + \tau_1 + \tau_2 \\
+ t + t_1 &= \tau + \tau_2 \\
+ t + t_2 &= \tau + \tau_1 \\
+\implies t_1 &= -\tau_2 \quad t_2 = -\tau_1 \quad  t = \tau + \tau_1 + \tau_2 \\
+\end{split}
+\end{equation}
+which has the Jacobian 
+\begin{displaymath}
+J = \begin{array}{|ccc|}
+1 & 1 & 1 \\ 
+0 & 0 & -1  \\ 
+0 & -1 & 0 \\
+\end{array}= 1
+\end{displaymath}
+implies that
+\begin{equation}
+ \begin{split}
+&\int_{0}^{z_f} \int  \iint K(t_1,t_2) \ u_s(z,t_1+t)\ u_s(z,t_2+t)\  \conj{u}_s(z,t)\  \conj{\nu}(t_1+t_2+t) \ dt_1 dt_2 dt dz  \\
+&\quad= \int_{0}^{z_f} \int \iint K(-t_1,-t_2) \ u_s(z,t_1+t)\ u_s(z,t_2+t)\ \conj{u}_s(z,t_1+t_2+t)\ \conj{\nu}(t) \ dt_1 dt_2 dt dz. \\
+&\quad= \int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_s(z,t_1+t)\ u_s(z,t_2+t)\ \conj{u}_s(z,t_1+t_2+t)\ \conj{\nu}(t)  \ dt_1 dt_2 dt dz. \\
+\end{split}
+\end{equation}
+since $ K(-t_1,-t_2) =  K(t_1,t_2)$.
+
+Using the transformation of variables
+\begin{equation}
+\begin{split}
+t + t_1 + t_2 &= \tau + \tau_1   \\
+ t &= \tau + \tau_2 \\
+ t + t_2 &= \tau   \\
+ t + t_1 &= \tau + \tau_1 + \tau_2 \\
+\implies t_1 &= \tau_1 \quad t_2 = -\tau_2 \quad  t = \tau + \tau_2 \\
+\end{split}
+\end{equation}
+which has the Jacobian 
+\begin{displaymath}
+J = \begin{array}{|ccc|}
+1 & 0 & 1 \\ 
+0 & 1 & 0  \\ 
+0 & 0 & -1 \\
+\end{array} = -1
+\end{displaymath}
+implies that
+\begin{equation}
+ \begin{split}
+&\int_{0}^{z_f} \int\iint K(t_1,t_2) \ u_s(z,t_1+t_2+t) \ u_s(z,t) \ \conj{u}_s(z,t_1+t) \ \conj{\nu}(z,t_2+t)\,dt_1 dt_2 \, dt dz \\
+&=  \int_{0}^{z_f} \int \iint K(t_1,-t_2) \ u_s(z,t_1+t) \ u_s(z,t_2+t) \ \conj{u}_s(z,t_1+t_2+t) \ \conj{\nu}(t)  \,dt_1 dt_2  \, dt dz\\
+\end{split}
+\end{equation}
+Using the transformation of variables
+\begin{equation}
+\begin{split}
+t + t_1 + t_2 &= \tau + \tau_1   \\
+ t &= \tau + \tau_2 \\
+ t + t_1 &= \tau   \\
+ t + t_2 &= \tau + \tau_1 + \tau_2 \\
+\implies t_1 &= -\tau_2 \quad t_2 = \tau_1 \quad  t = \tau + \tau_2 \\
+\end{split}
+\end{equation}
+which has the Jacobian 
+\begin{displaymath}
+J = \begin{array}{|ccc|}
+1 & 0 & 1 \\ 
+0 & 0 & -1  \\ 
+0 & 1 & 0 \\
+\end{array} = -1
+\end{displaymath}
+implies that
+\begin{equation}
+ \begin{split}
+&\int_{0}^{z_f} \int \iint  K(t_1,t_2) \ u_s(z,t_1+t_2+t) \ u_s(z,t) \ \conj{u}_s(z,t_2+t) \ \conj{\nu}(z,t_1+t)\,dt_1 dt_2 \, dt dz \\
+&=  \int_{0}^{z_f} \int \iint K(-t_2,t_1) \ u_s(z,t_1+t) \ u_s(z,t_2+t) \ \conj{u}_s(z,t_1+t_2+t) \ \conj{\nu}(t)  \,dt_1 dt_2  \, dt dz\\
+\end{split}
+\end{equation}
+Noting that $K(-t_2,t_1) = K(t_1,-t_2)$, and 
+\begin{equation}\label{equ:DMCGLE_Kernal}
+\begin{split}
+K(t_1,-t_2) &= \iint \exp{-i \omega_1 t_1} \exp{i \omega_2 t_2 }   \hat{K}(\omega_1,\omega_2) \,d\omega_1 \,d\omega_2 \\
+&= \iint \exp{-i \omega_1 t_1} \exp{-i \omega_2 t_2 }   \hat{K}(\omega_1,-\omega_2) \,d\omega_1 \,d\omega_2 \\
+\hat{K}(\omega_1,-\omega_2) &= \hat{K}(\omega_1,\omega_2)\\
+\implies K(t_1,-t_2)&= K(t_1,t_2)\\
+\end{split}
+\end{equation}
+Therefore the term nonlocal nonlinear term becomes
+\begin{equation}\label{equ:Nonlinear_Term_Functional}
+ \begin{split}
+\frac{\delta N_1}{\delta \conj{u}_s} & = \frac{1}{2}s \int_{0}^{z_f} \int \iint  \left[K(t_1,t_2) + K(t_1,-t_2)\right] u_s(z,t_1+t) u_s(z,t_2+t) \conj{u}_s(z,t_1+t_2+t) \conj{\nu}(t)  \,dt_1 dt_2 \, dt dz. \\
+& = s \int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_s(z,t_1+t)\ u_s(z,t_2+t)\ \conj{u}_s(z,t_1+t_2+t)  \ \conj{\nu}(t)  \,dt_1 dt_2 \, dt dz. \\
+\end{split}
+\end{equation}
+and like wise
+\begin{equation}
+ \begin{split}
+\frac{\delta N_1}{\delta u_s} & = s_r \int_{0}^{z_f} \int \iint K\ \conj{u}_s(z,t_1+t)\ \conj{u}_s(z,t_2+t)\ u_s(z,t_1+t_2+t)  \ \nu(t)  \,dt_1 dt_2 \, dt dz. \\
+\end{split}
+\end{equation}
+
+Now consider
+\begin{equation}\label{equ:Nonlinear_Term_2_Functional}
+\begin{split}
+N_2(u_s,\conj{u}_s,u_r,\conj{u}_r) &=  s \int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_s(z,t_1+t) \ u_r(z,t_2+t) \ \conj{u}_r(z,t_1+t_2+t) \ \conj{u}_s(z,t)   \,dt_1 dt_2 \\
+&\quad + \iint K(t_1,t_2) \ \conj{u}_s(z,t_1+t) \ \conj{u}_r(z,t_2+t) \ u_r(z,t_1+t_2+t) \ u_s(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+\end{split}
+\end{equation}
+then 
+\begin{equation}
+\begin{split}
+\frac{\delta N_2}{\delta \conj{u}_s} &=  s \int_{0}^{z_f} \int \iint K(t_1,t_2) \ u_s(z,t_1+t) \ u_r(z,t_2+t) \ \conj{u}_r(z,t_1+t_2+t) \ \conj{\nu}(z,t)   \,dt_1 dt_2 \\
+&\quad +  \iint K(t_1,t_2) \ \conj{\nu}(z,t_1+t) \  \conj{u}_r(z,t_2+t) \ u_r(z,t_1+t_2+t) \  u_s(z,t)   \,dt_1\, dt_2 \,dt \, dz  \\
+&= s\int_{0}^{z_f} \int \iint \left[ K(t_1,t_2) + K(-t_1,t_2)\right] \ u_s(z,t_1+t) \ u_r(z,t_2+t) \  \conj{u}_r(z,t_1+t_2+t)\  \conj{\nu}(z,t)   \,dt_1 dt_2 \, dz\\
+&= 2s  \int_{0}^{z_f} \int  \iint K(t_1,t_2) \ u_s(z,t_1+t) \ u_r(z,t_2+t) \  \conj{u}_r(z,t_1+t_2+t) \  \conj{\nu}(z,t)   \,dt_1 \, dt_2 \, dz\\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\frac{\delta N_2}{\delta u_s} &= s \int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_r(z,t_2+t)\ \conj{u}_r(z,t_1+t_2+t)\ \conj{u}_s(z,t) \  \conj{\nu}(z,t_1+t) \,dt_1 dt_2 \\
+&\quad + \iint  K(t_1,t_2)\ \conj{u}_s(z,t_1+t)\ \conj{u}_r(z,t_2+t)\ u_r(z,t_1+t_2+t)\ \nu(z,t)   \,dt_1\, dt_2 \,dt \, dz  \\
+&= s \int_{0}^{z_f} \int \iint \left[ K(-t_1,t_2)+K(t_1,t_2) \right]\ \conj{u}_s(z,t_1+t)\ \conj{u}_r(z,t_2+t)\ u_r(z,t_1+t_2+t)\ \nu(z,t) \,dt_1 dt_2 \\
+&= 2s \int_{0}^{z_f} \int  \iint K(t_1,t_2) \ \conj{u}_s(z,t_1+t)\ \conj{u}_r(z,t_2+t)\ u_r(z,t_1+t_2+t)\ \nu(z,t) \,dt_1 dt_2 \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\frac{\delta N_2}{\delta \conj{u}_r} &= s \int_{0}^{z_f} \int \iint K(t_1,t_2)\ u_s(z,t_1+t) \ u_r(z,t_2+t) \ \conj{\nu}(z,t_1+t_2+t) \ \conj{u}_s(z,t) \,dt_1 dt_2 \\
+&\quad + \iint  K(t_1,t_2) \ \conj{u}_s(z,t_1+t) \ \conj{\nu}(z,t_2+t) \ u_r(z,t_1+t_2+t) \ u_s(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+&= 2s \int_{0}^{z_f} \int  \iint \left[K(t_1,t_2)+K(t_2,-t_1) \right]\ u_s(z,t_1+t) \ u_r(z,t_2+t) \ \conj{u}_s(z,t_1+t_2+t) \ \conj{\nu}(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+&=  2s \int_{0}^{z_f} \int \iint K(t_1,t_2) \ u_s(z,t_1+t) \ u_r(z,t_2+t) \ \conj{u}_s(z,t_1+t_2+t) \ \conj{\nu}(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\frac{\delta N_2}{\delta u_r} &= s \int_{0}^{z_f} \int \iint  K(t_1,t_2)\ u_s(z,t_1+t) \ \nu(z,t_2+t) \ \conj{u}_r(z,t_1+t_2+t) \ \conj{u}_s(z,t)   \,dt_1 dt_2 \\
+&\quad + \iint  K(t_1,t_2) \ \conj{u}_s(z,t_1+t) \ \conj{u}_r(z,t_2+t) \ \nu(z,t_1+t_2+t) \ u_s(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+&= 2 s \int_{0}^{z_f} \int \iint \left[K(-t_1,t_2)+ K(t_1,t_2)\right] \ \conj{u}_s(z,t_1+t) \ \conj{u}_r(z,t_2+t) \ \nu(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+&= 2 s \int_{0}^{z_f} \int \iint K(t_1,t_2) \ \conj{u}_s(z,t_1+t) \ \conj{u}_r(z,t_2+t) \  u_s(z,t_1+t_2+t) \ \nu(z,t) \,dt_1\, dt_2 \,dt \, dz  \\
+\end{split}
+\end{equation}
+
+
+and a Lagrangian of the form
+\begin{equation}\label{equ:NLSE_Functional}
+\begin{split}
+L_{den}(u_s,\conj{u}_s,u_r,\conj{u}_r) &= \Re{i \pder{u_s}{z} \conj{u}_s} + \Re{i \pder{u_r}{z} \conj{u}_s} - \avg{d}\left(\pder{u_s}{t}\pder{\conj{u}_s}{t}\right) 
+- \avg{d}\left(\pder{u_r}{t}\pder{\conj{u}_r}{t}\right)  \\
+&\quad + \frac{1}{2}s \Re{\iint K(t_1,t_2) u_s(z,t_1+t) u_s(z,t_2+t) \conj{u}_s(z,t_1+t_2+t) \conj{u}_s(z,t)  \,dt_1 dt_2} \\
+&\quad + 2s \Re{\iint K(t_1,t_2) u_s(z,t_1+t) u_r(z,t_2+t) \conj{u}_r(z,t_1+t_2+t) \conj{u}_s(z,t)   \,dt_1 dt_2} \\
+&\quad - 2\Re{\conj{u}_s \, in_{sol}} - 2\Re{\conj{u}_r\ in_{rad}}\\
+\end{split}
+\end{equation}

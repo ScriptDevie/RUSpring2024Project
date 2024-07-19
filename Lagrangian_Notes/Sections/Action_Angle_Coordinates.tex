@@ -1,0 +1,264 @@
+\section{Action Angle Coordinates}
+
+
+\begin{equation}
+\begin{split}
+ \dot{E} &=  \ip{U_E}{n(t,z)} \\
+ \dot{\Omega} & =   \ip{U_\Omega}{n(t,z)} \\
+ \dot{T} &=  2\avg{d} \Omega + \ip{ U_T }{ n(t,z)} \\
+ \dot{W} &=  2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \ip{U_W}{ n(t,z)}\\ 
+\dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\\
+\dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 + \ip{U_{\phi}}{n(t,z)} \\
+\end{split}
+\end{equation}
+Defining the action  and angle as
+\begin{equation}
+\begin{split}
+H &= C^2 W^2 + \frac{1}{W^2}\\
+G &= C W^2\\
+W & = \sqrt{\frac{G^2+1}{H}}\\
+C & = \frac{G}{H} \left(G^2+1\right)
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+H &= C^2 W^2 + \frac{1}{W^2}\\
+\dot{H} &= 2CW^2 \dot{C} + 2WC^2 \dot{W} - 2\frac{1}{W^3}\dot{W}\\
+\dot{H} &= 2CW^2 \left[2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\right] \\ 
+        &  + \left(2WC^2 - 2\frac{1}{W^3} \right)\left[ 2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C}+\ip{U_W}{ n(t,z)}\right] \\ 
+\dot{H} &= 4 \avg{d} \frac{C }{W^2}  - 4 \avg{d} C^3W^2 + \sqrt{2}\avg{s} CW E \pder{K_1}{W} + 2CW^2 \ip{U_C}{ n(t,z)} \\ 
+        &  + \left[ 4 \avg{d}W^2C^3 - \sqrt{2} \avg{s}  C^2 E \pder{K_1}{C} + 2WC^2 \ip{U_W}{ n(t,z)}\right] \\ 
+        &  - \left[ 4\avg{d} \frac{C}{W^2} - \sqrt{2}\avg{s} \frac{E}{W^4} \pder{K_1}{C}+ 2\frac{1}{W^3}\ip{U_W}{ n(t,z)}\right] \\ 
+\dot{H} &=   \sqrt{2}\avg{s} CW E \pder{K_1}{W} - \sqrt{2} \avg{s}  C^2 E \pder{K_1}{C} + \sqrt{2}\avg{s} \frac{E}{W^4} \pder{K_1}{C}\\
+&+ 2CW^2 \ip{U_C}{ n(t,z)}  + 2WC^2 \ip{U_W}{ n(t,z)} - 2\frac{1}{W^3}\ip{U_W}{ n(t,z)} \\  \\
+\dot{H} &=   \sqrt{2}\avg{s}E\left[ CW \pder{K_1}{W} - \left(C^2  - \frac{1}{W^4}\right) \pder{K_1}{C}\right]+ \ip{U_H}{ n(t,z)}  \\ 
+U_H  &= 2CW^2 U_C  + 2WC^2 U_W - 2\frac{1}{W^3} U_W = 2CW^2 U_C  + \left(2WC^2 - 2\frac{1}{W^3}\right) U_W \\ 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+G &= C W^2\\
+\dot{G} &= \dot{C} W^2 + 2 C W \dot{W}\\ 
+\dot{G} &= W^2\left[2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\right] \\
+        &+ 2 C W \left[2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \ip{U_W}{ n(t,z)}\right]\\
+\dot{G} &= 2 \avg{d} H + \frac{\avg{s}}{\sqrt{2}} W E \pder{K_1}{W} + W^2 \ip{U_C}{ n(t,z)} - \sqrt{2}\avg{s}  C E \pder{K_1}{C} + 2 C W  \ip{U_W}{ n(t,z)}\\
+\dot{G} &= 2 \avg{d} H + \frac{\avg{s}}{\sqrt{2}} W E \pder{K_1}{W}  - \sqrt{2}\avg{s}  C E \pder{K_1}{C} + 2 C W \ip{U_W}{ n(t,z)} + W^2 \ip{U_C}{ n(t,z)}\\
+\dot{G} &= 2 \avg{d} H + \frac{\avg{s}}{\sqrt{2}} W E \pder{K_1}{W}  - \sqrt{2}\avg{s}  C E \pder{K_1}{C} + \ip{U_G}{ n(t,z)}\\
+\dot{G} &= 2 \avg{d} H + \avg{s}\sqrt{2} E \left[ \frac{1}{2} W \pder{K_1}{W}  - C \pder{K_1}{C}\right] + \ip{U_G}{ n(t,z)}\\
+U_G &= 2 C W U_W + W^2 U_C
+\end{split}
+\end{equation}
+
+\section{Exact Solution}
+Fist notice that without the noise terms,
+\begin{equation}
+\begin{split}
+ E(z) &=  E_0 \\
+ \Omega(z) & =  \Omega_0 \\
+ T(z) &=  2\avg{d} \Omega_0 z \\
+ \dot{\phi} &= \avg{d} \Omega_0  + \frac{1}{\sqrt{2}} \avg{s} E_0 \left(K_1 - \frac{1}{4}  W \pder{K_1}{W}\right) - \avg{d} \frac{1}{W^2} \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\pder{K_1}{W}  &=  \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\\
+ CW \pder{K_1}{W} - \left(C^2  - \frac{1}{W^4}\right) \pder{K_1}{C} &= CW \left( \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\right) - \left(C^2  - \frac{1}{W^4}\right) \left( \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\right) = \\
+&= \left[CW \pder{H}{W} -  \left(C^2  - \frac{1}{W^4}\right) \pder{H}{C}\right] \pder{K_1}{H}  +  \left[CW \pder{G}{W} -  \left(C^2  - \frac{1}{W^4}\right) \pder{G}{C}\right] \pder{K_1}{G} \\
+&= \left[CW \left(2C^2W-\frac{2}{W^3}\right) -  \left(C^2  - \frac{1}{W^4}\right)2CW^2 \right] \pder{K_1}{H}  +  \left[CW (2CW) - \left(C^2  - \frac{1}{W^4}\right) W^2\right] \pder{K_1}{G} \\
+&=  \left[2C^2W^2 - \left(C^2W^2  - \frac{1}{W^2}\right) \right] \pder{K_1}{G} \\
+&=  \left[C^2W^2 + \frac{1}{W^2}\right] \pder{K_1}{G} \\
+& = H \pder{K_1}{G}
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\pder{K_1}{W}  &=  \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\\
+\frac{1}{2} W \pder{K_1}{W}  - C \pder{K_1}{C} &=  \frac{1}{2} W  \left( \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\right) - C \left( \pder{K_1}{H} \pder{H}{W} + \pder{K_1}{G} \pder{G}{W}\right) \\
+&= \left[\frac{1}{2} W \pder{H}{W} - C \pder{H}{C}\right] \pder{K_1}{H}  +  \left[\frac{1}{2} W  \pder{G}{W} -  C \pder{G}{C}\right] \pder{K_1}{G} \\
+&= \left[\frac{1}{2} W \left( 2 C^2 W - \frac{2}{W^3}\right) - C \left( 2 C W^2 \right) \right] \pder{K_1}{H}  +  \left[\frac{1}{2} W  \left( 2 C W \right) -  C \left(  W^2 \right)\right] \pder{K_1}{G} \\
+&= -H \pder{K_1}{H}  \\
+\end{split}
+\end{equation}
+
+
+
+\begin{equation}
+\begin{split}
+\dot{H} &=   \sqrt{2}\avg{s}E H \pder{K_1}{G}  \\ 
+\dot{G} &= 2 \avg{d} H - \avg{s}\sqrt{2} E H \pder{K_1}{H} \\
+\end{split}
+\end{equation}
+
+Now define $L = \ln{H}$, then $\pder{K_1}{H} = \pder{K_1}{L}\pder{L}{H} = \frac{1}{H} \pder{K_1}{L}$
+\begin{equation}
+\begin{split}
+\dot{L} &=   \sqrt{2}\avg{s}E \pder{K_1}{G}  = \sqrt{2}\avg{s}E \pder{K_1}{G}  \\ 
+\dot{G} &= 2 \avg{d} \exp{L} - \avg{s}\sqrt{2} E \pder{K_1}{L} \\
+\end{split}
+\end{equation}
+Thus,
+
+\begin{equation}
+\begin{split}
+\dot{L} &=   \pder{H_{am}}{G}\\ 
+\dot{G} &= -\pder{H_{am}}{L}  \\
+\mbox{ where } H_{am}(G,L) &=  -2 \avg{d} \exp{L} + \avg{s}\sqrt{2} E K_1(G,L) \\
+\end{split}
+\end{equation}
+    \begin{equation}
+    \begin{split}
+    K_1(G,L) & =  \frac{1}{D_{str}} \frac{1}{2\beta}  \ln{\frac{ \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}}\\
+%     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ \pder{\beta^{-1}}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+%     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ -\frac{1}{\beta^2}\pder{\beta}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+    &\mbox{ Where } \beta^2 = \exp{L},\ \kappa_1 = G + \frac{D_{str}}{2}\exp{L},\ \kappa_2 = G - \frac{D_{r,str}}{2}\exp{L} \\
+    \end{split}
+    \end{equation}
+Thus,
+
+\begin{equation}
+\begin{split}
+ \dot{H}_{am}(G,L) &=  0 \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+H &= C^2 W^2 + \frac{1}{W^2} = \exp{L}\\
+G &= C W^2\\
+W &= \sqrt{\frac{G^2+1}{H}} = \sqrt{\frac{G^2+1}{\exp{L}}} = \sqrt{G^2+1}\exp{-\frac{L}{2}}\\
+C & = \frac{G}{H} \left(G^2+1\right) = G\left(G^2+1\right) \exp{L}\\
+\dot{\phi} &= \avg{d} \Omega_0  + \frac{1}{\sqrt{2}} \avg{s} E_0 \left(K_1(G,L) - \frac{1}{4} \sqrt{G^2+1}\exp{-\frac{L}{2}} \left(\pder{K_1}{G}\pder{G}{W} + \pder{K_1}{L} \pder{L}{W}\right)\right) - \avg{d} \frac{\exp{L}}{G^2+1} \\
+\dot{\phi} &= \avg{d} \Omega_0  + \frac{1}{\sqrt{2}} \avg{s} E_0 \left(K_1(G,L) - \frac{1}{4} \sqrt{G^2+1}\exp{-\frac{L}{2}} \left(\pder{K_1}{G}\pder{G}{W} + \pder{K_1}{L} \pder{L}{W}\right)\right) - \avg{d} \frac{\exp{L}}{G^2+1} \\
+\end{split}
+\end{equation}
+
+
+
+% 
+%     \begin{equation}
+%     \begin{split}
+%     K_1(W,C) & =  \frac{1}{D_{str}} \frac{1}{2\beta}  \ln{\frac{ \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}}\\
+%     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ \pder{\beta^{-1}}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+%     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ -\frac{1}{\beta^2}\pder{\beta}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+%     &\mbox{ Where } \beta^2 = \frac{(1+W^4C^2)}{W^2},\ \kappa_1 = W^2C + \frac{D_{r,str}\beta^2}{2},\ \kappa_2 = W^2C - \frac{D_{r,str}\beta^2}{2} \\
+%     \end{split}
+%     \end{equation}
+%     \begin{equation}
+%     \begin{split}
+%     &\beta^2 = H,\ \kappa_1 = G + \frac{D_{str}H}{2},\ \kappa_2 = G - \frac{D_{str}H}{2} \\
+%     \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}} &= G + \tilde{D}_{str}H  + \left(G^2 + 2\tilde{D}_{str}GH + \tilde{D}_{str}^2H^2+1\right)^{\frac{1}{2}}
+% %     K_1(H,G) & =  \frac{1}{D_{r}} \frac{1}{2\sqrt{H}}  \ln{\frac{ \kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}}\\
+% %     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ \pder{\beta^{-1}}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+% %     \pder{K_1}{W,C} & =  \frac{1}{2 D_{r,str}} \left[ -\frac{1}{\beta^2}\pder{\beta}{W,C} \ln{\frac{\kappa_{1} + \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}}{\kappa_{1} - \left(\kappa_{1}^2+1\right)^{\frac{1}{2}}} \frac{\kappa_{2} - \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}{\kappa_{2} + \left(\kappa_{2}^2+1\right)^{\frac{1}{2}}}} + \beta^{-1} \left[ \frac{2}{\sqrt{\kappa_1^2 + 1}}\pder{\kappa_1}{W,C} - \frac{2}{\sqrt{\kappa_2^2 + 1}}\pder{\kappa_2}{W,C}\right] \right]\\
+%     \end{split}
+%     \end{equation}
+% % 
+% \begin{equation}
+% \begin{split}
+% \langle F_H(z) F_G(z') \rangle &= \frac{\sigma^2}{\sqrt{\pi}} \frac{4}{E}HG \delta(z-z') \\ 
+% \end{split}
+% \end{equation}
+% \begin{equation}
+% \begin{split}
+% \langle F_H(z) F_\phi(z') \rangle &= -\frac{\sigma^2}{\sqrt{\pi}} \frac{1}{E}\frac{HG}{G^2+1} \delta(z-z') \\ 
+% \end{split}
+% \end{equation}
+% \begin{equation}
+% \begin{split}
+% \langle F_G(z) F_\phi(z') \rangle &= - \frac{\sigma^2}{\sqrt{\pi}} \frac{1}{2E} \delta(z-z') \\ 
+% \end{split}
+% \end{equation}
+% 
+% \begin{equation}
+% \begin{split}
+%  \dot{E} &=  \ip{U_E}{n(t,z)} \\
+%  \dot{\Omega} & =   \ip{U_\Omega}{n(t,z)} \\
+%  \dot{T} &=  2\avg{d} \Omega + \ip{ U_T }{ n(t,z)} \\
+%  \dot{W} &=  2 \avg{d} C W - \frac{1}{\sqrt{2}} \avg{s} \frac{E}{W} \pder{K_1}{C} + \ip{U_W}{ n(t,z)}\\ 
+% \dot{C} &= 2 \avg{d} \frac{1}{W^4}  - 2 \avg{d} C^2 + \frac{1}{\sqrt{2}}\avg{s} \frac{E}{W} \pder{K_1}{W} + \ip{U_C}{ n(t,z)}\\
+% \dot{\phi} &= \avg{d} \Omega^2 - \avg{d} \frac{1}{W^2} + \frac{1}{\sqrt{2}} \avg{s} E K_1 - \frac{1}{4\sqrt{2}} \avg{s} EW \pder{K_1}{W} + 2\avg{s}  \sum_{j=-N/2}^{N/2 - 1} |\alpha_j|^2 + \ip{U_{\phi}}{n(t,z)} \\
+% \end{split}
+% \end{equation}
+% 
+% \begin{equation}
+% \begin{split}
+% \dot{\phi} &= d_{s}(x) \Omega^2 - d_{s}(z) \frac{1}{W^2}  + \frac{5}{4\sqrt{2}}n_{l}(z)  \frac{E}{W} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( 1- 2W^2 \Omega^2  \right)C + F_{\phi} \\
+% \dot{\phi} &= d_{s}(x) \Omega^2 - d_{s}(z) \frac{H}{G^2+1}  + \frac{5}{4\sqrt{2}}n_{l}(z)E  \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( \frac{HG}{G^2+1} - 2G\Omega^2  \right) + F_{\phi} \\
+% \end{split}
+% \end{equation}
+% 
+% \begin{equation}
+% \begin{split}
+% p_k(E,G,H) = \Int{\Sigma^k \left(\frac{ \exp{-\Sigma^2} }{1+\frac{E}{P_{sat}}\left(\frac{H}{G^2+1}\right)^{\frac{1}{2}}\exp{-\Sigma^2}}\right)}{\Sigma} \\
+% \end{split}
+% \end{equation}
+% 
+% Rewriting the SDEs in vector form of 
+% \begin{equation}
+% \begin{split}
+% \pder{\vec{X}}{z} + \frac{1}{x_p} \pder{\vec{X}}{x} &= \vec{F}(\vec{X},x) + \left[M(\vec{X})\right]\vec{N}(z)\\
+% x_p \pder{\vec{X}}{z} + \pder{\vec{X}}{x} &= x_p \vec{F}(\vec{X},x) + x_p \left[M(\vec{X})\right]\vec{N}(z)\\
+% \end{split}
+% \end{equation}
+% where 
+% \begin{align}
+% \vec{F}(\vec{X},x)= \left[\begin{array}{c}
+% 2g \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E - \frac{2l}{\sqrt{\pi}} p_0(E,G,H) E - \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} E \left[2\Omega^2 + H\right] \\ 
+% 2\left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \Omega - 2 \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \Omega G \\
+% -2\tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} H \Omega\\
+% -\sqrt{2}n_{l}E \left(\frac{H}{G^2+1}\right)^{\frac{2}{3}} G + \frac{2l}{\sqrt{\pi}} \left(\frac{H}{G^2+1}\right) \left(G^2-1\right)\left[p_0(E,G,H) - 2p_2(E,G,H)\right] - \frac{2\tau}{1+\frac{E \sqrt{\pi}}{E_{sat}}} H^2 \\
+% 2 \left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) H - \frac{n_{l}}{\sqrt{2}}E \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} - 2\tau\frac{1}{1+\frac{E \sqrt{\pi}}{E_{sat}}} HG + \frac{2l}{\sqrt{\pi}}\left[p_0(E,G,H) - 2p_2(E,G,H)\right]G \\ 
+% \left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \Omega^2 - \left(\avg{d}_s + \frac{\Delta d_s(x)}{x_p}\right) \frac{H}{G^2+1}  + \frac{5}{4\sqrt{2}}n_{l}(z)E  \left(\frac{H}{G^2+1}\right)^{\frac{1}{2}} + \tau \frac{1}{1+\frac{E\sqrt{\pi}}{E_{sat}}} \left( \frac{HG}{G^2+1} - 2G\Omega^2  \right) \\
+% \end{array}\right]
+%  \end{align}
+% 
+% \begin{align}
+% \vec{X} = \left[\begin{array}{c}
+% E(z) \\ 
+% T(z) \\
+% \Omega(z)\\
+% H(z) \\
+% G(z) \\ 
+% \phi(z) \\
+% \end{array}\right]
+%  \end{align}
+% \begin{align}
+% \vec{N}(z) = \left[\begin{array}{c}
+% N_E(z) \\ 
+% N_T(z) \\
+% N_\Omega(z)\\
+% N_H(z) \\
+% N_G(z) \\ 
+% N_\phi(z) \\
+% \end{array}\right] \quad \langle \vec{N}(z) \vec{N}^T(z')\rangle  = \frac{\sigma^2}{\sqrt{\pi}} I \delta(z-z')
+%  \end{align}
+% \begin{align} \left[M(\vec{X})M^{T}(\vec{X})\right] =
+% &  \left[\begin{array}{c||ccccc|c}
+%            & E     & T                               & \Omega             &  H                            & G                   & \phi                                                               \\                                   
+% \hline    \hline                                                                                                                                                                                     
+% E          & 2E    & 0                               & 0                  &  0                            & 0                   & 0                                                                  \\
+% T          & 0     & \frac{1}{E}\frac{G^2+1}{H}      & \frac{G}{E}        &  0                            & 0                   & \frac{\Omega}{E}\frac{G^2+1}{H}                                    \\
+% \Omega     & 0     & \frac{G}{E}                     & \frac{H}{E}        &  0                            & 0                   & \frac{\Omega G}{E}                                                 \\ 
+% H          & 0     & 0                               & 0                  &  \frac{4H^2}{E}               & \frac{4HG}{E}       & -\frac{1}{E}\frac{HG}{G^2+1}                                       \\
+% G          & 0     & 0                               & 0                  &  \frac{4HG}{E}                & \frac{4(1+G^2)}{E}  & -\frac{1}{2E}                                                      \\
+% \hline
+% \phi       & 0     & \frac{\Omega}{E}\frac{G^2+1}{H} & \frac{\Omega G}{E} &  -\frac{1}{E}\frac{HG}{G^2+1} & -\frac{1}{2E}       & \frac{1}{E} \left(\frac{3}{4}   + \Omega^2 \frac{G^2+1}{H} \right) \\ 
+% \end{array}\right]
+%  \end{align}
+% which through the use of Cholesky factorization gives:
+% \begin{align} M(\vec{X}) =
+% &  \left[\begin{array}{c||ccccc|c}
+%            & E                      & T                                                     & \Omega                                                 &  H                                   & G                                     & \phi                                                    \\                                   
+% \hline    \hline                                                                                                                                                                                                                                                                                
+% E          & (2E)^{\frac{1}{2}}    & 0                                                      & 0                                                      &  0                                   & 0                                     & 0                                                       \\
+% T          & 0                     & \left(\frac{1}{E}\frac{G^2+1}{H}\right)^{\frac{1}{2}}  & 0                                                      &  0                                   & 0                                     & 0                                                       \\
+% \Omega     & 0                     & G\left(\frac{1}{E}\frac{H}{G^2+1}\right)^{\frac{1}{2}} & \left(\frac{1}{E}\frac{H}{G^2+1}\right)^{\frac{1}{2}}  &  0                                   & 0                                     & 0                                                       \\ 
+% H          & 0                     & 0                                                      & 0                                                      &  \frac{2H}{\sqrt{E}}                 & 0                                     & 0                                                       \\
+% G          & 0                     & 0                                                      & 0                                                      &  \frac{2G}{\sqrt{E}}                 & \frac{2}{\sqrt{E}}                    & 0                                                       \\
+% \hline                                                                                                                                                                                                                                                                                                               
+% \phi       & 0                     & \Omega\left(\frac{G^2+1}{EH}\right)^{\frac{1}{2}}      & 0                                                      &  -\frac{1}{2\sqrt{E}}\frac{G}{G^2+1} & \frac{1}{4\sqrt{E}}\frac{G^2-1}{G^2+1} & \frac{11}{16 E} - \frac{2 \Omega^2 (G^2+1)}{EH}  \\ 
+% \end{array}\right]
+%  \end{align}
+% \\
